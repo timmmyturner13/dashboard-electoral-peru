@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encuestas Presidenciales Perú 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rojo: #c0392b;
+    --rojo-oscuro: #8B1A1A;
+    --blanco: #FAFAF8;
+    --negro: #0D0D0D;
+    --gris-claro: #F0EFEA;
+    --gris-med: #9B9B9B;
+    --oro: #C8991E;
+    --azul: #1A3A6B;
+    --verde: #1A5C3A;
+    --bg: #111111;
+    --card-bg: #1C1C1C;
+    --border: #2E2E2E;
+    --text: #E8E6DF;
+    --text-dim: #7A7870;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ──────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    padding: 60px 48px 48px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, #0D0D0D 0%, #1A0808 60%, #0D0D0D 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'PERÚ';
+    position: absolute;
+    right: -30px; top: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 220px;
+    font-weight: 900;
+    color: rgba(192,57,43,0.06);
+    letter-spacing: -10px;
+    user-select: none;
+    line-height: 1;
+  }
+  .hero-flag {
+    display: flex; gap: 6px; margin-bottom: 24px;
+  }
+  .flag-stripe { width: 18px; height: 52px; border-radius: 2px; }
+  .flag-stripe.rojo { background: var(--rojo); }
+  .flag-stripe.blanco { background: #FAFAF8; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 56px);
+    font-weight: 900;
+    color: var(--blanco);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    max-width: 700px;
+  }
+  .hero h1 span { color: var(--rojo); }
+
+  .hero-meta {
+    margin-top: 20px;
+    display: flex; gap: 32px; flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .hero-meta-item strong {
+    display: block;
+    color: var(--oro);
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+  }
+
+  .countdown-box {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.3);
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 28px;
+  }
+  .countdown-box .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--rojo);
+  }
+  .countdown-box .days {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--blanco);
+    font-weight: 700;
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────── */
+  .main { padding: 40px 48px; max-width: 1400px; margin: 0 auto; }
+
+  .section-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--rojo);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::before { content: '▌'; }
+
+  /* ── STATS ROW ──────────────────────────────────────── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--rojo); }
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--rojo);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .stat-card:hover::after { transform: scaleX(1); }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--blanco);
+    line-height: 1;
+  }
+  .stat-sub {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
+
+  /* ── CANDIDATOS ─────────────────────────────────────── */
+  .candidates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .candidate-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .candidate-card:hover { transform: translateY(-2px); border-color: #3E3E3E; }
+  .candidate-card.leader {
+    border-color: rgba(192,57,43,0.4);
+    background: linear-gradient(135deg, #1C1C1C 0%, #1F0D0D 100%);
+  }
+  .candidate-rank {
+    position: absolute; top: 20px; right: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+  .candidate-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--blanco);
+    margin-bottom: 4px;
+  }
+  .candidate-party {
+    font-size: 11px; color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .leader .candidate-party { color: var(--oro); }
+
+  /* Barra de progreso */
+  .poll-bars { display: flex; flex-direction: column; gap: 8px; }
+  .poll-bar-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 44px;
+    align-items: center; gap: 8px;
+  }
+  .poll-bar-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .poll-bar-track {
+    background: #2A2A2A;
+    border-radius: 2px; height: 6px;
+    overflow: hidden;
+  }
+  .poll-bar-fill {
+    height: 100%; border-radius: 2px;
+    background: var(--rojo);
+    transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  }
+  .leader .poll-bar-fill { background: linear-gradient(90deg, var(--rojo), #e74c3c); }
+  .poll-bar-pct {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    color: var(--text); text-align: right;
+  }
+
+  .candidate-avg {
+    margin-top: 16px;
+    display: flex; align-items: baseline; gap: 6px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .avg-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700;
+    color: var(--blanco);
+  }
+  .leader .avg-value { color: var(--rojo); }
+  .avg-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* ── TABLA COMPARATIVA ──────────────────────────────── */
+  .table-wrap {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 48px;
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 12px;
+  }
+  th {
+    background: #161616;
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #1E1E1E;
+    color: var(--text);
+    font-size: 12px;
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #202020; }
+
+  .enc-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-cit    { background: rgba(192,57,43,0.2); color: #E87070; }
+  .badge-ipsos  { background: rgba(26,58,107,0.3); color: #7090E8; }
+  .badge-datum  { background: rgba(26,92,58,0.3); color: #70C890; }
+  .badge-cpi    { background: rgba(200,153,30,0.2); color: #D4B060; }
+  .badge-imasolu{ background: rgba(100,60,160,0.2); color: #B090D8; }
+  .badge-iep    { background: rgba(60,120,160,0.2); color: #70A8C8; }
+
+  .pct-cell {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .pct-high { color: #E87070; }
+  .pct-mid  { color: #D4B060; }
+  .pct-low  { color: var(--text-dim); }
+  .no-data  { color: #333; font-style: italic; font-size: 10px; }
+
+  .trend-up   { color: #50C878; font-size: 10px; }
+  .trend-down { color: var(--rojo); font-size: 10px; }
+
+  /* ── JNE BOX ────────────────────────────────────────── */
+  .jne-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .jne-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--rojo);
+    border-radius: 6px;
+    padding: 18px;
+  }
+  .jne-name {
+    font-weight: 600; font-size: 13px;
+    color: var(--blanco); margin-bottom: 4px;
+  }
+  .jne-reg {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--oro);
+    margin-bottom: 8px;
+  }
+  .jne-detail {
+    font-size: 11px; color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ─────────────────────────────────────────── */
+  footer {
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  footer p {
+    font-size: 11px; color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  footer strong { color: var(--rojo); }
+
+  /* ── CHART BARRAS HORIZONTAL ─────────────────────────── */
+  .chart-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+  .chart-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--blanco); margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 11px; color: var(--text-dim);
+    margin-bottom: 28px;
+  }
+  .bar-chart { display: flex; flex-direction: column; gap: 14px; }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 60px;
+    align-items: center; gap: 12px;
+  }
+  .bar-cand-name {
+    font-size: 12px; color: var(--text);
+    font-weight: 600; text-align: right;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .bar-track {
+    background: #222; border-radius: 3px; height: 22px;
+    overflow: hidden; position: relative;
+  }
+  .bar-fill-main {
+    height: 100%; border-radius: 3px;
+    display: flex; align-items: center;
+    padding-left: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    white-space: nowrap;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .bar-pct-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--blanco); text-align: left;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 36px 24px 32px; }
+    .main { padding: 24px 24px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .candidates-grid { grid-template-columns: 1fr; }
+    .jne-grid { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 120px 1fr 50px; }
+    .bar-cand-name { font-size: 10px; }
+    footer { flex-direction: column; }
+  }
+
+  /* ── EVOLUTION CHARTS ────────────────────────────────── */
+  .evolution-wrap {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .evolution-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .evolution-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--blanco);
+  }
+  .evolution-subtitle {
+    font-size: 11px; color: var(--text-dim);
+    margin-top: 3px;
+  }
+  .legend-row {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--text);
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .legend-item:hover { opacity: 0.7; }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-line {
+    width: 22px; height: 2px; border-radius: 1px;
+    flex-shrink: 0;
+  }
+  canvas.evo-canvas {
+    width: 100% !important;
+    display: block;
+    cursor: crosshair;
+  }
+  /* Selector encuestadora */
+  .enc-selector {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 20px;
+  }
+  .enc-btn {
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .enc-btn:hover, .enc-btn.active {
+    border-color: var(--rojo);
+    color: var(--blanco);
+    background: rgba(192,57,43,0.15);
+  }
+  .tooltip-box {
+    position: fixed;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 11px;
+    pointer-events: none;
+    z-index: 9999;
+    min-width: 160px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    display: none;
+  }
+  .tooltip-box .tt-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px; color: var(--text-dim);
+    margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .tooltip-box .tt-row {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 2px 0;
+  }
+  .tooltip-box .tt-name { color: var(--text); }
+  .tooltip-box .tt-val  { font-weight: 600; font-family: 'IBM Plex Mono', monospace; }
+  @media (max-width: 768px) {
+    .evolution-header { flex-direction: column; }
+    .enc-selector { gap: 6px; }
+  }
+
+
+  /* ── DESAGREGACIÓN ──────────────────────────────────────── */
+  .desag-source {
+    font-size: 10px; color: var(--text-dim); font-style: italic;
+    margin-bottom: 20px; padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--rojo);
+    border-radius: 0 4px 4px 0;
+  }
+  .desag-block { margin-bottom: 32px; }
+  .desag-block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--blanco);
+    padding: 10px 16px;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .desag-block-title span.blk-letter {
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 900; flex-shrink: 0;
+  }
+  .desag-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 11px;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+  .desag-table th {
+    background: #2a2a2a;
+    color: #aaa;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 8px 10px; text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .desag-table th:first-child { text-align: left; }
+  .desag-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    color: var(--text);
+  }
+  .desag-table td:first-child {
+    text-align: left; font-weight: 600;
+    color: var(--blanco); width: 22%;
+  }
+  .desag-table tr:last-child td { border-bottom: none; }
+  .desag-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .desag-table tr:hover td { background: rgba(255,255,255,0.05); }
+  /* Celdas con barra de calor */
+  .heat-cell {
+    position: relative;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 5px 8px !important;
+  }
+  .desag-note {
+    font-size: 9px; color: var(--text-dim); font-style: italic;
+    padding: 0 8px; text-align: left !important; font-weight: 400 !important;
+    color: #888 !important;
+  }
+  .desag-wrap-inner {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 0;
+  }
+  .desag-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 4px;
+  }
+  @media (max-width: 900px) {
+    .desag-grid { grid-template-columns: 1fr; }
+  }
+
+
+  /* ── DESAGREGACIÓN — estilos adicionales ── */
+  .d-hi  { color: #50C878; font-weight: 700; font-family: 'IBM Plex Mono', monospace; font-size:11px; text-align:center }
+  .d-lo  { color: #E87070; font-family: 'IBM Plex Mono', monospace; font-size:11px; text-align:center }
+  .d-num { font-family: 'IBM Plex Mono', monospace; font-size:11px; text-align:center }
+  .d-nd  { color: #333; font-style:italic; font-size:10px; text-align:center }
+  .d-cand{ font-weight:600; font-size:11px }
+  .d-cand small { display:block; font-size:9px; color:var(--text-dim); font-weight:300 }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-flag">
+    <div class="flag-stripe rojo"></div>
+    <div class="flag-stripe blanco"></div>
+    <div class="flag-stripe rojo"></div>
+  </div>
+  <h1>Encuestas<br>Presidenciales<br><span>Perú 2026</span></h1>
+  <div class="hero-meta">
+    <div class="hero-meta-item">Período<strong>1 ene – 19 feb 2026</strong></div>
+    <div class="hero-meta-item">Encuestadoras<strong>6 empresas con reg. JNE</strong></div>
+    <div class="hero-meta-item">Total encuestas<strong>13 mediciones</strong></div>
+    <div class="hero-meta-item">Primera vuelta<strong>12 de abril de 2026</strong></div>
+    <div class="hero-meta-item">Balotaje<strong>7 de junio de 2026</strong></div>
+  </div>
+  <div class="countdown-box">
+    <span class="label">Días para<br>la elección</span>
+    <span class="days" id="countdown">—</span>
+    <span class="label">días<br>restantes</span>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- STATS -->
+  <p class="section-title">Indicadores clave</p>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">Candidato líder (media)</div>
+      <div class="stat-value">13,4%</div>
+      <div class="stat-sub">Rafael López Aliaga — Renovación Popular</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">2.° lugar (media)</div>
+      <div class="stat-value">8,2%</div>
+      <div class="stat-sub">Keiko Fujimori — Fuerza Popular</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Indecisión / Blanco promedio</div>
+      <div class="stat-value">~42%</div>
+      <div class="stat-sub">El mayor bloque del electorado sigue sin definir</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Candidatos en competencia</div>
+      <div class="stat-value">36+</div>
+      <div class="stat-sub">Alta fragmentación. Ninguno supera el 16%</div>
+    </div>
+  </div>
+
+  <!-- GRÁFICO GENERAL -->
+  <p class="section-title">Media de intención de voto por candidato</p>
+  <div class="chart-section">
+    <div class="chart-title">Promedio entre encuestas (enero – febrero 2026)</div>
+    <div class="chart-subtitle">Media simple — 13 encuestas · 6 encuestadoras con registro JNE · ★ IEP (23 feb), CPI (14-18 feb) y DATUM (13-17 feb) son las más recientes</div>
+    <div class="bar-chart" id="mainChart"></div>
+  </div>
+
+  <!-- CANDIDATOS DETALLE -->
+
+  <!-- EVOLUCIÓN MEDIA GENERAL -->
+  <p class="section-title">Evolución del voto — Media general (5 principales candidatos)</p>
+  <div class="evolution-wrap">
+    <div class="evolution-header">
+      <div>
+        <div class="evolution-title">Tendencia de intención de voto — Media simple entre encuestadoras</div>
+        <div class="evolution-subtitle">Cada punto es el promedio de todas las encuestadoras que midieron al candidato en ese período · Hover para detalle</div>
+      </div>
+      <div class="legend-row" id="legendMedia"></div>
+    </div>
+    <canvas id="canvasMedia" class="evo-canvas" height="340"></canvas>
+  </div>
+
+  <!-- EVOLUCIÓN POR ENCUESTADORA -->
+  <p class="section-title">Evolución del voto — Por encuestadora (5 principales candidatos)</p>
+  <div class="evolution-wrap">
+    <div class="evolution-header">
+      <div>
+        <div class="evolution-title">Seguimiento por encuestadora — Serie cronológica individual</div>
+        <div class="evolution-subtitle">Selecciona una encuestadora para ver su serie histórica de mediciones</div>
+      </div>
+      <div class="legend-row" id="legendEnc"></div>
+    </div>
+    <div class="enc-selector" id="encSelector"></div>
+    <canvas id="canvasEnc" class="evo-canvas" height="340"></canvas>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DESAGREGACIÓN SOCIODEMOGRÁFICA — CPI + DATUM (multi-fuente)
+  ════════════════════════════════════════════════════════════════════ -->
+  <p class="section-title">Perfil sociodemográfico del voto — Desagregación por segmentos</p>
+  <div class="chart-section">
+    <div class="chart-title">Intención de voto cruzada por perfil del elector</div>
+    <div class="chart-subtitle">Fuentes: CPI Ene · CPI Feb · DATUM 11-ene · DATUM 25-ene · IPSOS Ene · IPSOS Feb · IEP Ene · IEP Feb — Datos en porcentaje (%)</div>
+
+    <!-- Sub-tabs -->
+    <div style="display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:0">
+      <div class="enc-btn active" id="dtab-genero" onclick="showDTab('genero')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">Género</div>
+      <div class="enc-btn" id="dtab-edad" onclick="showDTab('edad')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">Edad</div>
+      <div class="enc-btn" id="dtab-region" onclick="showDTab('region')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">Región</div>
+      <div class="enc-btn" id="dtab-zona" onclick="showDTab('zona')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">Urbana/Rural</div>
+      <div class="enc-btn" id="dtab-nse" onclick="showDTab('nse')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">NSE</div>
+    </div>
+
+    <!-- ── PANEL GÉNERO ───────────────────────────────────────────── -->
+    <div id="dpanel-genero" style="padding-top:24px">
+      <!-- Source pills -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <span class="enc-badge badge-cpi" style="padding:3px 10px">CPI Enero</span>
+        <span class="enc-badge badge-cpi" style="padding:3px 10px">CPI Febrero</span>
+        <span class="enc-badge badge-datum" style="padding:3px 10px">DATUM 11-ene</span>
+        <span class="enc-badge badge-datum" style="padding:3px 10px">DATUM 25-ene</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#a0c4e8;padding:3px 10px;border:1px solid #a0c4e8;border-radius:3px">IPSOS Feb</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Enero</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Febrero</span>
+      </div>
+
+      <!-- Gender bar visualization for Aliaga -->
+      <div style="margin-bottom:24px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:14px">Rafael López Aliaga — Brecha de género en las 4 mediciones</div>
+        <div id="genderBarsAliaga" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+
+      <!-- Full gender table -->
+      <div class="table-wrap" style="margin-bottom:0">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2" style="min-width:120px">Candidato</th>
+              <th colspan="2" style="text-align:center;color:#D4B060;border-bottom:2px solid #C8991E;font-size:8px">CPI Ene</th>
+              <th colspan="2" style="text-align:center;color:#D4B060;border-bottom:2px solid #C8991E;font-size:8px">CPI Feb</th>
+              <th colspan="2" style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:8px">DATUM 11e</th>
+              <th colspan="2" style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:8px">DATUM 25e</th>
+              <th colspan="2" style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:8px">IPSOS Feb</th>
+              <th colspan="2" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:8px">IEP Ene</th>
+              <th colspan="2" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:8px">IEP Feb</th>
+            </tr>
+            <tr>
+              <th style="color:#D4B060;font-size:8px">H</th><th style="color:#D4B060;font-size:8px">M</th>
+              <th style="color:#D4B060;font-size:8px">H</th><th style="color:#D4B060;font-size:8px">M</th>
+              <th style="color:#70C890;font-size:8px">H</th><th style="color:#70C890;font-size:8px">M</th>
+              <th style="color:#70C890;font-size:8px">H</th><th style="color:#70C890;font-size:8px">M</th>
+              <th style="color:#a0c4e8;font-size:8px">H</th><th style="color:#a0c4e8;font-size:8px">M</th>
+              <th style="color:#b8a0e8;font-size:8px">H</th><th style="color:#b8a0e8;font-size:8px">M</th>
+              <th style="color:#b8a0e8;font-size:8px">H</th><th style="color:#b8a0e8;font-size:8px">M</th>
+            </tr>
+          </thead>
+          <tbody id="genderTableBody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Brecha de género:</strong> Aliaga obtiene consistentemente +4 a +9 pp más entre hombres que mujeres en las 4 mediciones.
+          Fujimori y Vizcarra muestran el patrón inverso. López Chau es marcadamente más fuerte entre hombres (+2 a +4 pp).
+        </p>
+      </div>
+    </div>
+
+    <!-- ── PANEL EDAD ─────────────────────────────────────────────── -->
+    <div id="dpanel-edad" style="padding-top:24px;display:none">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <span class="enc-badge badge-cpi" style="padding:3px 10px">CPI Enero</span>
+        <span class="enc-badge badge-cpi" style="padding:3px 10px">CPI Febrero</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#a0c4e8;padding:3px 10px;border:1px solid #a0c4e8;border-radius:3px">IPSOS Feb</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Febrero</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">DATUM: no publica edad en voto presidencial</span>
+      </div>
+      <div class="table-wrap" style="margin-bottom:0">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2" style="min-width:120px">Candidato</th>
+              <th colspan="3" style="text-align:center;color:#D4B060;border-bottom:2px solid #C8991E;font-size:8px">CPI Enero</th>
+              <th colspan="3" style="text-align:center;color:#D4B060;border-bottom:2px solid #C8991E;font-size:8px">CPI Febrero</th>
+              <th colspan="3" style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:8px">IPSOS Feb</th>
+              <th colspan="3" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:8px">IEP Feb</th>
+            </tr>
+            <tr>
+              <th style="color:#D4B060;font-size:8px">18-24</th><th style="color:#D4B060;font-size:8px">25-39</th><th style="color:#D4B060;font-size:8px">40+</th>
+              <th style="color:#D4B060;font-size:8px">18-24</th><th style="color:#D4B060;font-size:8px">25-39</th><th style="color:#D4B060;font-size:8px">40+</th>
+              <th style="color:#a0c4e8;font-size:8px">18-25</th><th style="color:#a0c4e8;font-size:8px">26-42</th><th style="color:#a0c4e8;font-size:8px">43+</th>
+              <th style="color:#b8a0e8;font-size:8px">18-29</th><th style="color:#b8a0e8;font-size:8px">30-49</th><th style="color:#b8a0e8;font-size:8px">50+</th>
+            </tr>
+          </thead>
+          <tbody id="ageTableBody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Patrones por edad:</strong> Vizcarra concentra su voto joven (18-39).
+          Aliaga es el candidato más homogéneo entre grupos etarios. Fujimori y Luna obtienen más en el segmento 40-70.
+          Los jóvenes 18-24 presentan mayor indecisión (~33 %).
+        </p>
+      </div>
+    </div>
+
+    <!-- ── PANEL REGIÓN ───────────────────────────────────────────── -->
+    <div id="dpanel-region" style="padding-top:24px;display:none">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <span class="enc-badge badge-cpi" style="padding:3px 10px">CPI Ene — Ámbito + 4 Zonas</span>
+        <span class="enc-badge badge-datum" style="padding:3px 10px">DATUM 25-ene</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#a0c4e8;padding:3px 10px;border:1px solid #a0c4e8;border-radius:3px">IPSOS Ene — Lima/Interior</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#a0c4e8;padding:3px 10px;border:1px solid #a0c4e8;border-radius:3px">IPSOS Feb — 5 Regiones</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Ene — 4 Regiones</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Feb — 5 Regiones</span>
+      </div>
+
+      <!-- Region highlight mini-cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:18px" id="regionCards"></div>
+
+      <!-- Full region table -->
+      <div class="table-wrap" style="margin-bottom:0">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2" style="min-width:100px">Candidato</th>
+              <th colspan="2" style="text-align:center;color:#D4B060;border-bottom:2px solid #C8991E;font-size:7px">CPI Ene Ámbito</th>
+              <th colspan="4" style="text-align:center;color:#D4B060;border-bottom:2px solid #C8991E;font-size:7px">CPI Ene 4 Zonas</th>
+              <th colspan="5" style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:7px">DATUM 25e</th>
+              <th colspan="2" style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:7px">IPSOS Ene</th>
+              <th colspan="5" style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:7px">IPSOS Feb</th>
+              <th colspan="4" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:7px">IEP Ene</th>
+              <th colspan="5" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:7px">IEP Feb</th>
+            </tr>
+            <tr>
+              <th style="color:#D4B060;font-size:7px">Lima</th><th style="color:#D4B060;font-size:7px">Int.</th>
+              <th style="color:#D4B060;font-size:7px">CSN</th><th style="color:#D4B060;font-size:7px">CS</th><th style="color:#D4B060;font-size:7px">SCS</th><th style="color:#D4B060;font-size:7px">Ori.</th>
+              <th style="color:#70C890;font-size:7px">Lima</th><th style="color:#70C890;font-size:7px">Norte</th><th style="color:#70C890;font-size:7px">Cen.</th><th style="color:#70C890;font-size:7px">Sur</th><th style="color:#70C890;font-size:7px">Ori.</th>
+              <th style="color:#a0c4e8;font-size:7px">Lima</th><th style="color:#a0c4e8;font-size:7px">Int.</th>
+              <th style="color:#a0c4e8;font-size:7px">Lima</th><th style="color:#a0c4e8;font-size:7px">Norte</th><th style="color:#a0c4e8;font-size:7px">Cen.</th><th style="color:#a0c4e8;font-size:7px">Sur</th><th style="color:#a0c4e8;font-size:7px">Ori.</th>
+              <th style="color:#b8a0e8;font-size:7px">Lima</th><th style="color:#b8a0e8;font-size:7px">Norte</th><th style="color:#b8a0e8;font-size:7px">Sur</th><th style="color:#b8a0e8;font-size:7px">Ori.</th>
+              <th style="color:#b8a0e8;font-size:7px">Lima</th><th style="color:#b8a0e8;font-size:7px">Norte</th><th style="color:#b8a0e8;font-size:7px">Cen.</th><th style="color:#b8a0e8;font-size:7px">Sur</th><th style="color:#b8a0e8;font-size:7px">Ori.</th>
+            </tr>
+          </thead>
+          <tbody id="regionTableBody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Geografía del voto:</strong> Aliaga domina Lima/Callao (21,5 % CPI, 15,6 % DATUM) pero cae en el Oriente (6,1–7,8 %).
+          Fujimori lidera en Norte y Oriente según CPI. Vizcarra sorprende en Oriente con 10,4 % (DATUM 25e). Lescano concentra su voto en el Sur (7,2 %).
+        </p>
+      </div>
+    </div>
+
+    <!-- ── PANEL URBANA/RURAL ─────────────────────────────────────── -->
+    <div id="dpanel-zona" style="padding-top:24px;display:none">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <span class="enc-badge badge-datum" style="padding:3px 10px">DATUM 25-ene</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#a0c4e8;padding:3px 10px;border:1px solid #a0c4e8;border-radius:3px">IPSOS Feb</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Enero</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Febrero</span>
+      </div>
+      <div class="table-wrap" style="margin-bottom:0">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2" style="min-width:130px">Candidato</th>
+              <th colspan="3" style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:8px">DATUM 25-ene</th>
+              <th colspan="3" style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:8px">IPSOS Feb</th>
+              <th colspan="3" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:8px">IEP Enero</th>
+              <th colspan="3" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:8px">IEP Febrero</th>
+            </tr>
+            <tr>
+              <th style="color:#70C890;font-size:8px">Urb.</th><th style="color:#70C890;font-size:8px">Rur.</th><th style="color:#70C890;font-size:8px">Dif.</th>
+              <th style="color:#a0c4e8;font-size:8px">Urb.</th><th style="color:#a0c4e8;font-size:8px">Rur.</th><th style="color:#a0c4e8;font-size:8px">Dif.</th>
+              <th style="color:#b8a0e8;font-size:8px">Urb.</th><th style="color:#b8a0e8;font-size:8px">Rur.</th><th style="color:#b8a0e8;font-size:8px">Dif.</th>
+              <th style="color:#b8a0e8;font-size:8px">Urb.</th><th style="color:#b8a0e8;font-size:8px">Rur.</th><th style="color:#b8a0e8;font-size:8px">Dif.</th>
+            </tr>
+          </thead>
+          <tbody id="zonaTableBody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Brecha urbana/rural:</strong> Aliaga pierde 7,8 pp al pasar de zona urbana a rural — la mayor diferencia de todos.
+          Acuña (+1,6 pp), Vizcarra (+0,9 pp) y Lescano (+1,1 pp) mejoran en zonas rurales.
+          El "No sabe" rural (28,8 %) supera en 12,6 pp al urbano (16,2 %).
+        </p>
+      </div>
+    </div>
+
+  
+    <!-- ── PANEL NSE ─────────────────────────────────────────────────── -->
+    <div id="dpanel-nse" style="padding-top:24px;display:none">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#a0c4e8;padding:3px 10px;border:1px solid #a0c4e8;border-radius:3px">IPSOS Feb — NSE A/B/C/D/E</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Ene — NSE A-B / C / D-E</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b8a0e8;padding:3px 10px;border:1px solid #b8a0e8;border-radius:3px">IEP Feb — NSE A-B / C / D-E</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">CPI / DATUM: no publican NSE en voto presidencial</span>
+      </div>
+      <div class="table-wrap" style="margin-bottom:0">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2" style="min-width:130px">Candidato</th>
+              <th colspan="5" style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:8px">IPSOS Febrero</th>
+              <th colspan="3" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:8px">IEP Enero</th>
+              <th colspan="3" style="text-align:center;color:#b8a0e8;border-bottom:2px solid #b8a0e8;font-size:8px">IEP Febrero</th>
+            </tr>
+            <tr>
+              <th style="color:#a0c4e8;font-size:8px">A</th><th style="color:#a0c4e8;font-size:8px">B</th><th style="color:#a0c4e8;font-size:8px">C</th><th style="color:#a0c4e8;font-size:8px">D</th><th style="color:#a0c4e8;font-size:8px">E</th>
+              <th style="color:#b8a0e8;font-size:8px">A-B</th><th style="color:#b8a0e8;font-size:8px">C</th><th style="color:#b8a0e8;font-size:8px">D-E</th>
+              <th style="color:#b8a0e8;font-size:8px">A-B</th><th style="color:#b8a0e8;font-size:8px">C</th><th style="color:#b8a0e8;font-size:8px">D-E</th>
+            </tr>
+          </thead>
+          <tbody id="nseTableBody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Brecha socioeconómica:</strong> Aliaga concentra su voto en NSE alto: 43% en NSE A (IPSOS Feb), 28,7–30,3% en A/B (IEP).
+          En NSE D/E cae a 3–8,7%. López Chau tiene perfil opuesto: fuerte en A/B (10,7% IEP Feb), débil en D/E (2,2%).
+          Vizcarra y Acuña son más fuertes en D/E que en A/B. Fujimori es relativamente homogéneo entre NSE.
+        </p>
+      </div>
+    </div>
+
+</div><!-- .chart-section desagregación -->
+
+  <div class="tooltip-box" id="tooltipBox"></div>
+  <p class="section-title">Detalle por candidato — Evolución entre encuestas</p>
+  <div class="candidates-grid" id="candidatesGrid"></div>
+
+
+  
+  <!-- TABLA COMPLETA -->
+  <p class="section-title">Tabla comparativa completa — Todas las encuestas</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Encuestadora</th>
+          <th>Reg. JNE</th>
+          <th>Medio</th>
+          <th>Campo</th>
+          <th>Muestra</th>
+          <th>López Aliaga<br><small>Ren. Popular</small></th>
+          <th>Fujimori<br><small>F. Popular</small></th>
+          <th>C. Álvarez<br><small>País p/Todos</small></th>
+          <th>Acuña<br><small>APP</small></th>
+          <th>Vizcarra<br><small>Perú 1°</small></th>
+          <th>López Chau<br><small>Ahora Nac.</small></th>
+          <th>NS/NC</th>
+        </tr>
+      </thead>
+      <tbody id="mainTable"></tbody>
+    </table>
+  </div>
+
+
+
+  <!-- JNE -->
+  <p class="section-title">Encuestadoras con registro JNE verificado</p>
+  <div class="jne-grid">
+    <div class="jne-card">
+      <div class="jne-name">CIT — Centro de Investigación Territorial</div>
+      <div class="jne-reg">Reg. 00404-REE/JNE</div>
+      <div class="jne-detail">Encuestadora más activa del período. Publicó en Panamericana TV e Infobae. Cobertura nacional, 1.200–1.220 personas, margen ±2,8 %.</div>
+    </div>
+    <div class="jne-card">
+      <div class="jne-name">IPSOS Perú</div>
+      <div class="jne-reg">Reg. 001-REE/JNE</div>
+      <div class="jne-detail">Encuesta mensual publicada en Perú 21. 24 departamentos + Callao. Entrevistas cara a cara. 1.211 personas, ±2,8 %.</div>
+    </div>
+    <div class="jne-card">
+      <div class="jne-name">DATUM Internacional</div>
+      <div class="jne-reg">Reg. 002-REE/JNE</div>
+      <div class="jne-detail">Encuestas para El Comercio y Cuarto Poder. Muestreo probabilístico estratificado. 1.200 personas, ±2,8 %.</div>
+    </div>
+    <div class="jne-card">
+      <div class="jne-name">CPI — Cía. Peruana de Estudios de Mercado</div>
+      <div class="jne-reg">Reg. 00470 y 00428-REE/JNE</div>
+      <div class="jne-detail">Dos fichas de registro en el período (enero y febrero). Publicó en RPP. Universo urbano nacional, 1.200 personas, ±2,8 %.</div>
+    </div>
+    <div class="jne-card">
+      <div class="jne-name">IMASOLU S.A.C.</div>
+      <div class="jne-reg">Reg. 000482-REE/JNE</div>
+      <div class="jne-detail">Encuesta presencial trietápica publicada en RPP (publirreportaje). 1.200 personas a nivel nacional + Lima Metropolitana, ±2,8 %.</div>
+    </div>
+    <div class="jne-card">
+      <div class="jne-name">IEP — Instituto de Estudios Peruanos</div>
+      <div class="jne-reg">Registro confirmado (institución académica)</div>
+      <div class="jne-detail">Referente histórico en medición de opinión pública en Perú desde 1964. Publicó en Panamericana TV y La República. 1.000 personas, ±3,1 %.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 23 febrero 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
+  <p>Elecciones Generales Perú · <strong>12 de abril de 2026</strong> (1.ª vuelta) · <strong>7 de junio de 2026</strong> (balotaje)</p>
+</footer>
+
+<script>
+// ── DATOS ────────────────────────────────────────────────────────────────────
+const encuestas = [
+  {
+    enc: "DATUM Internacional", badge: "badge-datum", reg: "002-REE/JNE",
+    medio: "América TV / Cuarto Poder", campo: "13-17/02/2026 ★NUEVA", muestra: "1.500",
+    lopez: 13.4, fujimori: 9.7, alvarez: 6.0, acuna: 3.0, vizcarra: 2.6, lopezchau: 5.7, nsnc: "40,4 %"
+  },
+  {
+    enc: "IEP", badge: "badge-iep", reg: "Reg. confirmado",
+    medio: "La República / Panamericana", campo: "23/02/2026 ★NUEVA", muestra: "1.000",
+    lopez: 14.6, fujimori: 10.3, alvarez: 4.9, acuna: 2.3, vizcarra: 4.0, lopezchau: 5.3, nsnc: "35,8 %"
+  },
+  {
+    enc: "CPI", badge: "badge-cpi", reg: "00470-REE/JNE",
+    medio: "RPP / Infobae", campo: "14-18/02/2026 ★NUEVA", muestra: "1.300",
+    lopez: 13.9, fujimori: 7.0, alvarez: 4.0, acuna: 4.4, vizcarra: 3.2, lopezchau: 5.1, nsnc: "45,2 %"
+  },
+  {
+    enc: "CIT", badge: "badge-cit", reg: "00404-REE/JNE",
+    medio: "Panamericana TV", campo: "16/02/2026", muestra: "1.200",
+    lopez: 15.3, fujimori: 8.0, alvarez: 5.0, acuna: 6.1, vizcarra: 2.3, lopezchau: 6.0, nsnc: "30,7 %"
+  },
+  {
+    enc: "IPSOS Perú", badge: "badge-ipsos", reg: "001-REE/JNE",
+    medio: "Perú 21", campo: "05-06/02/2026", muestra: "1.211",
+    lopez: 12.0, fujimori: 8.0, alvarez: 4.0, acuna: 4.0, vizcarra: 4.0, lopezchau: 4.0, nsnc: "42,0 %"
+  },
+  {
+    enc: "DATUM Internacional", badge: "badge-datum", reg: "002-REE/JNE",
+    medio: "El Comercio / Canal N", campo: "30/01-03/02/2026", muestra: "1.200",
+    lopez: 11.9, fujimori: 9.2, alvarez: 5.8, acuna: 3.8, vizcarra: 3.6, lopezchau: 3.8, nsnc: "42,5 %"
+  },
+  {
+    enc: "CPI", badge: "badge-cpi", reg: "00470-REE/JNE",
+    medio: "RPP", campo: "29/01-02/02/2026", muestra: "1.200",
+    lopez: 14.6, fujimori: 6.6, alvarez: null, acuna: null, vizcarra: 4.7, lopezchau: null, nsnc: "~50,0 %"
+  },
+  {
+    enc: "IMASOLU S.A.C.", badge: "badge-imasolu", reg: "000482-REE/JNE",
+    medio: "RPP (publirreportaje)", campo: "28-31/01/2026", muestra: "1.200",
+    lopez: 13.6, fujimori: 8.9, alvarez: 5.4, acuna: 4.5, vizcarra: 3.1, lopezchau: 3.9, nsnc: "36,4 %"
+  },
+  {
+    enc: "IEP", badge: "badge-iep", reg: "Reg. confirmado",
+    medio: "Panamericana / La República", campo: "Enero 2026", muestra: "1.000",
+    lopez: 14.7, fujimori: 8.1, alvarez: 4.0, acuna: 1.4, vizcarra: 4.4, lopezchau: 4.0, nsnc: "41,0 %"
+  },
+  {
+    enc: "CIT", badge: "badge-cit", reg: "00404-REE/JNE",
+    medio: "Infobae / Panamericana", campo: "16-20/01/2026", muestra: "1.220",
+    lopez: 15.1, fujimori: 9.3, alvarez: null, acuna: null, vizcarra: null, lopezchau: null, nsnc: "~46,0 %"
+  },
+  {
+    enc: "CPI", badge: "badge-cpi", reg: "00428-REE/JNE",
+    medio: "RPP", campo: "02-16/01/2026", muestra: "1.200",
+    lopez: 13.6, fujimori: 7.1, alvarez: null, acuna: null, vizcarra: 4.4, lopezchau: null, nsnc: "~51,0 %"
+  },
+  {
+    enc: "DATUM Internacional", badge: "badge-datum", reg: "002-REE/JNE",
+    medio: "Cuarto Poder", campo: "02-18/01/2026", muestra: "1.200",
+    lopez: 11.7, fujimori: 8.0, alvarez: null, acuna: null, vizcarra: null, lopezchau: null, nsnc: "~25,9 %"
+  },
+  {
+    enc: "IPSOS Perú", badge: "badge-ipsos", reg: "001-REE/JNE",
+    medio: "Perú 21", campo: "07-08/01/2026", muestra: "1.211",
+    lopez: 10.0, fujimori: 7.0, alvarez: null, acuna: null, vizcarra: null, lopezchau: null, nsnc: "~52,0 %"
+  },
+];
+
+const candidatos = [
+  {
+    nombre: "Rafael López Aliaga", partido: "Renovación Popular",
+    avg: 13.4, leader: true,
+    bars: [
+      { label: "CIT (16 feb)", val: 15.3 },
+      { label: "IEP (23 feb)★", val: 14.6 },
+      { label: "IEP (ene)", val: 14.7 },
+      { label: "CPI (29 ene)", val: 14.6 },
+      { label: "CPI (14-18 feb)★", val: 13.9 },
+      { label: "DATUM (13-17 feb)★", val: 13.4 },
+      { label: "IPSOS (5 feb)", val: 12.0 },
+    ]
+  },
+  {
+    nombre: "Keiko Fujimori", partido: "Fuerza Popular",
+    avg: 8.2, leader: false,
+    bars: [
+      { label: "IEP (23 feb)★", val: 10.3 },
+      { label: "DATUM (13-17 feb)★", val: 9.7 },
+      { label: "CIT ene", val: 9.3 },
+      { label: "DATUM (30 ene)", val: 9.2 },
+      { label: "IEP (ene)", val: 8.1 },
+      { label: "CIT (16 feb)", val: 8.0 },
+      { label: "IPSOS (5 feb)", val: 8.0 },
+    ]
+  },
+  {
+    nombre: "Carlos Álvarez", partido: "País para Todos",
+    avg: 4.9, leader: false,
+    bars: [
+      { label: "DATUM (30 ene)", val: 5.8 },
+      { label: "IEP (23 feb)★", val: 4.9 },
+      { label: "IMASOLU", val: 5.4 },
+      { label: "CIT (16 feb)", val: 5.0 },
+      { label: "DATUM (13-17 feb)★", val: 6.0 },
+      { label: "IPSOS (5 feb)", val: 4.0 },
+    ]
+  },
+  {
+    nombre: "Alfonso López Chau", partido: "Ahora Nación",
+    avg: 4.7, leader: false,
+    bars: [
+      { label: "CIT (16 feb)", val: 6.0 },
+      { label: "IEP (23 feb)★", val: 5.3 },
+      { label: "DATUM (13-17 feb)★", val: 5.7 },
+      { label: "CPI (14-18 feb)★", val: 5.1 },
+      { label: "IPSOS (5 feb)", val: 4.0 },
+      { label: "DATUM (30 ene)", val: 3.8 },
+    ]
+  },
+  {
+    nombre: "César Acuña", partido: "Alianza p/ el Progreso",
+    avg: 3.7, leader: false,
+    bars: [
+      { label: "CIT (16 feb)", val: 6.1 },
+      { label: "CPI (14-18 feb)★", val: 4.4 },
+      { label: "IMASOLU", val: 4.5 },
+      { label: "DATUM (30 ene)", val: 3.8 },
+      { label: "IPSOS (5 feb)", val: 4.0 },
+      { label: "IEP (23 feb)★", val: 2.3 },
+    ]
+  },
+  {
+    nombre: "Mario Vizcarra", partido: "Perú Primero",
+    avg: 3.6, leader: false,
+    bars: [
+      { label: "CPI (29 ene)", val: 4.7 },
+      { label: "IEP (ene)", val: 4.4 },
+      { label: "CPI ene", val: 4.4 },
+      { label: "IEP (23 feb)★", val: 4.0 },
+      { label: "IPSOS (5 feb)", val: 4.0 },
+      { label: "DATUM (30 ene)", val: 3.6 },
+    ]
+  },
+];
+
+// ── CUENTA REGRESIVA ──────────────────────────────────────────────────────────
+(function() {
+  const target = new Date('2026-04-12T08:00:00');
+  const now = new Date();
+  const diff = Math.max(0, Math.floor((target - now) / 86400000));
+  document.getElementById('countdown').textContent = diff.toLocaleString('es-ES');
+})();
+
+// ── GRÁFICO PRINCIPAL ─────────────────────────────────────────────────────────
+const allCands = [
+  { name: "R. López Aliaga",  party: "Renovación Popular",   avg: 13.4, color: "#c0392b" },
+  { name: "Keiko Fujimori",   party: "Fuerza Popular",       avg: 8.2,  color: "#6B2FAF" },
+  { name: "Carlos Álvarez",   party: "País para Todos",      avg: 4.9,  color: "#1A6B3A" },
+  { name: "A. López Chau",    party: "Ahora Nación",         avg: 4.7,  color: "#1A5CAF" },
+  { name: "César Acuña",      party: "APP",                  avg: 3.7,  color: "#8C5A1A" },
+  { name: "Mario Vizcarra",   party: "Perú Primero",         avg: 3.6,  color: "#1A8C6B" },
+  { name: "Yonhy Lescano",    party: "Cooperación Popular",  avg: 3.1,  color: "#5A8C1A" },
+  { name: "Roberto Sánchez",  party: "Juntos p/ el Perú",    avg: 2.2,  color: "#8C1A5A" },
+  { name: "Ricardo Belmont",  party: "Obras",                avg: 2.0,  color: "#1A5A8C" },
+  { name: "George Forsyth",   party: "Somos Perú",           avg: 1.8,  color: "#8C1A8C" },
+];
+const maxBar = 20;
+const chartEl = document.getElementById('mainChart');
+allCands.forEach(c => {
+  const pct = ((c.avg / maxBar) * 100).toFixed(1);
+  chartEl.innerHTML += `
+    <div class="bar-row">
+      <div class="bar-cand-name">${c.name}</div>
+      <div class="bar-track">
+        <div class="bar-fill-main" style="width:${pct}%;background:${c.color}">
+          <small>${c.party}</small>
+        </div>
+      </div>
+      <div class="bar-pct-label">${c.avg.toFixed(1).replace('.',',')} %</div>
+    </div>`;
+});
+
+// ── CARDS CANDIDATOS ──────────────────────────────────────────────────────────
+const grid = document.getElementById('candidatesGrid');
+const maxRef = 16;
+candidatos.forEach((c, i) => {
+  const barsHtml = c.bars.map(b => {
+    const w = ((b.val / maxRef) * 100).toFixed(1);
+    return `<div class="poll-bar-row">
+      <div class="poll-bar-label">${b.label}</div>
+      <div class="poll-bar-track"><div class="poll-bar-fill" style="width:${w}%"></div></div>
+      <div class="poll-bar-pct">${b.val.toFixed(1).replace('.',',')} %</div>
+    </div>`;
+  }).join('');
+  grid.innerHTML += `
+    <div class="candidate-card ${c.leader ? 'leader' : ''}">
+      <div class="candidate-rank">${i+1}</div>
+      <div class="candidate-name">${c.nombre}</div>
+      <div class="candidate-party">${c.partido}</div>
+      <div class="poll-bars">${barsHtml}</div>
+      <div class="candidate-avg">
+        <div class="avg-value">${c.avg.toFixed(1).replace('.',',')} %</div>
+        <div class="avg-label">media<br>encuestas</div>
+      </div>
+    </div>`;
+});
+
+// ── TABLA ─────────────────────────────────────────────────────────────────────
+function pctCell(val) {
+  if (val === null) return `<td class="no-data">—</td>`;
+  const cls = val >= 10 ? 'pct-high' : val >= 5 ? 'pct-mid' : 'pct-low';
+  return `<td class="pct-cell ${cls}">${val.toFixed(1).replace('.',',')} %</td>`;
+}
+const tbody = document.getElementById('mainTable');
+encuestas.forEach(e => {
+  tbody.innerHTML += `<tr>
+    <td><span class="enc-badge ${e.badge}">${e.enc}</span></td>
+    <td style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-dim)">${e.reg}</td>
+    <td style="font-size:11px">${e.medio}</td>
+    <td style="font-family:'IBM Plex Mono',monospace;font-size:10px">${e.campo}</td>
+    <td style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-align:center">${e.muestra}</td>
+    ${pctCell(e.lopez)}
+    ${pctCell(e.fujimori)}
+    ${pctCell(e.alvarez)}
+    ${pctCell(e.acuna)}
+    ${pctCell(e.vizcarra)}
+    ${pctCell(e.lopezchau)}
+    <td style="font-size:11px;color:var(--text-dim)">${e.nsnc}</td>
+  </tr>`;
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DATOS DE EVOLUCIÓN
+// ═══════════════════════════════════════════════════════════════════════════
+
+const TOP5 = [
+  { nombre: "López Aliaga",  short: "R.L.A.",   color: "#e74c3c" },
+  { nombre: "Fujimori",      short: "Fujimori",  color: "#9b59b6" },
+  { nombre: "C. Álvarez",    short: "Álvarez",   color: "#27ae60" },
+  { nombre: "López Chau",    short: "L. Chau",   color: "#3498db" },
+  { nombre: "Vizcarra",      short: "Vizcarra",  color: "#f39c12" },
+];
+
+const mediaData = {
+  labels: [
+    "IPSOS\n07-08 ene", "CPI\n02-16 ene", "DATUM\n02-18 ene",
+    "CIT\n16-20 ene",   "IEP\nene",
+    "CPI\n29ene-2feb",  "IMASOLU\n28-31 ene",
+    "DATUM\n30ene-3feb",
+    "IPSOS\n05-06 feb", "CIT\n16 feb",
+    "CPI\n14-18 feb",   "DATUM\n13-17 feb",
+    "IEP\n23 feb"
+  ],
+  series: [
+    [10.0, 13.6, 11.7, 15.1, 14.7, 14.6, 13.6, 11.9, 12.0, 15.3, 13.9, 13.4, 14.6],
+    [7.0,  7.1,  8.0,  9.3,  8.1,  6.6,  8.9,  9.2,  8.0,  8.0,  7.0,  9.7, 10.3],
+    [null, null, null, null, 4.0,  null, 5.4,  5.8,  4.0,  5.0,  4.0,  6.0,  4.9],
+    [null, null, null, null, 4.0,  null, 3.9,  3.8,  4.0,  6.0,  5.1,  5.7,  5.3],
+    [null, 4.4,  null, null, 4.4,  4.7,  3.1,  3.6,  4.0,  2.3,  3.2,  2.6,  4.0],
+  ]
+};
+
+const encData = {
+  "IPSOS": {
+    labels: ["07-08 ene", "05-06 feb"],
+    series: [
+      [10.0, 12.0],
+      [7.0,  8.0],
+      [null, 4.0],
+      [null, 4.0],
+      [null, 4.0],
+    ]
+  },
+  "CPI": {
+    labels: ["02-16 ene", "29ene-2feb", "14-18 feb"],
+    series: [
+      [13.6, 14.6, 13.9],
+      [7.1,  6.6,  7.0],
+      [null, null, 4.0],
+      [null, null, 5.1],
+      [4.4,  4.7,  3.2],
+    ]
+  },
+  "DATUM": {
+    labels: ["02-18 ene", "30ene-3feb", "13-17 feb"],
+    series: [
+      [11.7, 11.9, 13.4],
+      [8.0,  9.2,  9.7],
+      [null, 5.8,  6.0],
+      [null, 3.8,  5.7],
+      [null, 3.6,  2.6],
+    ]
+  },
+  "CIT": {
+    labels: ["16-20 ene", "16 feb"],
+    series: [
+      [15.1, 15.3],
+      [9.3,  8.0],
+      [null, 5.0],
+      [null, 6.0],
+      [null, 2.3],
+    ]
+  },
+  "IEP": {
+    labels: ["ene 2026", "23 feb 2026"],
+    series: [
+      [14.7, 14.6],
+      [8.1,  10.3],
+      [4.0,  4.9],
+      [4.0,  5.3],
+      [4.4,  4.0],
+    ]
+  },
+  "IMASOLU": {
+    labels: ["28-31 ene"],
+    series: [
+      [13.6],
+      [8.9],
+      [5.4],
+      [3.9],
+      [3.1],
+    ]
+  },
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MOTOR DE GRÁFICOS — canvas con ImageData snapshot para tooltip sin bugs
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Almacena el snapshot del canvas tras el primer render
+const _snapshots = {};
+
+function drawLineChart(canvasId, labels, seriesData, candidates) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+
+  // ── Dimensiones ──────────────────────────────────────────────────────────
+  const DPR  = window.devicePixelRatio || 1;
+  const wrap  = canvas.parentElement;
+  const W     = wrap.clientWidth - 64;   // descontar padding del .evolution-wrap
+  const H     = 340;
+
+  // Solo redimensionar si cambió el tamaño lógico (evita bucle DPR)
+  if (canvas._logicalW !== W || canvas._logicalH !== H) {
+    canvas.width        = Math.round(W * DPR);
+    canvas.height       = Math.round(H * DPR);
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    canvas._logicalW    = W;
+    canvas._logicalH    = H;
+  }
+
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);   // resetear siempre al DPR correcto
+
+  const PAD  = { top: 24, right: 72, bottom: 68, left: 52 };
+  const CW   = W - PAD.left - PAD.right;
+  const CH   = H - PAD.top  - PAD.bottom;
+  const yMax = 18, yMin = 0;
+  const n    = labels.length;
+
+  // Función posición X: si hay un solo punto lo centramos
+  const xPos = i => PAD.left + (n > 1 ? (i / (n - 1)) * CW : CW / 2);
+  const yPos = v => PAD.top  + CH - ((v - yMin) / (yMax - yMin)) * CH;
+
+  // ── Fondo ────────────────────────────────────────────────────────────────
+  ctx.fillStyle = '#1C1C1C';
+  ctx.fillRect(0, 0, W, H);
+
+  // ── Grid Y ───────────────────────────────────────────────────────────────
+  const yTicks = [0, 3, 6, 9, 12, 15, 18];
+  ctx.save();
+  ctx.strokeStyle = '#2A2A2A';
+  ctx.lineWidth   = 1;
+  ctx.setLineDash([4, 5]);
+  ctx.font        = '9px "IBM Plex Mono"';
+  ctx.fillStyle   = '#555';
+  ctx.textAlign   = 'right';
+  yTicks.forEach(y => {
+    const py = yPos(y);
+    ctx.beginPath();
+    ctx.moveTo(PAD.left, py);
+    ctx.lineTo(PAD.left + CW, py);
+    ctx.stroke();
+    ctx.fillText(y + '%', PAD.left - 8, py + 3.5);
+  });
+  ctx.setLineDash([]);
+  ctx.restore();
+
+  // ── Ejes ─────────────────────────────────────────────────────────────────
+  ctx.save();
+  ctx.strokeStyle = '#3A3A3A';
+  ctx.lineWidth   = 1;
+  ctx.beginPath();
+  ctx.moveTo(PAD.left, PAD.top);
+  ctx.lineTo(PAD.left, PAD.top + CH);
+  ctx.lineTo(PAD.left + CW, PAD.top + CH);
+  ctx.stroke();
+  ctx.restore();
+
+  // ── Etiquetas X ──────────────────────────────────────────────────────────
+  ctx.save();
+  ctx.font      = '8.5px "IBM Plex Mono"';
+  ctx.fillStyle = '#555';
+  ctx.textAlign = 'center';
+  labels.forEach((lbl, i) => {
+    const x = xPos(i);
+    // tick
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth   = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, PAD.top + CH);
+    ctx.lineTo(x, PAD.top + CH + 5);
+    ctx.stroke();
+    // texto multilínea
+    const lines = lbl.split('\n');
+    lines.forEach((line, li) => {
+      ctx.fillText(line, x, PAD.top + CH + 16 + li * 13);
+    });
+  });
+  ctx.restore();
+
+  // ── Áreas de relleno ─────────────────────────────────────────────────────
+  seriesData.forEach((serie, si) => {
+    const pts = serie.map((v, i) => v !== null ? { i, v } : null).filter(Boolean);
+    if (pts.length < 2) return;
+    const color = candidates[si].color;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(xPos(pts[0].i), yPos(pts[0].v));
+    for (let p = 1; p < pts.length; p++) {
+      const x0 = xPos(pts[p-1].i), y0 = yPos(pts[p-1].v);
+      const x1 = xPos(pts[p].i),   y1 = yPos(pts[p].v);
+      ctx.bezierCurveTo((x0+x1)/2, y0, (x0+x1)/2, y1, x1, y1);
+    }
+    ctx.lineTo(xPos(pts[pts.length-1].i), PAD.top + CH);
+    ctx.lineTo(xPos(pts[0].i), PAD.top + CH);
+    ctx.closePath();
+    const grad = ctx.createLinearGradient(0, PAD.top, 0, PAD.top + CH);
+    grad.addColorStop(0, color + '28');
+    grad.addColorStop(1, color + '00');
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.restore();
+  });
+
+  // ── Líneas y puntos ───────────────────────────────────────────────────────
+  seriesData.forEach((serie, si) => {
+    const pts = serie.map((v, i) => v !== null ? { i, v } : null).filter(Boolean);
+    if (pts.length === 0) return;
+    const color = candidates[si].color;
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth   = 2.5;
+    ctx.lineJoin    = 'round';
+    ctx.lineCap     = 'round';
+
+    if (pts.length === 1) {
+      // Solo un punto — dibujamos un rombo
+      const x = xPos(pts[0].i), y = yPos(pts[0].v);
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x, y, 5, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(xPos(pts[0].i), yPos(pts[0].v));
+      for (let p = 1; p < pts.length; p++) {
+        const x0 = xPos(pts[p-1].i), y0 = yPos(pts[p-1].v);
+        const x1 = xPos(pts[p].i),   y1 = yPos(pts[p].v);
+        ctx.bezierCurveTo((x0+x1)/2, y0, (x0+x1)/2, y1, x1, y1);
+      }
+      ctx.stroke();
+    }
+
+    // Círculos en cada punto
+    pts.forEach(({ i, v }) => {
+      const x = xPos(i), y = yPos(v);
+      ctx.beginPath();
+      ctx.arc(x, y, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle   = '#1C1C1C';
+      ctx.fill();
+      ctx.strokeStyle = color;
+      ctx.lineWidth   = 2;
+      ctx.stroke();
+    });
+
+    // Etiqueta valor en el último punto
+    const last = pts[pts.length - 1];
+    ctx.fillStyle  = color;
+    ctx.font       = 'bold 10px "IBM Plex Mono"';
+    ctx.textAlign  = 'left';
+    ctx.fillText(
+      last.v.toFixed(1).replace('.', ',') + '%',
+      xPos(last.i) + 8,
+      yPos(last.v) + 4
+    );
+    ctx.restore();
+  });
+
+  // ── Guardar snapshot (para restaurar en tooltip sin redibujar) ────────────
+  _snapshots[canvasId] = ctx.getImageData(
+    0, 0, canvas.width, canvas.height
+  );
+
+  // Guardar metadata para el tooltip
+  canvas._meta = { labels, seriesData, candidates, xPos, yPos, PAD, CW, CH, n, W, H, DPR };
+}
+
+// ── Dibujar sólo la línea de cursor (sobre el snapshot) ────────────────────
+function drawCursor(canvasId, closestIdx) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || !canvas._meta || !_snapshots[canvasId]) return;
+  const { xPos, PAD, CH, DPR } = canvas._meta;
+  const ctx = canvas.getContext('2d');
+
+  // Restaurar snapshot limpio
+  ctx.putImageData(_snapshots[canvasId], 0, 0);
+
+  // Línea vertical
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+  ctx.lineWidth   = 1;
+  ctx.setLineDash([3, 4]);
+  const x = xPos(closestIdx);
+  ctx.beginPath();
+  ctx.moveTo(x, PAD.top);
+  ctx.lineTo(x, PAD.top + CH);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Puntos destacados en ese índice
+  canvas._meta.seriesData.forEach((serie, si) => {
+    const v = serie[closestIdx];
+    if (v === null || v === undefined) return;
+    const color = canvas._meta.candidates[si].color;
+    const y = canvas._meta.yPos(v);
+    ctx.beginPath();
+    ctx.arc(x, y, 6, 0, Math.PI * 2);
+    ctx.fillStyle   = color;
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth   = 1.5;
+    ctx.stroke();
+  });
+  ctx.restore();
+}
+
+// ── Adjuntar tooltip ────────────────────────────────────────────────────────
+function attachTooltip(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const tt     = document.getElementById('tooltipBox');
+  if (!canvas || !tt) return;
+
+  canvas.addEventListener('mousemove', e => {
+    const meta = canvas._meta;
+    if (!meta) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const mx   = e.clientX - rect.left;
+
+    // Encontrar el índice X más cercano
+    let closest = 0, minDist = Infinity;
+    for (let i = 0; i < meta.n; i++) {
+      const d = Math.abs(meta.xPos(i) - mx);
+      if (d < minDist) { minDist = d; closest = i; }
+    }
+
+    // Fuera del área de datos — ocultar
+    if (mx < meta.PAD.left - 10 || mx > meta.PAD.left + meta.CW + 10) {
+      tt.style.display = 'none';
+      if (_snapshots[canvasId]) {
+        const ctx = canvas.getContext('2d');
+        ctx.putImageData(_snapshots[canvasId], 0, 0);
+      }
+      return;
+    }
+
+    // Dibujar cursor sobre snapshot
+    drawCursor(canvasId, closest);
+
+    // Tooltip HTML
+    const lbl = meta.labels[closest].replace('\n', ' · ');
+    let html = `<div class="tt-date">${lbl}</div>`;
+    meta.candidates.forEach((cand, si) => {
+      const v = meta.seriesData[si][closest];
+      if (v !== null && v !== undefined) {
+        html += `<div class="tt-row">
+          <span class="tt-name" style="color:${cand.color}">${cand.nombre}</span>
+          <span class="tt-val"  style="color:${cand.color}">${v.toFixed(1).replace('.',',')} %</span>
+        </div>`;
+      }
+    });
+    tt.innerHTML      = html;
+    tt.style.display  = 'block';
+
+    // Posición del tooltip — evitar que salga de pantalla
+    const ttW = 180, ttH = tt.offsetHeight || 120;
+    let tx = e.clientX + 18;
+    let ty = e.clientY - 12;
+    if (tx + ttW > window.innerWidth  - 10) tx = e.clientX - ttW - 18;
+    if (ty + ttH > window.innerHeight - 10) ty = e.clientY - ttH - 12;
+    tt.style.left = tx + 'px';
+    tt.style.top  = ty + 'px';
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    tt.style.display = 'none';
+    // Restaurar snapshot limpio al salir
+    if (_snapshots[canvasId]) {
+      const ctx = canvas.getContext('2d');
+      ctx.putImageData(_snapshots[canvasId], 0, 0);
+    }
+  });
+}
+
+// ── Leyenda ──────────────────────────────────────────────────────────────────
+function buildLegend(containerId, candidates) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = candidates.map(c => `
+    <div class="legend-item">
+      <div class="legend-line" style="background:${c.color}"></div>
+      <span>${c.nombre}</span>
+    </div>`).join('');
+}
+
+// ── Selector de encuestadora ─────────────────────────────────────────────────
+let activeEnc = 'CPI';
+
+function buildEncSelector() {
+  const sel = document.getElementById('encSelector');
+  if (!sel) return;
+  sel.innerHTML = Object.keys(encData).map(enc => `
+    <button class="enc-btn ${enc === activeEnc ? 'active' : ''}"
+            onclick="selectEnc('${enc}')">${enc}</button>`).join('');
+}
+
+function selectEnc(enc) {
+  activeEnc = enc;
+  buildEncSelector();
+  renderEncChart();
+}
+
+function renderEncChart() {
+  const d = encData[activeEnc];
+  if (!d) return;
+  drawLineChart('canvasEnc', d.labels, d.series, TOP5);
+  attachTooltip('canvasEnc');
+}
+
+// ── Render inicial y resize ───────────────────────────────────────────────────
+function renderAll() {
+  buildLegend('legendMedia', TOP5);
+  buildLegend('legendEnc',   TOP5);
+  buildEncSelector();
+  drawLineChart('canvasMedia', mediaData.labels, mediaData.series, TOP5);
+  attachTooltip('canvasMedia');
+  renderEncChart();
+}
+
+// Esperar a que las fuentes carguen antes de renderizar
+document.fonts.ready.then(() => setTimeout(renderAll, 100));
+
+// Redibujar en resize — pero solo re-invocar drawLineChart (genera nuevo snapshot)
+let _resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(_resizeTimer);
+  _resizeTimer = setTimeout(() => {
+    drawLineChart('canvasMedia', mediaData.labels, mediaData.series, TOP5);
+    renderEncChart();
+  }, 150);
+});
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DESAGREGACIÓN SOCIODEMOGRÁFICA
+// ═══════════════════════════════════════════════════════════════════════════
+
+const desagData = [
+  {
+    id: "A", title: "Por Género", color: "#c0392b",
+    headers: ["Segmento", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    rows: [
+      { seg: "Hombres",  vals: [15.2, 9.1,  5.8, 5.3, 4.6], nsnc: "34,1 %", nota: "Mayor definición de voto" },
+      { seg: "Mujeres",  vals: [14.1, 11.3, 4.9, 4.5, 3.5], nsnc: "37,3 %", nota: "Fujimori +2,2 pp vs. hombres" },
+    ]
+  },
+  {
+    id: "B", title: "Por Grupo Etario", color: "#8e44ad",
+    headers: ["Grupo", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    rows: [
+      { seg: "18 – 29 años",  vals: [12.5, 13.7, 5.1, 5.2, 3.8], nsnc: "38,2 %", nota: "Fujimori supera en jóvenes" },
+      { seg: "30 – 49 años",  vals: [13.8, 9.4,  5.5, 4.7, 4.1], nsnc: "36,5 %", nota: "Franja más decidida" },
+      { seg: "50 años a más", vals: [17.0, 9.2,  5.2, 4.8, 3.9], nsnc: "33,7 %", nota: "López Aliaga +4,5 pp sobre media" },
+    ]
+  },
+  {
+    id: "C", title: "Por Región / Macrozona", color: "#d35400",
+    headers: ["Región", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    rows: [
+      { seg: "Lima Metropolitana",        vals: [23.1, 12.0, 4.8, 4.3, 2.9], nsnc: "30,5 %", nota: "Fortaleza de López Aliaga" },
+      { seg: "Perú Urbano (excl. Lima)",  vals: [12.3, 9.3,  5.2, 5.0, 3.6], nsnc: "37,0 %", nota: "Escenario fragmentado" },
+      { seg: "Perú Rural",                vals: [6.8,  10.0, 4.5, 4.9, 6.8], nsnc: "42,8 %", nota: "Fujimori y Vizcarra más fuertes" },
+      { seg: "Macrozona Norte",           vals: [11.0, 9.5,  4.3, 5.1, 4.5], nsnc: "38,9 %", nota: "—" },
+      { seg: "Macrozona Centro",          vals: [13.7, 8.8,  5.0, 4.6, 4.2], nsnc: "36,4 %", nota: "—" },
+      { seg: "Macrozona Sur",             vals: [9.7,  9.3,  9.1, 4.8, 3.8], nsnc: "39,2 %", nota: "López Chau 3.° con 9,1 %" },
+      { seg: "Macrozona Oriente",         vals: [7.3,  14.1, 4.4, 4.2, 6.3], nsnc: "41,5 %", nota: "Fujimori lidera en oriente" },
+    ]
+  },
+  {
+    id: "D", title: "Por Nivel Socioeconómico", color: "#1a5276",
+    headers: ["NSE", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    rows: [
+      { seg: "NSE A/B (Alto / Med-Alto)", vals: [28.7, 9.8,  6.1, 4.5, 3.2], nsnc: "25,4 %", nota: "Concentración máxima L.A." },
+      { seg: "NSE C (Medio)",             vals: [18.6, 10.4, 5.4, 4.8, 3.9], nsnc: "33,6 %", nota: "Mercado más disputado" },
+      { seg: "NSE D/E (Bajo / Muy bajo)", vals: [8.1,  10.7, 5.0, 5.1, 4.4], nsnc: "42,0 %", nota: "Fujimori supera a L.A." },
+    ]
+  },
+  {
+    id: "E", title: "Por Nivel Educativo", color: "#1e8449",
+    headers: ["Nivel educativo", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    rows: [
+      { seg: "Sin estudios / Primaria",     vals: [9.2,  11.5, 4.3, 5.0, 5.1], nsnc: "45,3 %", nota: "Mayor indecisión" },
+      { seg: "Secundaria",                  vals: [11.8, 10.6, 5.1, 5.0, 4.3], nsnc: "39,7 %", nota: "—" },
+      { seg: "Técnica / Superior no univ.", vals: [16.4, 10.0, 5.6, 4.7, 3.6], nsnc: "34,2 %", nota: "Sube López Aliaga" },
+      { seg: "Superior universitaria",      vals: [22.3, 9.5,  6.0, 4.4, 2.8], nsnc: "28,1 %", nota: "+7,7 pp sobre media nacional" },
+    ]
+  },
+];
+
+const CAND_COLORS = ["#e74c3c","#9b59b6","#3498db","#27ae60","#f39c12"];
+
+function heatColor(val, max) {
+  // Devuelve un color de fondo proporcional al valor
+  const alpha = Math.min(val / max, 1);
+  return `rgba(${parseInt('e7',16)},${parseInt('4c',16)},${parseInt('3c',16)},${(alpha*0.75).toFixed(2)})`;
+}
+
+function buildDesag() {
+  const grid = document.getElementById('desagGrid');
+  if (!grid) return;
+
+  desagData.forEach(block => {
+    const div = document.createElement('div');
+    div.className = 'desag-block';
+
+    // Calcular máximos por columna candidato para heat-map
+    const maxPerCand = [0,0,0,0,0];
+    block.rows.forEach(row => {
+      row.vals.forEach((v, i) => { if (v > maxPerCand[i]) maxPerCand[i] = v; });
+    });
+
+    let html = `
+      <div class="desag-block-title" style="background:${block.color}">
+        <span class="blk-letter">${block.id}</span>
+        ${block.title}
+      </div>
+      <table class="desag-table">
+        <thead><tr>`;
+    block.headers.forEach(h => { html += `<th>${h}</th>`; });
+    html += `<th>Nota</th></tr></thead><tbody>`;
+
+    block.rows.forEach((row, ri) => {
+      html += `<tr>`;
+      html += `<td>${row.seg}</td>`;
+      row.vals.forEach((v, ci) => {
+        const bg  = `background:${heatColor(v, maxPerCand[ci])}`;
+        const clr = v === maxPerCand[ci] ? 'color:#fff;font-weight:700' : 'color:#eee';
+        html += `<td class="heat-cell" style="${bg};${clr}">${v.toFixed(1).replace('.',',')} %</td>`;
+      });
+      html += `<td>${row.nsnc}</td>`;
+      html += `<td class="desag-note">${row.nota}</td>`;
+      html += `</tr>`;
+    });
+
+    html += `</tbody></table>`;
+    div.innerHTML = html;
+    grid.appendChild(div);
+  });
+}
+
+buildDesag();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DESAGREGACIÓN SOCIODEMOGRÁFICA — datos y render
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ── DATOS GÉNERO ─────────────────────────────────────────────────────────────
+const genderData = [
+  // [cand, partido, CPI-E-H,M, CPI-F-H,M, DAT11-H,M, DAT25-H,M, IPS-F-H,M, IEP-E-H,M, IEP-F-H,M]
+  ['López Aliaga', 'Renovación Popular', 15.9,11.4, 17.7,11.5, 14.2,9.8, 16.1,7.3, 16,8, 17.2,12.3, 14.8,14.4],
+  ['K. Fujimori',  'Fuerza Popular',     7.7, 6.5,  6.6, 6.5,  8.0, 9.7,  6.5, 9.5, 6, 10,  7.4, 8.8,  8.6,12.0],
+  ['C. Álvarez',   'País Para Todos',    5.0, 2.7,  3.3, 3.8,  5.7, 6.7,  6.7, 4.8, 4,  4,  null,null, 5.9, 3.8],
+  ['M. Vizcarra',  'Perú Primero',       3.1, 5.7,  3.2, 6.1,  3.3, 8.2,  3.2, 4.0, 3,  5,  2.9, 6.0,  3.4, 4.6],
+  ['A. López Chau','Ahora Nación',       4.1, 2.2,  4.8, 2.7,  6.0, 1.7,  5.5, 3.7, 6,  2,  null,null, 5.7, 4.8],
+  ['C. Acuña',     'APP',                3.2, 4.2,  3.4, 4.4,  3.0, 2.0,  3.2, 2.8, 4,  5,  null,null, 1.8, 2.7],
+  ['Y. Lescano',   'Coop. Popular',      1.3, 1.1,  2.3, 1.4,  3.7, 2.3,  3.2, 1.8, null,null, null,null, 4.5,1.5],
+  ['G. Forsyth',   'Somos Perú',         2.0, 1.5,  2.0, 1.6,  3.2, 2.5,  2.8, 3.2, 3,  2,  null,null, 1.6, 1.4],
+];
+
+const ageData = [
+  // [cand, CPI-E:18-24,25-39,40+, CPI-F:18-24,25-39,40+, IPS-F:18-25,26-42,43+, IEP-F:18-29,30-49,50+]
+  ['López Aliaga', 12.7,14.4,13.3, 13.1,15.9,14.1, 14,13,10, 12.5,13.8,17.0],
+  ['K. Fujimori',  5.3, 8.8, 6.4,  5.1, 5.5, 7.8,  7,  7,10, 13.7, 8.4,10.0],
+  ['C. Álvarez',   4.0, 3.9, 3.8,  2.8, 5.2, 2.6,  3,  5, 4,   5.1, 5.6, 3.8],
+  ['M. Vizcarra',  7.5, 5.2, 2.8,  6.4, 7.0, 2.5,  7,  3, 3,   4.3, 4.9, 2.8],
+  ['A. López Chau',1.5, 4.5, 2.7,  1.8, 4.4, 3.9,  3,  4, 3,   5.8, 6.6, 3.2],
+  ['C. Acuña',     2.8, 3.5, 3.7,  5.7, 3.9, 3.3,  8,  4, 3,   4.8, 2.6, null],
+  ['Y. Lescano',   0.9, 1.5, 1.2,  1.6, 3.2, 0.9,  null,null,null, 2.3, 3.6, 2.8],
+  ['G. Forsyth',   2.0, 2.1, 1.7,  1.8, 2.2, 1.5,  3,  2, 2,   2.5, 1.4, 0.8],
+];
+
+const regionData = [
+  // [cand, CPI-E-Lima,Int,CSN,CS,SCS,Ori, DAT25-Lima,N,C,S,Ori,
+  //        IPS-E-Lima,Int, IPS-F-Lima,N,C,S,Ori, IEP-E-Lima,N,S,Ori, IEP-F-Lima,N,C,S,Ori]
+  ['López Aliaga', 21.5,8.9,8.1,10.9,10.1,6.1, 15.6,8.4,9.6,12.0,7.8, 17,6, 21,8,7,6,8, 23.1,14.0,8.4,8.3, 23.1,11.0,13.7,9.7,7.3],
+  ['K. Fujimori',  8.1,6.5,5.8,8.5,2.2,16.1, 10.8,7.7,6.2,3.8,7.8,  9,6,  10,8,3,2,17,  6.4,8.7,8.9,6.5,  12.0,12.4,6.5,4.3,14.1],
+  ['C. Álvarez',   4.8,3.2,3.6,4.5,3.5,4.7,  6.7,7.1,5.5,3.4,3.5,  4,4,   5,6,2,0,4,   null,null,null,null, 6.0,3.0,5.0,5.7,4.2],
+  ['M. Vizcarra',  3.1,5.2,4.8,3.3,5.3,7.5,  2.1,3.4,4.1,2.9,10.4, 2,5,   2,4,9,5,3,   1.9,4.4,null,null,  2.2,4.3,2.9,5.9,6.3],
+  ['A. López Chau',2.9,3.2,2.9,1.6,6.8,1.9,  4.1,4.4,6.8,6.3,0.9,  null,null, 2,4,6,5,3, null,null,null,null, 5.1,4.0,4.5,9.1,2.7],
+  ['C. Acuña',     1.8,4.5,5.5,1.0,1.5,11.6, 1.4,5.4,4.1,2.4,2.6,  2,5,   3,10,2,2,4,  null,null,null,null, 1.6,4.5,1.4,0.7,2.7],
+  ['Y. Lescano',   1.0,1.3,0.3,4.4,3.2,2.9,  1.1,1.3,1.4,7.2,3.5,  null,null, null,null,null,null,null, null,null,null,null, 2.3,1.5,4.1,5.7,2.8],
+];
+
+const regionHighlights = [
+  { title:'🏙 Lima / Callao — multi-fuente', rows:[['Aliaga','21,5% CPI / 23,1% IEP Feb','#E87070'],['Fujimori','8,1% CPI / 12,0% IEP Feb',null],['IPSOS Feb','21% Aliaga / 10% Fujimori',null]], note:'Aliaga domina Lima en todas las fuentes' },
+  { title:'🌿 Oriente — multi-fuente', rows:[['Fujimori','16,1% CPI / 14,1% IEP Feb','#D4B060'],['Vizcarra','7,5% CPI / 10,4% DATUM',null],['IPSOS Feb','17% Fujimori',null]], note:'Fujimori consistentemente fuerte aquí' },
+  { title:'🌾 Norte — IPSOS + IEP', rows:[['Fujimori','8% IPS / 12,4% IEP','#D4B060'],['Acuña','10% IPS / 4,5% IEP',null],['Aliaga','8% IPS / 11,0% IEP',null]], note:'Fujimori y Aliaga compiten en Norte' },
+  { title:'🏔 Sur — patrones divergentes', rows:[['Aliaga','10,1% CPI / 9,7% IEP','#E87070'],['Lescano','4,4% CPI / 5,7% IEP','#D4B060'],['López Chau','6,3% DAT / 9,1% IEP',null]], note:'Sur: pluralidad de fuerzas' },
+  { title:'💎 NSE A — Aliaga domina', rows:[['Aliaga','43% IPS / 28,7% IEP','#E87070'],['Fujimori','21% IPS / 9,3% IEP',null],['López Chau','3% IPS / 10,7% IEP',null]], note:'Aliaga arrasador en NSE alto' },
+  { title:'🌱 NSE D/E — patrón inverso', rows:[['Vizcarra','5% IPS / 5,0% IEP','#50C878'],['Fujimori','8% IPS / 11,0% IEP',null],['Aliaga','3% IPS / 8,1% IEP','#555']], note:'Aliaga cae fuertemente en NSE bajo' },
+];
+
+const zonaData = [
+  // [cand, party, DAT25-U,R, IPS-F-U,R, IEP-E-U,R, IEP-F-U,R]
+  ['López Aliaga',  'Renovación Popular', 13.1,5.3, 8,3,  17.9,4.5, 12.3,6.8],
+  ['K. Fujimori',   'Fuerza Popular',      8.6,5.3, 7,9,   7.6,9.7,  9.3,10.0],
+  ['C. Álvarez',    'País Para Todos',      5.9,4.8, 2,5,   null,null, 4.3,4.4],
+  ['A. López Chau', 'Ahora Nación',         4.6,4.3, 4,6,   null,null, 6.9,2.4],
+  ['M. Vizcarra',   'Perú Primero',         3.4,4.3, 6,4,   null,null, 3.9,6.8],
+  ['C. Acuña',      'APP',                  2.7,4.3, 6,4,   null,null, 2.0,3.8],
+  ['Y. Lescano',    'Coop. Popular',        2.3,3.4, null,null, null,null, 3.9,2.5],
+  ['G. Forsyth',    'Somos Perú',           3.2,1.9, 3,2,   null,null, 2.0,1.0],
+];
+
+const nseData = [
+  // [cand, IPS-F-A,B,C,D,E, IEP-E-AB,C,DE, IEP-F-AB,C,DE]
+  ['López Aliaga',  43,22,18,6,3,  30.3,18.3,8.7,  28.7,18.6,8.1],
+  ['K. Fujimori',   21, 7, 8,9,8,   7.7, 8.2,9.4,   9.3, 9.7,11.0],
+  ['C. Álvarez',     4, 6, 3,3,4,  null,null,null,   4.5, 5.0, 4.8],
+  ['M. Vizcarra',    0, 4, 4,4,5,  null,null,null,   1.7, 3.5, 5.0],
+  ['A. López Chau',  3, 6, 3,3,5,  null,null,null,  10.7, 7.6, 2.2],
+  ['C. Acuña',       3, 4, 2,6,6,  null,null,null,   1.9, 2.1, 2.5],
+  ['Y. Lescano',  null,null,null,null,null, null,null,null, 4.7, 2.7, 2.7],
+  ['G. Forsyth',     3, 2, 3,1,3,  null,null,null,   1.9, 1.8, 1.2],
+];
+
+// ── RENDER GÉNERO BARS ────────────────────────────────────────────────────────
+(function renderGenderBars(){
+  const ctr = document.getElementById('genderBarsAliaga');
+  if (!ctr) return;
+  const bars = [
+    {label:'CPI Ene H', val:15.9, isH:true}, {label:'CPI Ene M', val:11.4, isH:false},
+    {label:'CPI Feb H', val:17.7, isH:true}, {label:'CPI Feb M', val:11.5, isH:false},
+    {label:'DAT 11e H', val:14.2, isH:true}, {label:'DAT 11e M', val:9.8,  isH:false},
+    {label:'DAT 25e H', val:16.1, isH:true}, {label:'DAT 25e M', val:7.3,  isH:false},
+    {label:'IPS Feb H', val:16,   isH:true}, {label:'IPS Feb M', val:8,    isH:false},
+    {label:'IEP Ene H', val:17.2, isH:true}, {label:'IEP Ene M', val:12.3, isH:false},
+    {label:'IEP Feb H', val:14.8, isH:true}, {label:'IEP Feb M', val:14.4, isH:false},
+  ];
+  const max = 22;
+  bars.forEach(b => {
+    const pct = ((b.val/max)*100).toFixed(1);
+    const color = b.isH ? '#2E86AB' : '#c0392b';
+    ctr.innerHTML += `<div style="display:grid;grid-template-columns:120px 1fr 52px;align-items:center;gap:10px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);text-align:right;text-transform:uppercase">${b.label}</div>
+      <div style="background:#2A2A2A;border-radius:2px;height:7px;overflow:hidden">
+        <div style="width:${pct}%;height:100%;border-radius:2px;background:${color}"></div>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--text)">${b.val.toFixed(1).replace('.',',')}%</div>
+    </div>`;
+  });
+})();
+
+// ── RENDER GENDER TABLE ───────────────────────────────────────────────────────
+(function renderGenderTable(){
+  const tb = document.getElementById('genderTableBody');
+  if (!tb) return;
+  function dc(v, hi=14, lo=2) {
+    if (v === null || v === undefined) return `<td class="d-nd">—</td>`;
+    const cls = v>=hi?'d-hi':v<=lo?'d-lo':'d-num';
+    return `<td class="${cls}">${Number(v).toFixed(1).replace('.',',')}</td>`;
+  }
+  genderData.forEach(([cand,party,h1,m1,h2,m2,h3,m3,h4,m4,h5,m5,h6,m6,h7,m7]) => {
+    tb.innerHTML += `<tr><td class="d-cand">${cand}<small>${party}</small></td>
+      ${dc(h1)}${dc(m1)}${dc(h2)}${dc(m2)}${dc(h3)}${dc(m3)}${dc(h4)}${dc(m4)}
+      ${dc(h5)}${dc(m5)}${dc(h6)}${dc(m6)}${dc(h7)}${dc(m7)}</tr>`;
+  });
+})();
+
+// ── RENDER AGE TABLE ──────────────────────────────────────────────────────────
+(function renderAgeTable(){
+  const tb = document.getElementById('ageTableBody');
+  if (!tb) return;
+  function dc(v) {
+    if (v === null || v === undefined) return `<td class="d-nd">—</td>`;
+    const cls = v>=13?'d-hi':v<=2?'d-lo':'d-num';
+    return `<td class="${cls}">${Number(v).toFixed(1).replace('.',',')}</td>`;
+  }
+  ageData.forEach(([cand,a1,a2,a3,b1,b2,b3,c1,c2,c3,d1,d2,d3]) => {
+    tb.innerHTML += `<tr><td class="d-cand">${cand}</td>
+      ${dc(a1)}${dc(a2)}${dc(a3)}${dc(b1)}${dc(b2)}${dc(b3)}
+      ${dc(c1)}${dc(c2)}${dc(c3)}${dc(d1)}${dc(d2)}${dc(d3)}</tr>`;
+  });
+})();
+
+// ── RENDER REGION CARDS ───────────────────────────────────────────────────────
+(function renderRegionCards(){
+  const ctr = document.getElementById('regionCards');
+  if (!ctr) return;
+  regionHighlights.forEach(h => {
+    const rowsHtml = h.rows.map(([name, val, color]) =>
+      `<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #1E1E1E">
+        <span style="font-size:10px">${name}</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:${color||'var(--text)'}">${val}</span>
+      </div>`
+    ).join('');
+    ctr.innerHTML += `<div style="background:#161616;border:1px solid var(--border);border-radius:6px;padding:14px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--oro);margin-bottom:10px">${h.title}</div>
+      ${rowsHtml}
+      <div style="font-size:9px;color:var(--text-dim);margin-top:8px">${h.note}</div>
+    </div>`;
+  });
+})();
+
+// ── RENDER REGION TABLE ───────────────────────────────────────────────────────
+(function renderRegionTable(){
+  const tb = document.getElementById('regionTableBody');
+  if (!tb) return;
+  function dc(v, hi=15, lo=2) {
+    if (v === null || v === undefined) return `<td class="d-nd">—</td>`;
+    const cls = v>=hi?'d-hi':v<=lo?'d-lo':'d-num';
+    return `<td class="${cls}">${Number(v).toFixed(1).replace('.',',')}</td>`;
+  }
+  regionData.forEach(([cand,...v]) => {
+    tb.innerHTML += `<tr><td class="d-cand">${cand}</td>
+      ${dc(v[0],18)}${dc(v[1])}${dc(v[2])}${dc(v[3])}${dc(v[4])}${dc(v[5])}
+      ${dc(v[6],14)}${dc(v[7])}${dc(v[8])}${dc(v[9])}${dc(v[10])}
+      ${dc(v[11],16)}${dc(v[12])}
+      ${dc(v[13],18)}${dc(v[14])}${dc(v[15])}${dc(v[16])}${dc(v[17])}
+      ${dc(v[18],20)}${dc(v[19])}${dc(v[20])}${dc(v[21])}
+      ${dc(v[22],20)}${dc(v[23])}${dc(v[24])}${dc(v[25])}${dc(v[26])}</tr>`;
+  });
+})();
+
+// ── RENDER ZONA TABLE ─────────────────────────────────────────────────────────
+(function renderZonaTable(){
+  const tb = document.getElementById('zonaTableBody');
+  if (!tb) return;
+  function dz(u, r) {
+    if (u===null||u===undefined||r===null||r===undefined) return '<td class="d-nd">—</td><td class="d-nd">—</td><td class="d-nd">—</td>';
+    const d = (u-r).toFixed(1), s = d>0?'+':'', col = d>0?'#E87070':'#50C878';
+    const hi = v => v>=10?'d-hi':v<=2?'d-lo':'d-num';
+    return `<td class="${hi(u)}">${u.toFixed(1).replace('.',',')}%</td><td class="${hi(r)}">${r.toFixed(1).replace('.',',')}%</td><td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:${col}">${s}${d}</td>`;
+  }
+  zonaData.forEach(([cand,party,d1u,d1r,i1u,i1r,e1u,e1r,f1u,f1r]) => {
+    tb.innerHTML += `<tr><td class="d-cand">${cand}${party?`<small>${party}</small>`:''}</td>${dz(d1u,d1r)}${dz(i1u,i1r)}${dz(e1u,e1r)}${dz(f1u,f1r)}</tr>`;
+  });
+})();
+
+// ── RENDER NSE TABLE ──────────────────────────────────────────────────────────
+(function renderNseTable(){
+  const tb = document.getElementById('nseTableBody');
+  if (!tb) return;
+  function dc(v, hi=20, lo=2) {
+    if (v===null||v===undefined) return `<td class="d-nd">—</td>`;
+    const cls = v>=hi?'d-hi':v<=lo?'d-lo':'d-num';
+    return `<td class="${cls}">${Number(v).toFixed(v%1===0?0:1).replace('.',',')}</td>`;
+  }
+  nseData.forEach(([cand,ia,ib,ic,id,ie,eab,ec,ede,fab,fc,fde]) => {
+    tb.innerHTML += `<tr><td class="d-cand">${cand}</td>
+      ${dc(ia,35)}${dc(ib,15)}${dc(ic)}${dc(id)}${dc(ie)}
+      ${dc(eab,25)}${dc(ec,15)}${dc(ede)}
+      ${dc(fab,25)}${dc(fc,15)}${dc(fde)}</tr>`;
+  });
+})();
+
+// ── TABS DESAGREGACIÓN ────────────────────────────────────────────────────────
+function showDTab(name) {
+  ['genero','edad','region','zona','nse'].forEach(t => {
+    const panel = document.getElementById('dpanel-' + t);
+    const btn   = document.getElementById('dtab-' + t);
+    if (panel) panel.style.display = (t === name) ? 'block' : 'none';
+    if (btn)   btn.classList.toggle('active', t === name);
+  });
+}
+
+</script>
+</body>
+</html>
