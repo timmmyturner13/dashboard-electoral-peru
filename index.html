@@ -1028,7 +1028,7 @@ const encuestas = [
   {
     enc: "CIT Op. & Mercado", badge: "badge-cit", reg: "00404-REE/JNE",
     medio: "Panamericana / Panorama", campo: "20-24/02/2026 ★NUEVA", muestra: "1.220",
-    lopez: 14.0, fujimori: 6.8, alvarez: 6.1, acuna: 6.4, vizcarra: null, lopezchau: 5.1, nsnc: "n/d"
+    lopez: 14.0, fujimori: 6.8, alvarez: 6.1, acuna: 6.4, vizcarra: 3.2, lopezchau: 5.1, nsnc: "n/d"
   },
   {
     enc: "IPSOS Perú", badge: "badge-ipsos", reg: "001-REE/JNE",
@@ -1184,6 +1184,7 @@ const candidatos = [
       { label: "IEP (23 feb)", val: 4.0 },
       { label: "IPSOS (5 feb)", val: 4.0 },
       { label: "DATUM (30 ene)", val: 3.6 },
+      { label: "CIT (20-24 feb)★", val: 3.2 },
       { label: "IPSOS (19-20 feb)", val: 2.0 },
     ]
   },
@@ -1295,7 +1296,7 @@ const mediaData = {
   // Período 2: 2ª quinc. enero  (IEP ene)
   // Período 3: Fin ene / Ini feb (CPI 29e + IMASOLU 28-31e + DATUM 30e-3f)
   // Período 4: 1ª quinc. febrero (IPSOS 5-6f + CIT 16f + CPI 14-18f + DATUM 13-17f)
-  // Período 5: 2ª quinc. febrero (IEP 23f + IPSOS 19-20f)
+  // Período 5: 2ª quinc. febrero (IEP 23f + IPSOS 19-20f + CIT 20-24f)
   labels: [
     "1ª quinc.\nEnero\n(n=4)", "2ª quinc.\nEnero\n(n=1)",
     "Fin ene /\nIni feb\n(n=3)", "1ª quinc.\nFebrero\n(n=4)",
@@ -1306,7 +1307,7 @@ const mediaData = {
     [7.9,  8.1,  8.2,  8.2,  8.7],
     [null, 4.0,  5.6,  4.8,  4.7],
     [null, 4.0,  3.9,  5.2,  4.8],
-    [4.4,  4.4,  3.8,  3.0,  3.0],
+    [4.4,  4.4,  3.8,  3.0,  3.1],
   ]
 };
 
@@ -1342,13 +1343,13 @@ const encData = {
     ]
   },
   "CIT": {
-    labels: ["16-20 ene", "05-09 feb", "20-24 feb"],
+    labels: ["16-20 ene", "16 feb", "20-24 feb"],
     series: [
       [15.1, 15.3, 14.0],
       [9.3,  8.0,  6.8],
       [null, 5.0,  6.1],
       [null, 6.0,  5.1],
-      [null, 2.3,  null],
+      [null, 2.3,  3.2],
     ]
   },
   "IEP": {
