@@ -545,6 +545,7 @@
     color: var(--blanco);
     padding: 10px 16px;
     border-radius: 6px 6px 0 0;
+    display: flex; align-items: center; gap: 10px;
     margin-bottom: 0;
     display: flex; align-items: center; gap: 10px;
   }
@@ -699,7 +700,7 @@
     </div>
     <canvas id="canvasMedia" class="evo-canvas" height="340"></canvas>
     <p style="margin-top:10px; font-size:10px; color:var(--text-dim); font-family:'IBM Plex Mono',monospace;">
-      ★ <em>Candidato emergente</em> — W. Grozo aparece solo en el período 5 (CPI 7 mar: 4,8% · DATUM 8 mar: 4,2%). Media del período: 4,5%. Datos insuficientes para trazar trayectoria histórica.
+      ★ <em>Candidatos emergentes</em> — W. Grozo aparece desde el período 5 (CPI 7 mar: 4,8% · DATUM 8 mar: 4,2% · media: 4,5%). C. Acuña aparece desde el período 3 (IMASOLU+DATUM: media 4,2%). Datos insuficientes para trazar trayectoria histórica completa.
     </p>
   </div>
 
@@ -733,6 +734,7 @@
       <div class="enc-btn" id="dtab-region" onclick="showDTab('region')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">Región</div>
       <div class="enc-btn" id="dtab-zona" onclick="showDTab('zona')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">Urbana/Rural</div>
       <div class="enc-btn" id="dtab-nse" onclick="showDTab('nse')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">NSE</div>
+      <div class="enc-btn" id="dtab-marzo" onclick="showDTab('marzo')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px;border-left:2px solid var(--oro);color:var(--oro)">★ Marzo 2026</div>
     </div>
 
     <!-- ── PANEL GÉNERO ───────────────────────────────────────────── -->
@@ -948,6 +950,178 @@
         </p>
       </div>
     </div>
+
+    <!-- ── PANEL MARZO 2026 ─────────────────────────────────────────── -->
+    <div id="dpanel-marzo" style="padding-top:24px;display:none">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
+        <span class="enc-badge badge-cpi" style="padding:3px 10px">CPI · 28 feb–5 mar · n=1.300</span>
+        <span class="enc-badge badge-datum" style="padding:3px 10px">DATUM · 27 feb–4 mar · n=1.501</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--oro);padding:3px 10px;border:1px solid var(--oro);border-radius:3px">Última medición disponible · campo simultaneo</span>
+      </div>
+
+      <!-- Sub-selector dentro del panel Marzo 2026 -->
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">
+        <div class="enc-btn active" id="mbtn-genero" onclick="showMarzoBlock('genero')" style="font-size:10px;padding:6px 14px">Género</div>
+        <div class="enc-btn" id="mbtn-edad" onclick="showMarzoBlock('edad')" style="font-size:10px;padding:6px 14px">Edad</div>
+        <div class="enc-btn" id="mbtn-region" onclick="showMarzoBlock('region')" style="font-size:10px;padding:6px 14px">Región</div>
+        <div class="enc-btn" id="mbtn-urbano" onclick="showMarzoBlock('urbano')" style="font-size:10px;padding:6px 14px">Urbano/Rural</div>
+      </div>
+
+      <!-- ── GÉNERO ── -->
+      <div id="mblock-genero">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:14px">Intención de voto por género — CPI vs. DATUM (Marzo 2026)</div>
+        <div class="table-wrap" style="margin-bottom:0">
+          <table id="m-genero-table">
+            <thead>
+              <tr>
+                <th rowspan="2" style="min-width:130px">Candidato</th>
+                <th colspan="2" style="text-align:center;color:#D4B060;border-bottom:2px solid #C8991E;font-size:9px">CPI · Mar 2026</th>
+                <th colspan="2" style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:9px">DATUM · Mar 2026</th>
+                <th colspan="2" style="text-align:center;color:#a0a0a0;border-bottom:2px solid #606060;font-size:9px">Dif. H−M</th>
+              </tr>
+              <tr>
+                <th style="color:#D4B060;font-size:8px">Hombre</th><th style="color:#D4B060;font-size:8px">Mujer</th>
+                <th style="color:#70C890;font-size:8px">Hombre</th><th style="color:#70C890;font-size:8px">Mujer</th>
+                <th style="color:#a0a0a0;font-size:8px">CPI</th><th style="color:#a0a0a0;font-size:8px">DATUM</th>
+              </tr>
+            </thead>
+            <tbody id="m-genero-body"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+          <p style="font-size:11px;color:var(--text-dim);line-height:1.7" id="m-genero-insight"></p>
+        </div>
+      </div>
+
+      <!-- ── EDAD ── -->
+      <div id="mblock-edad" style="display:none">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:6px">Intención de voto por grupo etario — Marzo 2026</div>
+        <div style="font-size:9px;color:var(--text-dim);margin-bottom:14px;font-family:'IBM Plex Mono',monospace">CPI: 3 grupos (18–24, 25–39, 40–70) · DATUM: 5 grupos (18–24, 25–34, 35–44, 45–54, 55–70)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <!-- CPI edad -->
+          <div>
+            <div style="font-size:9px;font-family:'IBM Plex Mono',monospace;color:#D4B060;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;border-bottom:1px solid #C8991E;padding-bottom:4px">CPI · 28 feb–5 mar · n=1.300</div>
+            <div class="table-wrap" style="margin-bottom:0">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="min-width:90px">Grupo</th>
+                    <th style="color:#D4B060;font-size:8px">Aliaga</th>
+                    <th style="color:#D4B060;font-size:8px">Fujimori</th>
+                    <th style="color:#D4B060;font-size:8px">L.Chau</th>
+                    <th style="color:#D4B060;font-size:8px">Álvarez</th>
+                    <th style="color:#D4B060;font-size:8px">Grozo</th>
+                    <th style="color:#D4B060;font-size:8px">B/I</th>
+                  </tr>
+                </thead>
+                <tbody id="m-edad-cpi-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- DATUM edad -->
+          <div>
+            <div style="font-size:9px;font-family:'IBM Plex Mono',monospace;color:#70C890;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;border-bottom:1px solid #27ae60;padding-bottom:4px">DATUM · 27 feb–4 mar · n=1.501</div>
+            <div class="table-wrap" style="margin-bottom:0">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="min-width:90px">Grupo</th>
+                    <th style="color:#70C890;font-size:8px">Aliaga</th>
+                    <th style="color:#70C890;font-size:8px">Fujimori</th>
+                    <th style="color:#70C890;font-size:8px">L.Chau</th>
+                    <th style="color:#70C890;font-size:8px">Acuña</th>
+                    <th style="color:#70C890;font-size:8px">Álvarez</th>
+                    <th style="color:#70C890;font-size:8px">Grozo</th>
+                    <th style="color:#70C890;font-size:8px">B/I</th>
+                  </tr>
+                </thead>
+                <tbody id="m-edad-dat-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+          <p style="font-size:11px;color:var(--text-dim);line-height:1.7" id="m-edad-insight"></p>
+        </div>
+      </div>
+
+      <!-- ── REGIÓN ── -->
+      <div id="mblock-region" style="display:none">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:6px">Intención de voto por región — Marzo 2026</div>
+        <div style="font-size:9px;color:var(--text-dim);margin-bottom:14px;font-family:'IBM Plex Mono',monospace">CPI: 7 macrozonas · DATUM: Lima/Callao + 4 macroregiones</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <!-- CPI región -->
+          <div>
+            <div style="font-size:9px;font-family:'IBM Plex Mono',monospace;color:#D4B060;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;border-bottom:1px solid #C8991E;padding-bottom:4px">CPI · 7 macrozonas</div>
+            <div class="table-wrap" style="margin-bottom:0">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="min-width:110px">Zona</th>
+                    <th style="color:#D4B060;font-size:8px">Aliaga</th>
+                    <th style="color:#D4B060;font-size:8px">Fujimori</th>
+                    <th style="color:#D4B060;font-size:8px">L.Chau</th>
+                    <th style="color:#D4B060;font-size:8px">Álvarez</th>
+                    <th style="color:#D4B060;font-size:8px">Grozo</th>
+                    <th style="color:#D4B060;font-size:8px">B/I</th>
+                  </tr>
+                </thead>
+                <tbody id="m-region-cpi-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- DATUM región -->
+          <div>
+            <div style="font-size:9px;font-family:'IBM Plex Mono',monospace;color:#70C890;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;border-bottom:1px solid #27ae60;padding-bottom:4px">DATUM · Lima + 4 macroregiones</div>
+            <div class="table-wrap" style="margin-bottom:0">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="min-width:90px">Zona</th>
+                    <th style="color:#70C890;font-size:8px">Aliaga</th>
+                    <th style="color:#70C890;font-size:8px">Fujimori</th>
+                    <th style="color:#70C890;font-size:8px">L.Chau</th>
+                    <th style="color:#70C890;font-size:8px">Acuña</th>
+                    <th style="color:#70C890;font-size:8px">Álvarez</th>
+                    <th style="color:#70C890;font-size:8px">Grozo</th>
+                    <th style="color:#70C890;font-size:8px">B/I</th>
+                  </tr>
+                </thead>
+                <tbody id="m-region-dat-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+          <p style="font-size:11px;color:var(--text-dim);line-height:1.7" id="m-region-insight"></p>
+        </div>
+      </div>
+
+      <!-- ── URBANO/RURAL ── -->
+      <div id="mblock-urbano" style="display:none">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:14px">Intención de voto Urbano vs. Rural — DATUM Marzo 2026</div>
+        <div class="table-wrap" style="margin-bottom:0">
+          <table>
+            <thead>
+              <tr>
+                <th rowspan="2" style="min-width:130px">Candidato</th>
+                <th colspan="3" style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:9px">DATUM · Mar 2026</th>
+              </tr>
+              <tr>
+                <th style="color:#70C890;font-size:8px">Urbana</th>
+                <th style="color:#70C890;font-size:8px">Rural</th>
+                <th style="color:#70C890;font-size:8px">Dif. U−R</th>
+              </tr>
+            </thead>
+            <tbody id="m-urbano-body"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:12px;padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+          <p style="font-size:11px;color:var(--text-dim);line-height:1.7" id="m-urbano-insight"></p>
+        </div>
+      </div>
+
+    </div><!-- end dpanel-marzo -->
 
 </div><!-- .chart-section desagregación -->
 
@@ -1314,6 +1488,7 @@ const TOP5 = [
   { nombre: "López Chau",    short: "L. Chau",   color: "#3498db" },
   { nombre: "Vizcarra",      short: "Vizcarra",  color: "#f39c12" },
   { nombre: "Grozo ★emerg.", short: "Grozo",     color: "#e67e22", dashed: true },
+  { nombre: "Acuña ★emerg.",short: "Acuña",     color: "#16a085", dashed: true },
 ];
 
 const mediaData = {
@@ -1335,6 +1510,7 @@ const mediaData = {
     [null, 4.0,  3.9,  5.2,  5.1],
     [4.4,  4.4,  3.8,  3.0,  2.8],
     [null, null, null, null, 4.5],   // Grozo: solo período 5 (CPI 4,8% + DATUM 4,2%) ★emergente
+    [null, null, 4.2,  4.4,  4.3],   // Acuña: aparece desde período 3 (IMASOLU+DATUM) ★emergente
   ]
 };
 
@@ -1357,6 +1533,8 @@ const encData = {
       [null, null, 4.0,  5.0],
       [null, null, 5.1,  5.6],
       [4.4,  4.7,  3.2,  2.5],
+      [null, null, null, 4.8],   // Grozo ★emerg.
+      [null, null, 4.4,  3.4],   // Acuña ★emerg.
     ]
   },
   "DATUM": {
@@ -1367,6 +1545,8 @@ const encData = {
       [null, 5.8,  6.0,  5.0],
       [null, 3.8,  5.7,  5.5],
       [null, 3.6,  2.6,  2.3],
+      [null, null, null, 4.2],   // Grozo ★emerg.
+      [null, 3.8,  3.0,  5.2],   // Acuña ★emerg.
     ]
   },
   "CIT": {
@@ -1752,16 +1932,18 @@ function selectEnc(enc) {
 function renderEncChart() {
   const d = encData[activeEnc];
   if (!d) return;
-  // El gráfico por encuestadora usa solo los 5 candidatos históricos (sin Grozo emergente)
-  const TOP5_hist = TOP5.filter(c => !c.dashed);
-  drawLineChart('canvasEnc', d.labels, d.series, TOP5_hist);
+  // CPI y DATUM tienen datos de candidatos emergentes (Grozo, Acuña); el resto no
+  const encSupportsEmerg = (activeEnc === 'CPI' || activeEnc === 'DATUM');
+  const candidates = encSupportsEmerg ? TOP5 : TOP5.filter(c => !c.dashed);
+  const series = encSupportsEmerg ? d.series : d.series.slice(0, 5);
+  buildLegend('legendEnc', candidates);
+  drawLineChart('canvasEnc', d.labels, series, candidates);
   attachTooltip('canvasEnc');
 }
 
 // ── Render inicial y resize ───────────────────────────────────────────────────
 function renderAll() {
   buildLegend('legendMedia', TOP5);
-  buildLegend('legendEnc',   TOP5.filter(c => !c.dashed));
   buildEncSelector();
   drawLineChart('canvasMedia', mediaData.labels, mediaData.series, TOP5);
   attachTooltip('canvasMedia');
@@ -1789,51 +1971,56 @@ window.addEventListener('resize', () => {
 const desagData = [
   {
     id: "A", title: "Por Género", color: "#c0392b",
-    headers: ["Segmento", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    headers: ["Segmento", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "W. Grozo ★", "Blanco/Indeciso"],
+    fuente: "CPI · campo 28 feb–5 mar 2026 · n=1.300 · datos reales",
     rows: [
-      { seg: "Hombres",  vals: [15.2, 9.1,  5.8, 5.3, 4.6], nsnc: "34,1 %", nota: "Mayor definición de voto" },
-      { seg: "Mujeres",  vals: [14.1, 11.3, 4.9, 4.5, 3.5], nsnc: "37,3 %", nota: "Fujimori +2,2 pp vs. hombres" },
+      { seg: "Masculino", vals: [15.7, 9.7, 8.0, 6.2, 4.9], nsnc: "33,2 %", nota: "Aliaga +5,8 pp vs. mujeres · Grozo homogéneo por género" },
+      { seg: "Femenino",  vals: [9.9,  6.2, 3.3, 3.9, 4.7], nsnc: "41,1 %", nota: "Fujimori +3,5 pp vs. hombres · mayor indecisión femenina" },
     ]
   },
   {
     id: "B", title: "Por Grupo Etario", color: "#8e44ad",
-    headers: ["Grupo", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    headers: ["Grupo", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "W. Grozo ★", "Blanco/Indeciso"],
+    fuente: "CPI · campo 28 feb–5 mar 2026 · n=1.300 · datos reales",
     rows: [
-      { seg: "18 – 29 años",  vals: [12.5, 13.7, 5.1, 5.2, 3.8], nsnc: "38,2 %", nota: "Fujimori supera en jóvenes" },
-      { seg: "30 – 49 años",  vals: [13.8, 9.4,  5.5, 4.7, 4.1], nsnc: "36,5 %", nota: "Franja más decidida" },
-      { seg: "50 años a más", vals: [17.0, 9.2,  5.2, 4.8, 3.9], nsnc: "33,7 %", nota: "López Aliaga +4,5 pp sobre media" },
+      { seg: "18 – 24 años",  vals: [8.4,  6.9, 5.3, 3.1, 10.7], nsnc: "33,9 %", nota: "Grozo lidera en jóvenes con 10,7% · Aliaga en mínimo" },
+      { seg: "25 – 39 años",  vals: [13.7, 9.4, 5.2, 7.5,  5.8], nsnc: "33,4 %", nota: "Álvarez sube a 7,5% · franja más activa" },
+      { seg: "40 – 70 años",  vals: [13.4, 8.3, 6.0, 4.0,  2.3], nsnc: "41,0 %", nota: "Grozo cae a 2,3% · mayor indecisión en este grupo" },
     ]
   },
   {
     id: "C", title: "Por Región / Macrozona", color: "#d35400",
-    headers: ["Región", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    headers: ["Región", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "W. Grozo ★", "Blanco/Indeciso"],
+    fuente: "CPI · campo 28 feb–5 mar 2026 · n=1.300 · datos reales",
     rows: [
-      { seg: "Lima Metropolitana",        vals: [23.1, 12.0, 4.8, 4.3, 2.9], nsnc: "30,5 %", nota: "Fortaleza de López Aliaga" },
-      { seg: "Perú Urbano (excl. Lima)",  vals: [12.3, 9.3,  5.2, 5.0, 3.6], nsnc: "37,0 %", nota: "Escenario fragmentado" },
-      { seg: "Perú Rural",                vals: [6.8,  10.0, 4.5, 4.9, 6.8], nsnc: "42,8 %", nota: "Fujimori y Vizcarra más fuertes" },
-      { seg: "Macrozona Norte",           vals: [11.0, 9.5,  4.3, 5.1, 4.5], nsnc: "38,9 %", nota: "—" },
-      { seg: "Macrozona Centro",          vals: [13.7, 8.8,  5.0, 4.6, 4.2], nsnc: "36,4 %", nota: "—" },
-      { seg: "Macrozona Sur",             vals: [9.7,  9.3,  9.1, 4.8, 3.8], nsnc: "39,2 %", nota: "López Chau 3.° con 9,1 %" },
-      { seg: "Macrozona Oriente",         vals: [7.3,  14.1, 4.4, 4.2, 6.3], nsnc: "41,5 %", nota: "Fujimori lidera en oriente" },
+      { seg: "Lima / Callao",      vals: [20.3, 9.3,  4.9, 4.9, 6.8], nsnc: "32,9 %", nota: "Fortaleza de López Aliaga · Grozo fuerte en Lima (6,8%)" },
+      { seg: "Interior del país",  vals: [8.4,  7.3,  6.0, 5.4, 3.7], nsnc: "39,7 %", nota: "Escenario fragmentado · López Chau 3.° en interior" },
+      { seg: "Lima Provincias",    vals: [13.7, 16.1, 2.0, 0.0, 6.6], nsnc: "37,7 %", nota: "Fujimori lidera en Lima Provincias con 16,1%" },
+      { seg: "Costa/Sierra Norte", vals: [7.5,  6.8,  4.3, 5.4, 3.0], nsnc: "45,9 %", nota: "Mayor indecisión nacional · 45,9% blanco/indeciso" },
+      { seg: "Costa Sur",          vals: [11.5, 7.2,  4.8, 5.5, 5.0], nsnc: "47,0 %", nota: "Máxima indecisión (47%) · Aliaga 2.° tras indecisos" },
+      { seg: "Sierra Centro/Sur",  vals: [6.9,  4.7, 10.2, 3.8, 4.1], nsnc: "32,2 %", nota: "López Chau lidera con 10,2% · única región donde es 1.°" },
+      { seg: "Oriente",            vals: [8.8, 11.2,  4.2, 7.0, 2.3], nsnc: "29,4 %", nota: "Fujimori 1.° · menor indecisión nacional (29,4%)" },
     ]
   },
   {
     id: "D", title: "Por Nivel Socioeconómico", color: "#1a5276",
     headers: ["NSE", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    fuente: "Estimación basada en encuestas IEP / IPSOS anteriores · CPI no publica NSE en voto presidencial",
     rows: [
-      { seg: "NSE A/B (Alto / Med-Alto)", vals: [28.7, 9.8,  6.1, 4.5, 3.2], nsnc: "25,4 %", nota: "Concentración máxima L.A." },
-      { seg: "NSE C (Medio)",             vals: [18.6, 10.4, 5.4, 4.8, 3.9], nsnc: "33,6 %", nota: "Mercado más disputado" },
-      { seg: "NSE D/E (Bajo / Muy bajo)", vals: [8.1,  10.7, 5.0, 5.1, 4.4], nsnc: "42,0 %", nota: "Fujimori supera a L.A." },
+      { seg: "NSE A/B (Alto / Med-Alto)", vals: [28.7, 9.8,  6.1, 4.5, 3.2], nsnc: "25,4 %", nota: "Estimado — pendiente fuente oficial" },
+      { seg: "NSE C (Medio)",             vals: [18.6, 10.4, 5.4, 4.8, 3.9], nsnc: "33,6 %", nota: "Estimado — pendiente fuente oficial" },
+      { seg: "NSE D/E (Bajo / Muy bajo)", vals: [8.1,  10.7, 5.0, 5.1, 4.4], nsnc: "42,0 %", nota: "Estimado — pendiente fuente oficial" },
     ]
   },
   {
     id: "E", title: "Por Nivel Educativo", color: "#1e8449",
     headers: ["Nivel educativo", "R. López Aliaga", "K. Fujimori", "A. López Chau", "C. Álvarez", "M. Vizcarra", "NS/NC"],
+    fuente: "Estimación basada en encuestas IEP / IPSOS anteriores · CPI no publica educación en voto presidencial",
     rows: [
-      { seg: "Sin estudios / Primaria",     vals: [9.2,  11.5, 4.3, 5.0, 5.1], nsnc: "45,3 %", nota: "Mayor indecisión" },
-      { seg: "Secundaria",                  vals: [11.8, 10.6, 5.1, 5.0, 4.3], nsnc: "39,7 %", nota: "—" },
-      { seg: "Técnica / Superior no univ.", vals: [16.4, 10.0, 5.6, 4.7, 3.6], nsnc: "34,2 %", nota: "Sube López Aliaga" },
-      { seg: "Superior universitaria",      vals: [22.3, 9.5,  6.0, 4.4, 2.8], nsnc: "28,1 %", nota: "+7,7 pp sobre media nacional" },
+      { seg: "Sin estudios / Primaria",     vals: [9.2,  11.5, 4.3, 5.0, 5.1], nsnc: "45,3 %", nota: "Estimado — pendiente fuente oficial" },
+      { seg: "Secundaria",                  vals: [11.8, 10.6, 5.1, 5.0, 4.3], nsnc: "39,7 %", nota: "Estimado — pendiente fuente oficial" },
+      { seg: "Técnica / Superior no univ.", vals: [16.4, 10.0, 5.6, 4.7, 3.6], nsnc: "34,2 %", nota: "Estimado — pendiente fuente oficial" },
+      { seg: "Superior universitaria",      vals: [22.3, 9.5,  6.0, 4.4, 2.8], nsnc: "28,1 %", nota: "Estimado — pendiente fuente oficial" },
     ]
   },
 ];
@@ -1864,6 +2051,7 @@ function buildDesag() {
       <div class="desag-block-title" style="background:${block.color}">
         <span class="blk-letter">${block.id}</span>
         ${block.title}
+        ${block.fuente ? `<span style="margin-left:auto;font-size:9px;font-weight:400;opacity:0.85;font-style:italic;">${block.fuente}</span>` : ''}
       </div>
       <table class="desag-table">
         <thead><tr>`;
@@ -2097,11 +2285,244 @@ const nseData = [
 
 // ── TABS DESAGREGACIÓN ────────────────────────────────────────────────────────
 function showDTab(name) {
-  ['genero','edad','region','zona','nse'].forEach(t => {
+  ['genero','edad','region','zona','nse','marzo'].forEach(t => {
     const panel = document.getElementById('dpanel-' + t);
     const btn   = document.getElementById('dtab-' + t);
     if (panel) panel.style.display = (t === name) ? 'block' : 'none';
     if (btn)   btn.classList.toggle('active', t === name);
+  });
+}
+
+// ── MARZO 2026 — DATOS ────────────────────────────────────────────────────────
+// CPI: [Aliaga, Fujimori, LChau, Alvarez, Grozo]  · nsnc=B/Indecisos
+const m_cpi_genero = [
+  { seg:'Masculino', vals:[15.7,9.7,8.0,6.2,4.9],  nsnc:33.2 },
+  { seg:'Femenino',  vals:[9.9, 6.2,3.3,3.9,4.7],  nsnc:41.1 },
+];
+// DATUM: [Fujimori, Aliaga, LChau, Acuña, Alvarez, Grozo]  · nsnc=B+NS
+const m_dat_genero = [
+  { seg:'Hombre', vals:[9.7, 13.3,7.3,5.1,5.5,3.7], nsnc:32.4 },
+  { seg:'Mujer',  vals:[11.8,6.8, 3.8,5.2,4.5,4.7], nsnc:44.6 },
+];
+
+// CPI edad: [Aliaga, Fujimori, LChau, Alvarez, Grozo]
+const m_cpi_edad = [
+  { seg:'18–24',  vals:[8.4, 6.9,5.3,3.1,10.7], nsnc:33.9 },
+  { seg:'25–39',  vals:[13.7,9.4,5.2,7.5,5.8],  nsnc:33.4 },
+  { seg:'40–70',  vals:[13.4,8.3,6.0,4.0,2.3],  nsnc:41.0 },
+];
+// DATUM edad: [Aliaga, Fujimori, LChau, Acuña, Alvarez, Grozo]
+const m_dat_edad = [
+  { seg:'18–24', vals:[7.9, 6.7,3.5,10.8,3.2,12.4], nsnc:29.8 },
+  { seg:'25–34', vals:[13.7,8.9,4.9,4.7, 5.3,4.2],  nsnc:36.5 },
+  { seg:'35–44', vals:[9.2, 12.9,5.5,4.2,6.5,2.1],  nsnc:40.7 },
+  { seg:'45–54', vals:[7.6, 13.3,7.8,4.1,3.7,2.3],  nsnc:42.2 },
+  { seg:'55–70', vals:[10.8,11.5,6.0,3.0,5.7,1.1],  nsnc:42.8 },
+];
+
+// CPI región: [Aliaga, Fujimori, LChau, Alvarez, Grozo]
+const m_cpi_region = [
+  { seg:'Lima/Callao',      vals:[20.3,9.3, 4.9, 4.9,6.8], nsnc:32.9 },
+  { seg:'Interior',         vals:[8.4, 7.3, 6.0, 5.4,3.7], nsnc:39.7 },
+  { seg:'Lima Provincias',  vals:[13.7,16.1,2.0, 0.0,6.6], nsnc:37.7 },
+  { seg:'Costa/Sra. Norte', vals:[7.5, 6.8, 4.3, 5.4,3.0], nsnc:45.9 },
+  { seg:'Costa Sur',        vals:[11.5,7.2, 4.8, 5.5,5.0], nsnc:47.0 },
+  { seg:'Sierra Cen/Sur',   vals:[6.9, 4.7, 10.2,3.8,4.1], nsnc:32.2 },
+  { seg:'Oriente',          vals:[8.8, 11.2,4.2, 7.0,2.3], nsnc:29.4 },
+];
+// DATUM región: [Aliaga, Fujimori, LChau, Acuña, Alvarez, Grozo]
+const m_dat_region = [
+  { seg:'Lima/Callao', vals:[15.4,13.8,4.5, 2.3, 4.9,5.3], nsnc:34.8 },
+  { seg:'Norte',       vals:[7.6, 11.6,3.8, 8.4, 5.1,4.1], nsnc:41.3 },
+  { seg:'Centro',      vals:[6.7, 5.2, 11.9,4.7, 3.1,4.1], nsnc:42.6 },
+  { seg:'Sur',         vals:[7.3, 5.8, 7.3, 4.0, 7.3,3.3], nsnc:36.4 },
+  { seg:'Oriente',     vals:[5.3, 12.5,2.6, 10.5,3.3,2.0], nsnc:44.7 },
+];
+// DATUM urbano/rural: [Aliaga, Fujimori, LChau, Acuña, Alvarez, Grozo]
+const m_dat_urbano = [
+  { seg:'Urbana', vals:[11.4,10.8,5.8,4.7,5.6,4.9], nsnc:36.3 },
+  { seg:'Rural',  vals:[3.4, 10.3,4.4,7.3,1.9,0.7], nsnc:49.5 },
+];
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
+function mDC(v, max) {
+  if (v === null || v === undefined) return '<td class="d-nd">—</td>';
+  const alpha = Math.min(v / max, 1);
+  const bg = `rgba(231,76,60,${(alpha * 0.7).toFixed(2)})`;
+  const clr = alpha > 0.55 ? 'color:#fff;font-weight:700' : 'color:#ddd';
+  return `<td class="heat-cell" style="background:${bg};${clr}">${v.toFixed(1).replace('.',',')} %</td>`;
+}
+function mMaxPerCol(rows) {
+  const n = rows[0].vals.length;
+  return Array.from({length:n}, (_,i) => Math.max(...rows.map(r => r.vals[i])));
+}
+function mNsnc(v) { return `<td style="color:#888;font-size:10px;text-align:right">${v.toFixed(1).replace('.',',')} %</td>`; }
+function mDiff(a, b) {
+  const d = (a - b).toFixed(1);
+  const clr = d > 0 ? '#4CAF50' : d < 0 ? '#e74c3c' : '#888';
+  return `<td style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${clr};text-align:center">${d > 0 ? '+' : ''}${d}</td>`;
+}
+
+// ── RENDER GENERO MARZO ───────────────────────────────────────────────────────
+(function renderMarzoGenero(){
+  const tb = document.getElementById('m-genero-body');
+  if (!tb) return;
+
+  // CPI rows: Aliaga, Fujimori, LChau, Alvarez, Grozo
+  // DATUM rows: Fujimori, Aliaga, LChau, Acuña, Alvarez, Grozo
+  // Show: Aliaga, Fujimori, LChau, Álvarez, Grozo, Acuña(DATUM only)
+  const candidates = [
+    { name:'R. López Aliaga', cpiIdx:0, datIdx:1 },
+    { name:'K. Fujimori',     cpiIdx:1, datIdx:0 },
+    { name:'A. López Chau',   cpiIdx:2, datIdx:2 },
+    { name:'C. Álvarez',      cpiIdx:3, datIdx:4 },
+    { name:'W. Grozo ★',      cpiIdx:4, datIdx:5 },
+    { name:'C. Acuña',        cpiIdx:null, datIdx:3 },
+  ];
+
+  candidates.forEach(c => {
+    const cpiH = c.cpiIdx !== null ? m_cpi_genero[0].vals[c.cpiIdx] : null;
+    const cpiM = c.cpiIdx !== null ? m_cpi_genero[1].vals[c.cpiIdx] : null;
+    const datH = m_dat_genero[0].vals[c.datIdx];
+    const datM = m_dat_genero[1].vals[c.datIdx];
+    const cpiDiff = cpiH !== null ? cpiH - cpiM : null;
+    const datDiff = datH - datM;
+
+    function dcv(v, max=20) {
+      if (v===null) return '<td class="d-nd">—</td>';
+      const alpha = Math.min(v/max,1);
+      const bg = `rgba(231,76,60,${(alpha*0.7).toFixed(2)})`;
+      const clr = alpha>0.55?'color:#fff;font-weight:700':'color:#ddd';
+      return `<td class="heat-cell" style="background:${bg};${clr}">${v.toFixed(1).replace('.',',')} %</td>`;
+    }
+    function dcDiff(d) {
+      if (d===null) return '<td class="d-nd">—</td>';
+      const clr = d>0?'#4CAF50':d<0?'#e74c3c':'#888';
+      return `<td style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${clr};text-align:center">${d>0?'+':''}${d.toFixed(1)}</td>`;
+    }
+    tb.innerHTML += `<tr>
+      <td class="d-cand">${c.name}</td>
+      ${dcv(cpiH)}${dcv(cpiM)}
+      ${dcv(datH)}${dcv(datM)}
+      ${dcDiff(cpiDiff)}${dcDiff(datDiff)}
+    </tr>`;
+  });
+
+  document.getElementById('m-genero-insight').innerHTML =
+    `💡 <strong style="color:var(--text)">Coherencia CPI–DATUM:</strong> Aliaga mantiene una gran brecha de género en CPI (+5,8 pp H) pero en DATUM es aún mayor (+6,5 pp). 
+    Fujimori sigue el patrón inverso: más fuerte en mujeres en ambas encuestas (CPI −3,5 pp · DATUM −2,1 pp). 
+    Grozo es el más homogéneo por género en ambas mediciones. Acuña es levemente más fuerte en mujeres (DATUM).`;
+})();
+
+// ── RENDER EDAD MARZO ─────────────────────────────────────────────────────────
+(function renderMarzoEdad(){
+  const cpiBody = document.getElementById('m-edad-cpi-body');
+  const datBody = document.getElementById('m-edad-dat-body');
+  if (!cpiBody || !datBody) return;
+
+  const cpiMax = mMaxPerCol(m_cpi_edad);
+  m_cpi_edad.forEach(r => {
+    cpiBody.innerHTML += `<tr><td class="d-cand">${r.seg}</td>
+      ${r.vals.map((v,i) => mDC(v, cpiMax[i])).join('')}
+      ${mNsnc(r.nsnc)}</tr>`;
+  });
+
+  const datMax = mMaxPerCol(m_dat_edad);
+  m_dat_edad.forEach(r => {
+    // DATUM order: Aliaga, Fujimori, LChau, Acuña, Alvarez, Grozo
+    datBody.innerHTML += `<tr><td class="d-cand">${r.seg}</td>
+      ${r.vals.map((v,i) => mDC(v, datMax[i])).join('')}
+      ${mNsnc(r.nsnc)}</tr>`;
+  });
+
+  document.getElementById('m-edad-insight').innerHTML =
+    `💡 <strong style="color:var(--text)">Grozo lidera entre jóvenes en ambas encuestas:</strong> CPI: 10,7% (18–24) · DATUM: 12,4% (18–24), primer lugar en esa franja. 
+    Acuña también es fuerte en jóvenes según DATUM (10,8% en 18–24). Fujimori y Aliaga ganan peso en grupos 35–54 años. 
+    La indecisión crece con la edad: pasa de ~30% en jóvenes a ~43% en el grupo 55–70.`;
+})();
+
+// ── RENDER REGIÓN MARZO ───────────────────────────────────────────────────────
+(function renderMarzoRegion(){
+  const cpiBody = document.getElementById('m-region-cpi-body');
+  const datBody = document.getElementById('m-region-dat-body');
+  if (!cpiBody || !datBody) return;
+
+  const cpiMax = mMaxPerCol(m_cpi_region);
+  m_cpi_region.forEach(r => {
+    cpiBody.innerHTML += `<tr><td class="d-cand">${r.seg}</td>
+      ${r.vals.map((v,i) => mDC(v, cpiMax[i])).join('')}
+      ${mNsnc(r.nsnc)}</tr>`;
+  });
+
+  const datMax = mMaxPerCol(m_dat_region);
+  m_dat_region.forEach(r => {
+    datBody.innerHTML += `<tr><td class="d-cand">${r.seg}</td>
+      ${r.vals.map((v,i) => mDC(v, datMax[i])).join('')}
+      ${mNsnc(r.nsnc)}</tr>`;
+  });
+
+  document.getElementById('m-region-insight').innerHTML =
+    `💡 <strong style="color:var(--text)">Lima/Callao:</strong> Aliaga lidera con ventaja en CPI (20,3%) pero DATUM lo acerca a Fujimori (15,4% vs 13,8%). 
+    <strong style="color:var(--text)">Fujimori es 1.° en el Norte (DATUM: 11,6%) y Oriente (CPI: 11,2% · DATUM: 12,5%)</strong>. 
+    López Chau lidera Sierra Centro/Sur (CPI: 10,2%) y Centro (DATUM: 11,9%) — su único bastión. 
+    Acuña concentra fuerza en Oriente (10,5%) y Norte (8,4%) según DATUM.`;
+})();
+
+// ── RENDER URBANO/RURAL MARZO ─────────────────────────────────────────────────
+(function renderMarzoUrbano(){
+  const tb = document.getElementById('m-urbano-body');
+  if (!tb) return;
+
+  const candidates = [
+    { name:'R. López Aliaga', idx:0 },
+    { name:'K. Fujimori',     idx:1 },
+    { name:'A. López Chau',   idx:2 },
+    { name:'C. Acuña',        idx:3 },
+    { name:'C. Álvarez',      idx:4 },
+    { name:'W. Grozo ★',      idx:5 },
+  ];
+  const maxUrb = Math.max(...candidates.map(c => m_dat_urbano[0].vals[c.idx]));
+  const maxRur = Math.max(...candidates.map(c => m_dat_urbano[1].vals[c.idx]));
+
+  candidates.forEach(c => {
+    const u = m_dat_urbano[0].vals[c.idx];
+    const r = m_dat_urbano[1].vals[c.idx];
+    const diff = u - r;
+    const diffClr = diff > 0 ? '#4CAF50' : diff < 0 ? '#e74c3c' : '#888';
+    const alphaU = Math.min(u/maxUrb,1);
+    const alphaR = Math.min(r/maxRur,1);
+    const bgU = `rgba(231,76,60,${(alphaU*0.7).toFixed(2)})`;
+    const bgR = `rgba(231,76,60,${(alphaR*0.7).toFixed(2)})`;
+    const clrU = alphaU>0.55?'color:#fff;font-weight:700':'color:#ddd';
+    const clrR = alphaR>0.55?'color:#fff;font-weight:700':'color:#ddd';
+    tb.innerHTML += `<tr>
+      <td class="d-cand">${c.name}</td>
+      <td class="heat-cell" style="background:${bgU};${clrU}">${u.toFixed(1).replace('.',',')} %</td>
+      <td class="heat-cell" style="background:${bgR};${clrR}">${r.toFixed(1).replace('.',',')} %</td>
+      <td style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${diffClr};text-align:center">${diff>0?'+':''}${diff.toFixed(1)}</td>
+    </tr>`;
+  });
+  // Add B/I row
+  tb.innerHTML += `<tr style="border-top:1px solid #333">
+    <td class="d-cand" style="color:#888">Blanco/Indeciso</td>
+    <td style="color:#888;text-align:right;font-size:10px">${m_dat_urbano[0].nsnc.toFixed(1).replace('.',',')} %</td>
+    <td style="color:#888;text-align:right;font-size:10px">${m_dat_urbano[1].nsnc.toFixed(1).replace('.',',')} %</td>
+    <td style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#e74c3c;text-align:center">+${(m_dat_urbano[1].nsnc - m_dat_urbano[0].nsnc).toFixed(1)}</td>
+  </tr>`;
+
+  document.getElementById('m-urbano-insight').innerHTML =
+    `💡 <strong style="color:var(--text)">Aliaga: la mayor brecha urbano/rural</strong> — cae 8,0 pp al pasar de urbano a rural (11,4% → 3,4%), la diferencia más pronunciada. 
+    <strong style="color:var(--text)">Acuña (+2,6 pp) y Fujimori (−0,5 pp)</strong> son los candidatos con menor impacto del eje urbano/rural. 
+    La indecisión rural (49,5%) supera en 13,2 pp a la urbana (36,3%), lo que refleja menor penetración de los medios fuera de Lima.`;
+})();
+
+// ── SELECTOR INTERNO PANEL MARZO ─────────────────────────────────────────────
+function showMarzoBlock(name) {
+  ['genero','edad','region','urbano'].forEach(b => {
+    const block = document.getElementById('mblock-' + b);
+    const btn   = document.getElementById('mbtn-' + b);
+    if (block) block.style.display = (b === name) ? 'block' : 'none';
+    if (btn)   btn.classList.toggle('active', b === name);
   });
 }
 
