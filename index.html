@@ -1600,7 +1600,8 @@ const TOP5 = [
   { nombre: "López Chau",    short: "L. Chau",   color: "#3498db" },
   { nombre: "Vizcarra",      short: "Vizcarra",  color: "#f39c12" },
   { nombre: "Grozo ★emerg.", short: "Grozo",     color: "#e67e22", dashed: true },
-  { nombre: "Acuña ★emerg.",short: "Acuña",     color: "#16a085", dashed: true },
+  { nombre: "Acuña ★emerg.", short: "Acuña",     color: "#16a085", dashed: true },
+  { nombre: "R. Sánchez ↗",  short: "Sánchez",   color: "#c0392b", dashed: true, iepOnly: true },
 ];
 
 const mediaData = {
@@ -1684,6 +1685,7 @@ const encData = {
       [4.4,   4.0,  3.1],   // Vizcarra
       [null, null,  4.3],   // Grozo ★emerg.
       [1.4,   2.3,  2.7],   // Acuña ★emerg.
+      [0.6,   2.4,  3.7],   // R. Sánchez ↗ seguimiento especial
     ]
   },
   "IMASOLU": {
@@ -1977,17 +1979,20 @@ function attachTooltip(canvasId) {
     // Dibujar cursor sobre snapshot
     drawCursor(canvasId, closest);
 
-    // Tooltip HTML
+    // Tooltip HTML — ordenado de mayor a menor valor en ese punto
     const lbl = meta.labels[closest].replace('\n', ' · ');
     let html = `<div class="tt-date">${lbl}</div>`;
+    const rows = [];
     meta.candidates.forEach((cand, si) => {
       const v = meta.seriesData[si][closest];
-      if (v !== null && v !== undefined) {
-        html += `<div class="tt-row">
+      if (v !== null && v !== undefined) rows.push({ cand, v });
+    });
+    rows.sort((a, b) => b.v - a.v);
+    rows.forEach(({ cand, v }) => {
+      html += `<div class="tt-row">
           <span class="tt-name" style="color:${cand.color}">${cand.nombre}</span>
           <span class="tt-val"  style="color:${cand.color}">${v.toFixed(1).replace('.',',')} %</span>
         </div>`;
-      }
     });
     tt.innerHTML      = html;
     tt.style.display  = 'block';
@@ -2020,7 +2025,11 @@ function buildLegend(containerId, candidates) {
     const lineStyle = c.dashed
       ? `background: repeating-linear-gradient(90deg, ${c.color} 0px, ${c.color} 5px, transparent 5px, transparent 9px); border-radius:0;`
       : `background:${c.color};`;
-    const label = c.dashed ? `<em style="color:${c.color};font-style:normal;">★ ${c.nombre}</em>` : c.nombre;
+    const label = c.iepOnly
+      ? `<em style="color:${c.color};font-style:normal;">↗ ${c.nombre}</em>`
+      : c.dashed
+        ? `<em style="color:${c.color};font-style:normal;">★ ${c.nombre}</em>`
+        : c.nombre;
     return `
     <div class="legend-item">
       <div class="legend-line" style="${lineStyle}"></div>
@@ -2049,10 +2058,22 @@ function selectEnc(enc) {
 function renderEncChart() {
   const d = encData[activeEnc];
   if (!d) return;
-  // CPI, DATUM e IPSOS tienen datos de candidatos emergentes (Grozo, Acuña); el resto no
+  // CPI, DATUM, IPSOS e IEP tienen datos de candidatos emergentes (Grozo, Acuña)
   const encSupportsEmerg = (activeEnc === 'CPI' || activeEnc === 'DATUM' || activeEnc === 'IPSOS' || activeEnc === 'IEP');
-  const candidates = encSupportsEmerg ? TOP5 : TOP5.filter(c => !c.dashed);
-  const series = encSupportsEmerg ? d.series : d.series.slice(0, 5);
+  // Solo IEP tiene seguimiento especial de R. Sánchez
+  const isIEP = (activeEnc === 'IEP');
+
+  let candidates, series;
+  if (isIEP) {
+    candidates = TOP5;                    // todos, incluido Sánchez (iepOnly)
+    series = d.series;                    // las 8 series
+  } else if (encSupportsEmerg) {
+    candidates = TOP5.filter(c => !c.iepOnly);   // sin Sánchez
+    series = d.series.slice(0, 7);
+  } else {
+    candidates = TOP5.filter(c => !c.dashed && !c.iepOnly);  // solo los 5 base
+    series = d.series.slice(0, 5);
+  }
   buildLegend('legendEnc', candidates);
   drawLineChart('canvasEnc', d.labels, series, candidates);
   attachTooltip('canvasEnc');
@@ -2060,9 +2081,10 @@ function renderEncChart() {
 
 // ── Render inicial y resize ───────────────────────────────────────────────────
 function renderAll() {
-  buildLegend('legendMedia', TOP5);
+  const mediaCandsTop5 = TOP5.filter(c => !c.iepOnly);   // 7 candidatos — sin Sánchez (solo IEP)
+  buildLegend('legendMedia', mediaCandsTop5);
   buildEncSelector();
-  drawLineChart('canvasMedia', mediaData.labels, mediaData.series, TOP5);
+  drawLineChart('canvasMedia', mediaData.labels, mediaData.series, mediaCandsTop5);
   attachTooltip('canvasMedia');
   renderEncChart();
 }
@@ -2075,7 +2097,8 @@ let _resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(_resizeTimer);
   _resizeTimer = setTimeout(() => {
-    drawLineChart('canvasMedia', mediaData.labels, mediaData.series, TOP5);
+    const mediaCandsTop5 = TOP5.filter(c => !c.iepOnly);
+    drawLineChart('canvasMedia', mediaData.labels, mediaData.series, mediaCandsTop5);
     renderEncChart();
   }, 150);
 });
