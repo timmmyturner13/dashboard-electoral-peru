@@ -638,9 +638,9 @@
   </div>
   <h1>Encuestas<br>Presidenciales<br><span>Perú 2026</span></h1>
   <div class="hero-meta">
-    <div class="hero-meta-item">Período<strong>1 ene – 11 mar 2026</strong></div>
+    <div class="hero-meta-item">Período<strong>1 ene – 13 mar 2026</strong></div>
     <div class="hero-meta-item">Encuestadoras<strong>6 empresas con reg. JNE</strong></div>
-    <div class="hero-meta-item">Total encuestas<strong>18 mediciones</strong></div>
+    <div class="hero-meta-item">Total encuestas<strong>19 mediciones</strong></div>
     <div class="hero-meta-item">Primera vuelta<strong>12 de abril de 2026</strong></div>
     <div class="hero-meta-item">Balotaje<strong>7 de junio de 2026</strong></div>
   </div>
@@ -658,18 +658,18 @@
   <div class="stats-row">
     <div class="stat-card">
       <div class="stat-label">Candidato líder (media)</div>
-      <div class="stat-value">12,9%</div>
+      <div class="stat-value">12,8%</div>
       <div class="stat-sub">Rafael López Aliaga — Renovación Popular</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">2.° lugar (media)</div>
-      <div class="stat-value">8,4%</div>
+      <div class="stat-value">8,5%</div>
       <div class="stat-sub">Keiko Fujimori — Fuerza Popular</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">Indecisión / Blanco promedio</div>
-      <div class="stat-value">~39%</div>
-      <div class="stat-sub">Cayó 3 pp vs. febrero — electores van decidiendo</div>
+      <div class="stat-value">~37%</div>
+      <div class="stat-sub">Cayendo conforme se acerca el 12 de abril</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">Candidatos en competencia</div>
@@ -682,7 +682,7 @@
   <p class="section-title">Media de intención de voto por candidato</p>
   <div class="chart-section">
     <div class="chart-title">Promedio entre encuestas (enero – marzo 2026)</div>
-    <div class="chart-subtitle">Media simple — 18 encuestas · 6 encuestadoras con registro JNE · Última: IPSOS (5-6 mar, pub. 11 mar)</div>
+    <div class="chart-subtitle">Media simple — 19 encuestas · 6 encuestadoras con registro JNE · Última: IEP (~6-11 mar, pub. 13 mar)</div>
     <div class="bar-chart" id="mainChart"></div>
   </div>
 
@@ -1265,7 +1265,7 @@
 </main>
 
 <footer>
-  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 11 marzo 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
+  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 13 marzo 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
   <p>Elecciones Generales Perú · <strong>12 de abril de 2026</strong> (1.ª vuelta) · <strong>7 de junio de 2026</strong> (balotaje)</p>
 </footer>
 
@@ -1273,8 +1273,13 @@
 // ── DATOS ────────────────────────────────────────────────────────────────────
 const encuestas = [
   {
+    enc: "IEP", badge: "badge-iep", reg: "000485-REE/JNE",
+    medio: "La República", campo: "~06-11/03/2026 ★NUEVA", muestra: "1.201",
+    lopez: 11.7, fujimori: 9.4, alvarez: 3.9, acuna: 2.7, vizcarra: 3.1, lopezchau: 6.8, nsnc: "35,2 %"
+  },
+  {
     enc: "IPSOS Perú", badge: "badge-ipsos", reg: "001-REE/JNE",
-    medio: "Perú 21", campo: "05-06/03/2026 ★NUEVA", muestra: "1.202",
+    medio: "Perú 21", campo: "05-06/03/2026", muestra: "1.202",
     lopez: 11.0, fujimori: 10.0, alvarez: 6.0, acuna: 4.0, vizcarra: 3.0, lopezchau: 4.0, nsnc: "32,0 %"
   },
   {
@@ -1367,30 +1372,32 @@ const encuestas = [
 const candidatos = [
   {
     nombre: "Rafael López Aliaga", partido: "Renovación Popular",
-    avg: 12.9, leader: true,
+    avg: 12.8, leader: true,
     bars: [
       { label: "CIT (16 feb)", val: 15.3 },
-      { label: "IEP (23 feb)", val: 14.6 },
       { label: "IEP (ene)", val: 14.7 },
+      { label: "IEP (23 feb)", val: 14.6 },
       { label: "CPI (29 ene)", val: 14.6 },
       { label: "CIT (20-24 feb)", val: 14.0 },
       { label: "CPI (14-18 feb)", val: 13.9 },
       { label: "DATUM (13-17 feb)", val: 13.4 },
       { label: "CPI (28f-5mar)", val: 12.7 },
       { label: "IPSOS (5 feb)", val: 12.0 },
-      { label: "IPSOS (5-6 mar)★", val: 11.0 },
-      { label: "IPSOS (19-20 feb)", val: 10.0 },
+      { label: "IEP (~6-11 mar)★", val: 11.7 },
+      { label: "IPSOS (5-6 mar)", val: 11.0 },
       { label: "DATUM (27f-4mar)", val: 10.0 },
+      { label: "IPSOS (19-20 feb)", val: 10.0 },
     ]
   },
   {
     nombre: "Keiko Fujimori", partido: "Fuerza Popular",
-    avg: 8.4, leader: false,
+    avg: 8.5, leader: false,
     bars: [
       { label: "DATUM (27f-4mar)", val: 10.7 },
-      { label: "IPSOS (5-6 mar)★", val: 10.0 },
       { label: "IEP (23 feb)", val: 10.3 },
+      { label: "IPSOS (5-6 mar)", val: 10.0 },
       { label: "DATUM (13-17 feb)", val: 9.7 },
+      { label: "IEP (~6-11 mar)★", val: 9.4 },
       { label: "IPSOS (19-20 feb)", val: 9.0 },
       { label: "CIT ene", val: 9.3 },
       { label: "DATUM (30 ene)", val: 9.2 },
@@ -1402,43 +1409,27 @@ const candidatos = [
   },
   {
     nombre: "Alfonso López Chau", partido: "Ahora Nación",
-    avg: 4.7, leader: false,
+    avg: 4.8, leader: false,
     bars: [
+      { label: "IEP (~6-11 mar)★", val: 6.8 },
+      { label: "CIT (16 feb)", val: 6.0 },
       { label: "CPI (28f-5mar)", val: 5.6 },
       { label: "DATUM (27f-4mar)", val: 5.5 },
-      { label: "CIT (16 feb)", val: 6.0 },
-      { label: "IEP (23 feb)", val: 5.3 },
       { label: "DATUM (13-17 feb)", val: 5.7 },
+      { label: "IEP (23 feb)", val: 5.3 },
       { label: "CPI (14-18 feb)", val: 5.1 },
       { label: "CIT (20-24 feb)", val: 5.1 },
-      { label: "IPSOS (5-6 mar)★", val: 4.0 },
+      { label: "IPSOS (5-6 mar)", val: 4.0 },
       { label: "IPSOS (5 feb)", val: 4.0 },
       { label: "IPSOS (19-20 feb)", val: 4.0 },
       { label: "DATUM (30 ene)", val: 3.8 },
-    ]
-  },
-  {
-    nombre: "César Acuña", partido: "Alianza p/ el Progreso",
-    avg: 4.3, leader: false,
-    bars: [
-      { label: "DATUM (27f-4mar)", val: 5.2 },
-      { label: "CIT (20-24 feb)", val: 6.4 },
-      { label: "CIT (16 feb)", val: 6.1 },
-      { label: "IMASOLU", val: 4.5 },
-      { label: "CPI (14-18 feb)", val: 4.4 },
-      { label: "IPSOS (5-6 mar)★", val: 4.0 },
-      { label: "IPSOS (5 feb)", val: 4.0 },
-      { label: "IPSOS (19-20 feb)", val: 4.0 },
-      { label: "DATUM (30 ene)", val: 3.8 },
-      { label: "CPI (28f-5mar)", val: 3.4 },
-      { label: "IEP (23 feb)", val: 2.3 },
     ]
   },
   {
     nombre: "Carlos Álvarez", partido: "País para Todos",
-    avg: 5.0, leader: false,
+    avg: 4.9, leader: false,
     bars: [
-      { label: "IPSOS (5-6 mar)★", val: 6.0 },
+      { label: "IPSOS (5-6 mar)", val: 6.0 },
       { label: "DATUM (13-17 feb)", val: 6.0 },
       { label: "CIT (20-24 feb)", val: 6.1 },
       { label: "DATUM (30 ene)", val: 5.8 },
@@ -1449,6 +1440,35 @@ const candidatos = [
       { label: "IEP (23 feb)", val: 4.9 },
       { label: "IPSOS (5 feb)", val: 4.0 },
       { label: "IPSOS (19-20 feb)", val: 3.0 },
+      { label: "IEP (~6-11 mar)★", val: 3.9 },
+    ]
+  },
+  {
+    nombre: "Wolfgang Grozo ★", partido: "Integridad Democrática",
+    avg: 4.3, leader: false, emergente: true,
+    bars: [
+      { label: "CPI (28f-5mar)", val: 4.8 },
+      { label: "IEP (~6-11 mar)★", val: 4.3 },
+      { label: "DATUM (27f-4mar)", val: 4.2 },
+      { label: "IPSOS (5-6 mar)", val: 4.0 },
+    ]
+  },
+  {
+    nombre: "César Acuña", partido: "Alianza p/ el Progreso",
+    avg: 4.2, leader: false,
+    bars: [
+      { label: "CIT (20-24 feb)", val: 6.4 },
+      { label: "CIT (16 feb)", val: 6.1 },
+      { label: "DATUM (27f-4mar)", val: 5.2 },
+      { label: "IMASOLU", val: 4.5 },
+      { label: "CPI (14-18 feb)", val: 4.4 },
+      { label: "IPSOS (5-6 mar)", val: 4.0 },
+      { label: "IPSOS (5 feb)", val: 4.0 },
+      { label: "IPSOS (19-20 feb)", val: 4.0 },
+      { label: "DATUM (30 ene)", val: 3.8 },
+      { label: "CPI (28f-5mar)", val: 3.4 },
+      { label: "IEP (23 feb)", val: 2.3 },
+      { label: "IEP (~6-11 mar)★", val: 2.7 },
     ]
   },
   {
@@ -1461,20 +1481,12 @@ const candidatos = [
       { label: "IEP (23 feb)", val: 4.0 },
       { label: "IPSOS (5 feb)", val: 4.0 },
       { label: "DATUM (30 ene)", val: 3.6 },
-      { label: "IPSOS (5-6 mar)★", val: 3.0 },
       { label: "CIT (20-24 feb)", val: 3.2 },
+      { label: "IEP (~6-11 mar)★", val: 3.1 },
+      { label: "IPSOS (5-6 mar)", val: 3.0 },
       { label: "CPI (28f-5mar)", val: 2.5 },
       { label: "DATUM (27f-4mar)", val: 2.3 },
       { label: "IPSOS (19-20 feb)", val: 2.0 },
-    ]
-  },
-  {
-    nombre: "Wolfgang Grozo ★", partido: "Integridad Democrática",
-    avg: 4.3, leader: false, emergente: true,
-    bars: [
-      { label: "CPI (28f-5mar)", val: 4.8 },
-      { label: "DATUM (27f-4mar)", val: 4.2 },
-      { label: "IPSOS (5-6 mar)★", val: 4.0 },
     ]
   },
 ];
@@ -1489,17 +1501,17 @@ const candidatos = [
 
 // ── GRÁFICO PRINCIPAL ─────────────────────────────────────────────────────────
 const allCands = [
-  { name: "R. López Aliaga",  party: "Renovación Popular",   avg: 12.9, color: "#c0392b" },
-  { name: "Keiko Fujimori",   party: "Fuerza Popular",       avg: 8.4,  color: "#6B2FAF" },
-  { name: "Carlos Álvarez",   party: "País para Todos",      avg: 5.0,  color: "#1A6B3A" },
-  { name: "A. López Chau",    party: "Ahora Nación",         avg: 4.7,  color: "#1A5CAF" },
-  { name: "César Acuña",      party: "APP",                  avg: 4.3,  color: "#8C5A1A" },
+  { name: "R. López Aliaga",  party: "Renovación Popular",   avg: 12.8, color: "#c0392b" },
+  { name: "Keiko Fujimori",   party: "Fuerza Popular",       avg: 8.5,  color: "#6B2FAF" },
+  { name: "Carlos Álvarez",   party: "País para Todos",      avg: 4.9,  color: "#1A6B3A" },
+  { name: "A. López Chau",    party: "Ahora Nación",         avg: 4.8,  color: "#1A5CAF" },
   { name: "W. Grozo",         party: "Integridad Democrática", avg: 4.3, color: "#e67e22" },
+  { name: "César Acuña",      party: "APP",                  avg: 4.2,  color: "#8C5A1A" },
   { name: "Mario Vizcarra",   party: "Perú Primero",         avg: 3.3,  color: "#1A8C6B" },
   { name: "Yonhy Lescano",    party: "Cooperación Popular",  avg: 3.1,  color: "#5A8C1A" },
+  { name: "Roberto Sánchez",  party: "Juntos p/ el Perú",    avg: 2.5,  color: "#8C1A5A" },
   { name: "José Williams",    party: "Avanza País",          avg: 2.5,  color: "#C08000" },
-  { name: "Roberto Sánchez",  party: "Juntos p/ el Perú",    avg: 2.1,  color: "#8C1A5A" },
-  { name: "George Forsyth",   party: "Somos Perú",           avg: 2.1,  color: "#8C1A8C" },
+  { name: "George Forsyth",   party: "Somos Perú",           avg: 2.2,  color: "#8C1A8C" },
   { name: "Ricardo Belmont",  party: "Obras",                avg: 2.0,  color: "#1A5A8C" },
   { name: "E. Valderrama",    party: "APRA",                 avg: 2.0,  color: "#A00000" },
 ];
@@ -1592,25 +1604,26 @@ const TOP5 = [
 ];
 
 const mediaData = {
-  // Cada punto es la MEDIA de todas las encuestadoras que midieron en ese período
-  // Período 1: 1ª quinc. enero  (IPSOS 7-8e + CPI 2-16e + DATUM 2-18e + CIT 16-20e)
-  // Período 2: 2ª quinc. enero  (IEP ene)
-  // Período 3: Fin ene / Ini feb (CPI 29e + IMASOLU 28-31e + DATUM 30e-3f)
-  // Período 4: 1ª quinc. febrero (IPSOS 5-6f + CIT 16f + CPI 14-18f + DATUM 13-17f)
-  // Período 5: 2ª quinc. feb / ini mar (IEP 23f + IPSOS 19-20f + CIT 20-24f + CPI 28f-5mar + DATUM 27f-4mar)
+  // Período 1: 1ª quinc. enero  (IPSOS 7-8e + CPI 2-16e + DATUM 2-18e + CIT 16-20e, n=4)
+  // Período 2: 2ª quinc. enero  (IEP ene, n=1)
+  // Período 3: Fin ene / Ini feb (CPI 29e + IMASOLU 28-31e + DATUM 30e-3f, n=3)
+  // Período 4: 1ª quinc. feb   (IPSOS 5-6f + CIT 16f + CPI 14-18f + DATUM 13-17f, n=4)
+  // Período 5: 2ª quinc. feb/ini mar (IEP 23f + IPSOS 19-20f + CIT 20-24f + CPI 28f-5mar + DATUM 27f-4mar, n=5)
+  // Período 6: IPSOS 5-6 mar (n=1) — 1.er simulacro nacional
+  // Período 7: IEP ~6-11 mar (n=1) — pub. 13 mar
   labels: [
     "1ª quinc.\nEnero\n(n=4)", "2ª quinc.\nEnero\n(n=1)",
     "Fin ene /\nIni feb\n(n=3)", "1ª quinc.\nFebrero\n(n=4)",
-    "2ª quinc.\nFeb /\nIni mar\n(n=5)"
+    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "IPSOS\n★Simulacro\n(n=1)", "IEP\nMar\n(n=1)"
   ],
   series: [
-    [12.6, 14.7, 13.4, 13.7, 12.0],
-    [7.9,  8.1,  8.2,  8.2,  9.1],
-    [null, 4.0,  5.6,  4.8,  5.0],
-    [null, 4.0,  3.9,  5.2,  4.9],
-    [4.4,  4.4,  3.8,  3.0,  2.8],
-    [null, null, null, null, 4.3],   // Grozo: promedio p5 (CPI 4,8 + DATUM 4,2 + IPSOS 4,0) ★emergente
-    [null, null, 4.2,  4.4,  4.2],   // Acuña: aparece desde período 3 ★emergente
+    [12.6, 14.7, 13.4, 13.7, 12.0, 11.0, 11.7],   // Aliaga
+    [7.9,  8.1,  8.2,  8.2,  9.1,  10.0,  9.4],   // Fujimori
+    [null, 4.0,  5.6,  4.8,  5.0,   6.0,  3.9],   // Álvarez
+    [null, 4.0,  3.9,  5.2,  4.9,   4.0,  6.8],   // López Chau
+    [4.4,  4.4,  3.8,  3.0,  2.8,   3.0,  3.1],   // Vizcarra
+    [null, null, null, null, 4.3,   4.0,  4.3],   // Grozo ★emerg.
+    [null, null, 4.2,  4.4,  4.2,   4.0,  2.7],   // Acuña ★emerg.
   ]
 };
 
@@ -1662,13 +1675,15 @@ const encData = {
     ]
   },
   "IEP": {
-    labels: ["ene 2026", "23 feb 2026"],
+    labels: ["ene 2026", "23 feb 2026", "~6-11 mar"],
     series: [
-      [14.7, 14.6],
-      [8.1,  10.3],
-      [4.0,  4.9],
-      [4.0,  5.3],
-      [4.4,  4.0],
+      [14.7, 14.6, 11.7],   // Aliaga
+      [8.1,  10.3,  9.4],   // Fujimori
+      [4.0,   4.9,  3.9],   // Álvarez
+      [4.0,   5.3,  6.8],   // López Chau
+      [4.4,   4.0,  3.1],   // Vizcarra
+      [null, null,  4.3],   // Grozo ★emerg.
+      [1.4,   2.3,  2.7],   // Acuña ★emerg.
     ]
   },
   "IMASOLU": {
@@ -2035,7 +2050,7 @@ function renderEncChart() {
   const d = encData[activeEnc];
   if (!d) return;
   // CPI, DATUM e IPSOS tienen datos de candidatos emergentes (Grozo, Acuña); el resto no
-  const encSupportsEmerg = (activeEnc === 'CPI' || activeEnc === 'DATUM' || activeEnc === 'IPSOS');
+  const encSupportsEmerg = (activeEnc === 'CPI' || activeEnc === 'DATUM' || activeEnc === 'IPSOS' || activeEnc === 'IEP');
   const candidates = encSupportsEmerg ? TOP5 : TOP5.filter(c => !c.dashed);
   const series = encSupportsEmerg ? d.series : d.series.slice(0, 5);
   buildLegend('legendEnc', candidates);
