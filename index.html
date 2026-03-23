@@ -638,9 +638,9 @@
   </div>
   <h1>Encuestas<br>Presidenciales<br><span>Perú 2026</span></h1>
   <div class="hero-meta">
-    <div class="hero-meta-item">Período<strong>1 ene – 15 mar 2026</strong></div>
+    <div class="hero-meta-item">Período<strong>1 ene – 22 mar 2026</strong></div>
     <div class="hero-meta-item">Encuestadoras<strong>6 empresas con reg. JNE</strong></div>
-    <div class="hero-meta-item">Total encuestas<strong>20 mediciones</strong></div>
+    <div class="hero-meta-item">Total encuestas<strong>21 mediciones</strong></div>
     <div class="hero-meta-item">Primera vuelta<strong>12 de abril de 2026</strong></div>
     <div class="hero-meta-item">Balotaje<strong>7 de junio de 2026</strong></div>
   </div>
@@ -658,12 +658,12 @@
   <div class="stats-row">
     <div class="stat-card">
       <div class="stat-label">Candidato líder (media)</div>
-      <div class="stat-value">12,7%</div>
+      <div class="stat-value">12,6%</div>
       <div class="stat-sub">Rafael López Aliaga — Renovación Popular</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">2.° lugar (media)</div>
-      <div class="stat-value">8,6%</div>
+      <div class="stat-value">8,8%</div>
       <div class="stat-sub">Keiko Fujimori — Fuerza Popular</div>
     </div>
     <div class="stat-card">
@@ -682,7 +682,7 @@
   <p class="section-title">Media de intención de voto por candidato</p>
   <div class="chart-section">
     <div class="chart-title">Promedio entre encuestas (enero – marzo 2026)</div>
-    <div class="chart-subtitle">Media simple — 20 encuestas · 6 encuestadoras con registro JNE · Última: DATUM (6-10 mar, pub. 15 mar)</div>
+    <div class="chart-subtitle">Media simple — 21 encuestas · 6 encuestadoras con registro JNE · Última: DATUM (13-17 mar, pub. 22 mar)</div>
     <div class="bar-chart" id="mainChart"></div>
   </div>
 
@@ -720,9 +720,20 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════════════
+       MEDIA DE SIMULACROS DE VOTACIÓN
+  ════════════════════════════════════════════════════════════════════ -->
+  <p class="section-title">Evolución de simulacros — Media de votos válidos (principales candidatos)</p>
+  <div class="chart-section">
+    <div class="chart-title">Tendencia de votos válidos — Media entre simulacros nacionales</div>
+    <div class="chart-subtitle">Votos válidos excluyen blancos y viciados · Fuentes: IPSOS (5-6 mar, pub. 11 mar) · CIT (6-9 mar, pub. 15 mar) · Hover para detalle</div>
+    <div class="legend-row" id="legendSimMedia"></div>
+    <canvas id="canvasSimMedia" class="evo-canvas" height="320"></canvas>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
        SIMULACROS DE VOTACIÓN
   ════════════════════════════════════════════════════════════════════ -->
-  <p class="section-title">Simulacros de votación — Ipsos para Perú 21</p>
+  <p class="section-title">Simulacros de votación — IPSOS (Perú 21) · CIT (Panorama/Panamericana)</p>
   <div class="chart-section" id="simulacros-section">
     <div class="chart-title">Comparativo: Intención de voto vs. Simulacro nacional</div>
     <div class="chart-subtitle">Metodología: réplica de cédula electoral con foto y símbolo de partido · ánfora anónima · votos válidos excluyen blancos/viciados</div>
@@ -730,6 +741,7 @@
     <!-- Tabs de medición -->
     <div style="display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:0">
       <div class="enc-btn active" id="stab-ipsos-mar" onclick="showSimTab('ipsos-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">IPSOS · 5–6 mar 2026</div>
+      <div class="enc-btn" id="stab-cit-mar" onclick="showSimTab('cit-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">CIT · 6–9 mar 2026</div>
     </div>
 
     <!-- Panel IPSOS Mar 2026 -->
@@ -784,6 +796,51 @@
           posiblemente por mejor reconocimiento de símbolo. Acuña también mejora (4% → <strong style="color:#16a085">8,1%</strong>).
           Grozo, en cambio, pierde terreno en el simulacro (4% → <strong style="color:#e67e22">5,1%</strong>), reflejando menor familiaridad de los electores con el símbolo de Integridad Democrática.
           Los blancos/viciados bajan del 20% (encuesta) al 34,8% en votos emitidos — concentrando la dispersión del voto.
+        </p>
+      </div>
+    </div>
+
+    <!-- Panel CIT Mar 2026 -->
+    <div id="spanel-cit-mar" style="display:none;padding-top:24px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center">
+        <span class="enc-badge badge-cit" style="padding:3px 10px">CIT Opinión & Mercado · pub. 15 mar 2026</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--oro);padding:3px 10px;border:1px solid var(--oro);border-radius:3px">00404-REE/JNE</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">n=1.220 · ±2,8% · 95%</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">Panorama / Panamericana TV</span>
+      </div>
+
+      <div style="margin-bottom:20px;padding:14px 18px;background:rgba(200,153,30,0.06);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.8;margin:0">
+          Primer simulacro de CIT con cédula electoral. No se dispone de encuesta de intención propia de CIT para las mismas fechas, por lo que la columna "Encuesta" muestra <strong style="color:var(--text)">—</strong>.
+          Los <strong style="color:var(--text)">Votos Válidos</strong> excluyen blancos y viciados (24,5% en votos emitidos).
+          ⚠️ El CEO de CIT precisó que el estudio se realizó <strong style="color:var(--text)">antes</strong> de conocerse las reuniones entre Grozo y Zamir Villaverde.
+        </p>
+      </div>
+
+      <div class="table-wrap" style="margin-bottom:20px">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width:180px">Candidato / Partido</th>
+              <th style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:10px">Encuesta<br>Mar 2026 (%)</th>
+              <th style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:10px">Simulacro<br>Votos Emitidos (%)</th>
+              <th style="text-align:center;color:var(--oro);border-bottom:2px solid var(--oro);font-size:10px">Simulacro<br>Votos Válidos (%)</th>
+              <th style="text-align:center;color:#a0a0a0;font-size:10px">Nota</th>
+            </tr>
+          </thead>
+          <tbody id="simulacro-body-cit"></tbody>
+        </table>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:14px">Comparativo visual — Votos Emitidos vs. Votos Válidos (CIT)</div>
+      <div id="simulacro-bars-cit" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px"></div>
+
+      <div style="padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Hallazgos clave CIT:</strong>
+          López Aliaga lidera con amplitud: <strong style="color:#e74c3c">21,4% de votos válidos</strong> (+5,3 pp vs. emitidos).
+          Novedad: <strong style="color:#16a085">Acuña sube al 3.°</strong> en simulacro (9,3%), superando a López Chau (9,1%) — el símbolo de APP está bien posicionado entre el electorado.
+          Grozo obtiene 6,0% de votos válidos pese al menor reconocimiento de su símbolo. Blanco/Viciado muy elevado: <strong style="color:#888">24,5% de votos emitidos</strong>.
         </p>
       </div>
     </div>
@@ -1265,7 +1322,7 @@
 </main>
 
 <footer>
-  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 15 marzo 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
+  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 22 marzo 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
   <p>Elecciones Generales Perú · <strong>12 de abril de 2026</strong> (1.ª vuelta) · <strong>7 de junio de 2026</strong> (balotaje)</p>
 </footer>
 
@@ -1274,7 +1331,12 @@
 const encuestas = [
   {
     enc: "DATUM Internacional", badge: "badge-datum", reg: "002-REE/JNE",
-    medio: "América TV / Cuarto Poder", campo: "06-10/03/2026 ★NUEVA", muestra: "1.502",
+    medio: "El Comercio", campo: "13-17/03/2026 ★NUEVA", muestra: "1.500",
+    lopez: 11.7, fujimori: 11.9, alvarez: 5.0, acuna: 3.6, vizcarra: 1.2, lopezchau: 6.5, nsnc: "35,8 %"
+  },
+  {
+    enc: "DATUM Internacional", badge: "badge-datum", reg: "002-REE/JNE",
+    medio: "América TV / Cuarto Poder", campo: "06-10/03/2026", muestra: "1.502",
     lopez: 11.4, fujimori: 10.9, alvarez: 4.0, acuna: 3.8, vizcarra: 1.7, lopezchau: 6.5, nsnc: "36,7 %"
   },
   {
@@ -1377,7 +1439,7 @@ const encuestas = [
 const candidatos = [
   {
     nombre: "Rafael López Aliaga", partido: "Renovación Popular",
-    avg: 12.7, leader: true,
+    avg: 12.6, leader: true,
     bars: [
       { label: "CIT (16 feb)", val: 15.3 },
       { label: "IEP (ene)", val: 14.7 },
@@ -1399,7 +1461,8 @@ const candidatos = [
     nombre: "Keiko Fujimori", partido: "Fuerza Popular",
     avg: 8.6, leader: false,
     bars: [
-      { label: "DATUM (6-10 mar)★", val: 10.9 },
+      { label: "DATUM (13-17 mar)★", val: 11.9 },
+      { label: "DATUM (6-10 mar)", val: 10.9 },
       { label: "DATUM (27f-4mar)", val: 10.7 },
       { label: "IEP (23 feb)", val: 10.3 },
       { label: "IPSOS (5-6 mar)", val: 10.0 },
@@ -1418,8 +1481,9 @@ const candidatos = [
     nombre: "Alfonso López Chau", partido: "Ahora Nación",
     avg: 4.9, leader: false,
     bars: [
+      { label: "DATUM (13-17 mar)★", val: 6.5 },
       { label: "IEP (~6-11 mar)", val: 6.8 },
-      { label: "DATUM (6-10 mar)★", val: 6.5 },
+      { label: "DATUM (6-10 mar)", val: 6.5 },
       { label: "CIT (16 feb)", val: 6.0 },
       { label: "CPI (28f-5mar)", val: 5.6 },
       { label: "DATUM (27f-4mar)", val: 5.5 },
@@ -1446,7 +1510,8 @@ const candidatos = [
       { label: "DATUM (27f-4mar)", val: 5.0 },
       { label: "CIT (16 feb)", val: 5.0 },
       { label: "IEP (23 feb)", val: 4.9 },
-      { label: "DATUM (6-10 mar)★", val: 4.0 },
+      { label: "DATUM (13-17 mar)★", val: 5.0 },
+      { label: "DATUM (6-10 mar)", val: 4.0 },
       { label: "IPSOS (5 feb)", val: 4.0 },
       { label: "IEP (~6-11 mar)", val: 3.9 },
       { label: "IPSOS (19-20 feb)", val: 3.0 },
@@ -1454,10 +1519,11 @@ const candidatos = [
   },
   {
     nombre: "Wolfgang Grozo ★", partido: "Integridad Democrática",
-    avg: 4.5, leader: false, emergente: true,
+    avg: 4.2, leader: false, emergente: true,
     bars: [
-      { label: "DATUM (6-10 mar)★", val: 5.1 },
+      { label: "DATUM (6-10 mar)", val: 5.1 },
       { label: "CPI (28f-5mar)", val: 4.8 },
+      { label: "DATUM (13-17 mar)★", val: 2.5 },
       { label: "IEP (~6-11 mar)", val: 4.3 },
       { label: "DATUM (27f-4mar)", val: 4.2 },
       { label: "IPSOS (5-6 mar)", val: 4.0 },
@@ -1465,7 +1531,7 @@ const candidatos = [
   },
   {
     nombre: "César Acuña", partido: "Alianza p/ el Progreso",
-    avg: 4.2, leader: false,
+    avg: 4.1, leader: false,
     bars: [
       { label: "CIT (20-24 feb)", val: 6.4 },
       { label: "CIT (16 feb)", val: 6.1 },
@@ -1475,7 +1541,8 @@ const candidatos = [
       { label: "IPSOS (5-6 mar)", val: 4.0 },
       { label: "IPSOS (5 feb)", val: 4.0 },
       { label: "IPSOS (19-20 feb)", val: 4.0 },
-      { label: "DATUM (6-10 mar)★", val: 3.8 },
+      { label: "DATUM (13-17 mar)★", val: 3.6 },
+      { label: "DATUM (6-10 mar)", val: 3.8 },
       { label: "DATUM (30 ene)", val: 3.8 },
       { label: "CPI (28f-5mar)", val: 3.4 },
       { label: "IEP (~6-11 mar)", val: 2.7 },
@@ -1498,7 +1565,8 @@ const candidatos = [
       { label: "CPI (28f-5mar)", val: 2.5 },
       { label: "DATUM (27f-4mar)", val: 2.3 },
       { label: "IPSOS (19-20 feb)", val: 2.0 },
-      { label: "DATUM (6-10 mar)★", val: 1.7 },
+      { label: "DATUM (6-10 mar)", val: 1.7 },
+      { label: "DATUM (13-17 mar)★", val: 1.2 },
     ]
   },
 ];
@@ -1513,13 +1581,14 @@ const candidatos = [
 
 // ── GRÁFICO PRINCIPAL ─────────────────────────────────────────────────────────
 const allCands = [
-  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 12.7, color: "#c0392b" },
-  { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 8.6,  color: "#6B2FAF" },
+  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 12.6, color: "#c0392b" },
+  { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 8.8,  color: "#6B2FAF" },
   { name: "Carlos Álvarez",   party: "País para Todos",        avg: 4.8,  color: "#1A6B3A" },
-  { name: "A. López Chau",    party: "Ahora Nación",           avg: 4.9,  color: "#1A5CAF" },
-  { name: "W. Grozo",         party: "Integridad Democrática", avg: 4.5,  color: "#e67e22" },
-  { name: "César Acuña",      party: "APP",                    avg: 4.2,  color: "#8C5A1A" },
-  { name: "Mario Vizcarra",   party: "Perú Primero",           avg: 3.2,  color: "#1A8C6B" },
+  { name: "A. López Chau",    party: "Ahora Nación",           avg: 5.0,  color: "#1A5CAF" },
+  { name: "W. Grozo",         party: "Integridad Democrática", avg: 4.2,  color: "#e67e22" },
+  { name: "César Acuña",      party: "APP",                    avg: 4.1,  color: "#8C5A1A" },
+  { name: "Mario Vizcarra",   party: "Perú Primero",           avg: 3.1,  color: "#1A8C6B" },
+  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 3.6,  color: "#8C5A8C" },
   { name: "Yonhy Lescano",    party: "Cooperación Popular",    avg: 3.1,  color: "#5A8C1A" },
   { name: "Roberto Sánchez",  party: "Juntos p/ el Perú",      avg: 2.5,  color: "#8C1A5A" },
   { name: "José Williams",    party: "Avanza País",            avg: 2.5,  color: "#C08000" },
@@ -1613,6 +1682,7 @@ const TOP5 = [
   { nombre: "Vizcarra",      short: "Vizcarra",  color: "#f39c12" },
   { nombre: "Grozo ★emerg.", short: "Grozo",     color: "#e67e22", dashed: true },
   { nombre: "Acuña ★emerg.", short: "Acuña",     color: "#16a085", dashed: true },
+  { nombre: "Nieto ★emerg.", short: "Nieto",     color: "#8C5A8C", dashed: true },
   { nombre: "R. Sánchez ↗",  short: "Sánchez",   color: "#c0392b", dashed: true, iepOnly: true },
 ];
 
@@ -1623,19 +1693,21 @@ const mediaData = {
   // Período 4: 1ª quinc. feb   (IPSOS 5-6f + CIT 16f + CPI 14-18f + DATUM 13-17f, n=4)
   // Período 5: 2ª quinc. feb/ini mar (IEP 23f + IPSOS 19-20f + CIT 20-24f + CPI 28f-5mar + DATUM 27f-4mar, n=5)
   // Período 6: 1ª quinc. marzo (IPSOS 5-6mar + IEP ~6-11mar + DATUM 6-10mar, n=3)
+  // Período 7: 2ª quinc. marzo (DATUM 13-17mar, n=1)
   labels: [
     "1ª quinc.\nEnero\n(n=4)", "2ª quinc.\nEnero\n(n=1)",
     "Fin ene /\nIni feb\n(n=3)", "1ª quinc.\nFebrero\n(n=4)",
-    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)"
+    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc.\nMarzo\n(n=1)"
   ],
   series: [
-    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4],   // Aliaga:    (11.0+11.7+11.4)/3
-    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1],   // Fujimori:  (10.0+9.4+10.9)/3
-    [null, 4.0,  5.6,  4.8,  5.0,   4.6],   // Álvarez:   (6.0+3.9+4.0)/3
-    [null, 4.0,  3.9,  5.2,  4.9,   5.8],   // López Chau:(4.0+6.8+6.5)/3
-    [4.4,  4.4,  3.8,  3.0,  2.8,   2.6],   // Vizcarra:  (3.0+3.1+1.7)/3
-    [null, null, null, null, 4.3,   4.5],   // Grozo ★emerg.: (4.0+4.3+5.1)/3
-    [null, null, 4.2,  4.4,  4.2,   3.5],   // Acuña ★emerg.: (4.0+2.7+3.8)/3
+    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4, 11.7],   // Aliaga
+    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 11.9],   // Fujimori
+    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  5.0],   // Álvarez
+    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  6.5],   // López Chau
+    [4.4,  4.4,  3.8,  3.0,  2.8,   2.6,  1.2],   // Vizcarra
+    [null, null, null, null, 4.3,   4.5,  2.5],   // Grozo ★emerg.
+    [null, null, 4.2,  4.4,  4.2,   3.5,  3.6],   // Acuña ★emerg.
+    [null, null, null, null, null,  null, 4.6],   // Nieto ★emerg. (debut DATUM 13-17 mar)
   ]
 };
 
@@ -1665,15 +1737,16 @@ const encData = {
     ]
   },
   "DATUM": {
-    labels: ["02-18 ene", "30ene-3feb", "13-17 feb", "27feb-4mar", "6-10 mar"],
+    labels: ["02-18 ene", "30ene-3feb", "13-17 feb", "27feb-4mar", "6-10 mar", "13-17 mar"],
     series: [
-      [11.7, 11.9, 13.4, 10.0, 11.4],   // Aliaga
-      [8.0,  9.2,  9.7, 10.7, 10.9],   // Fujimori
-      [null, 5.8,  6.0,  5.0,  4.0],   // Álvarez
-      [null, 3.8,  5.7,  5.5,  6.5],   // López Chau
-      [null, 3.6,  2.6,  2.3,  1.7],   // Vizcarra
-      [null, null, null, 4.2,  5.1],   // Grozo ★emerg.
-      [null, 3.8,  3.0,  5.2,  3.8],   // Acuña ★emerg.
+      [11.7, 11.9, 13.4, 10.0, 11.4, 11.7],   // Aliaga
+      [8.0,  9.2,  9.7, 10.7, 10.9, 11.9],   // Fujimori
+      [null, 5.8,  6.0,  5.0,  4.0,  5.0],   // Álvarez
+      [null, 3.8,  5.7,  5.5,  6.5,  6.5],   // López Chau
+      [null, 3.6,  2.6,  2.3,  1.7,  1.2],   // Vizcarra
+      [null, null, null, 4.2,  5.1,  2.5],   // Grozo ★emerg.
+      [null, 3.8,  3.0,  5.2,  3.8,  3.6],   // Acuña ★emerg.
+      [null, null, null, null, 2.5,  4.6],   // Nieto ★emerg.
     ]
   },
   "CIT": {
@@ -2069,20 +2142,25 @@ function selectEnc(enc) {
 function renderEncChart() {
   const d = encData[activeEnc];
   if (!d) return;
-  // CPI, DATUM, IPSOS e IEP tienen datos de candidatos emergentes (Grozo, Acuña)
+  // Encuestadoras con emergentes básicos (Grozo, Acuña)
   const encSupportsEmerg = (activeEnc === 'CPI' || activeEnc === 'DATUM' || activeEnc === 'IPSOS' || activeEnc === 'IEP');
-  // Solo IEP tiene seguimiento especial de R. Sánchez
+  // Solo IEP tiene seguimiento de R. Sánchez
   const isIEP = (activeEnc === 'IEP');
+  // Solo DATUM tiene seguimiento de Nieto
+  const isDATUM = (activeEnc === 'DATUM');
 
   let candidates, series;
   if (isIEP) {
-    candidates = TOP5;                    // todos, incluido Sánchez (iepOnly)
-    series = d.series;                    // las 8 series
+    candidates = TOP5;                                             // 9 series (inc. Sánchez)
+    series = d.series;
+  } else if (isDATUM) {
+    candidates = TOP5.filter(c => !c.iepOnly);                    // 8: sin Sánchez, con Nieto
+    series = d.series;
   } else if (encSupportsEmerg) {
-    candidates = TOP5.filter(c => !c.iepOnly);   // sin Sánchez
+    candidates = TOP5.filter(c => !c.iepOnly && c.short !== 'Nieto');  // 7: sin Sánchez ni Nieto
     series = d.series.slice(0, 7);
   } else {
-    candidates = TOP5.filter(c => !c.dashed && !c.iepOnly);  // solo los 5 base
+    candidates = TOP5.filter(c => !c.dashed && !c.iepOnly);       // 5 base
     series = d.series.slice(0, 5);
   }
   buildLegend('legendEnc', candidates);
@@ -2092,11 +2170,16 @@ function renderEncChart() {
 
 // ── Render inicial y resize ───────────────────────────────────────────────────
 function renderAll() {
-  const mediaCandsTop5 = TOP5.filter(c => !c.iepOnly);   // 7 candidatos — sin Sánchez (solo IEP)
+  // Media: todos excepto iepOnly (Sánchez) — incluye Nieto como emergente
+  const mediaCandsTop5 = TOP5.filter(c => !c.iepOnly);
   buildLegend('legendMedia', mediaCandsTop5);
   buildEncSelector();
   drawLineChart('canvasMedia', mediaData.labels, mediaData.series, mediaCandsTop5);
   attachTooltip('canvasMedia');
+  // Media simulacros
+  buildLegend('legendSimMedia', simMediaCands);
+  drawLineChart('canvasSimMedia', simMediaData.labels, simMediaData.series, simMediaCands);
+  attachTooltip('canvasSimMedia');
   renderEncChart();
 }
 
@@ -2110,9 +2193,41 @@ window.addEventListener('resize', () => {
   _resizeTimer = setTimeout(() => {
     const mediaCandsTop5 = TOP5.filter(c => !c.iepOnly);
     drawLineChart('canvasMedia', mediaData.labels, mediaData.series, mediaCandsTop5);
+    drawLineChart('canvasSimMedia', simMediaData.labels, simMediaData.series, simMediaCands);
     renderEncChart();
   }, 150);
 });
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MEDIA DE SIMULACROS DE VOTACIÓN
+// ═══════════════════════════════════════════════════════════════════════════
+// Dos simulacros disponibles: IPSOS (5-6 mar) y CIT (6-9 mar)
+// Punto 1: IPSOS 5-6 mar · Punto 2: CIT 6-9 mar
+// Media de los dos simulacros en el punto 2 (misma quincena):
+//   Aliaga: (17.2+21.4)/2=19.3 · Fujimori: (14.2+12.8)/2=13.5 · Acuña: (8.1+9.3)/2=8.7
+//   LChau: (6.4+9.1)/2=7.75 · Álvarez: (8.9+6.8)/2=7.85 · Grozo: (5.1+6.0)/2=5.55
+const simMediaCands = [
+  { nombre: "López Aliaga", short: "R.L.A.",  color: "#e74c3c" },
+  { nombre: "Fujimori",     short: "Fujimori", color: "#9b59b6" },
+  { nombre: "Álvarez",      short: "Álvarez",  color: "#27ae60" },
+  { nombre: "Acuña",        short: "Acuña",    color: "#16a085" },
+  { nombre: "López Chau",   short: "L. Chau",  color: "#3498db" },
+  { nombre: "Grozo",        short: "Grozo",    color: "#e67e22", dashed: true },
+];
+const simMediaData = {
+  // Votos válidos de cada simulacro
+  // IPSOS 5-6 mar: Aliaga 17.2 · Fujimori 14.2 · Álvarez 8.9 · Acuña 8.1 · LChau 6.4 · Grozo 5.1
+  // CIT  6-9 mar:  Aliaga 21.4 · Fujimori 12.8 · Álvarez 6.8 · Acuña 9.3 · LChau 9.1 · Grozo 6.0
+  labels: ["IPSOS\n5-6 mar", "CIT\n6-9 mar", "Media\nambos"],
+  series: [
+    [17.2, 21.4, 19.3],   // Aliaga
+    [14.2, 12.8, 13.5],   // Fujimori
+    [8.9,   6.8,  7.9],   // Álvarez
+    [8.1,   9.3,  8.7],   // Acuña
+    [6.4,   9.1,  7.8],   // López Chau
+    [5.1,   6.0,  5.6],   // Grozo
+  ]
+};
 
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -2707,6 +2822,39 @@ const simulacros = {
         enc: 2,  emitidos: 2.0,  validos: 3.1,  nota: "" },
     ],
     blanco_enc: 20, blanco_sim: 34.8,
+  },
+  "cit-mar": {
+    fecha: "6–9 mar 2026",
+    fuente: "CIT Opinión & Mercado para Panorama/Panamericana · n=1.220 · ±2,8% · 95%",
+    candidates: [
+      { name: "R. López Aliaga", party: "Renovación Popular",    color: "#e74c3c",
+        enc: null, emitidos: 16.1, validos: 21.4, nota: "Lidera con amplia ventaja en votos válidos" },
+      { name: "Keiko Fujimori",  party: "Fuerza Popular",        color: "#9b59b6",
+        enc: null, emitidos: 9.7,  validos: 12.8, nota: "" },
+      { name: "César Acuña",     party: "Alianza p/ Progreso",   color: "#16a085",
+        enc: null, emitidos: 7.0,  validos: 9.3,  nota: "Sube al 3.° — símbolo APP reconocido" },
+      { name: "A. López Chau",   party: "Ahora Nación",          color: "#3498db",
+        enc: null, emitidos: 6.9,  validos: 9.1,  nota: "A solo 0,2 pp de Acuña" },
+      { name: "Carlos Álvarez",  party: "País para Todos",       color: "#27ae60",
+        enc: null, emitidos: 5.2,  validos: 6.8,  nota: "" },
+      { name: "W. Grozo",        party: "Integridad Democrática",color: "#e67e22",
+        enc: null, emitidos: 4.5,  validos: 6.0,  nota: "Previo a noticias sobre Villaverde (CEO CIT)" },
+      { name: "Y. Lescano",      party: "Cooperación Popular",   color: "#5A8C1A",
+        enc: null, emitidos: 3.6,  validos: 4.8,  nota: "" },
+      { name: "G. Forsyth",      party: "Somos Perú",            color: "#8e44ad",
+        enc: null, emitidos: 2.1,  validos: 2.8,  nota: "" },
+      { name: "P. Jaimes",       party: "Progresemos",           color: "#C08000",
+        enc: null, emitidos: 2.0,  validos: 2.7,  nota: "" },
+      { name: "J. Luna Gálvez",  party: "Podemos Perú",          color: "#5A1A8C",
+        enc: null, emitidos: 2.0,  validos: 2.6,  nota: "" },
+      { name: "M. Vizcarra",     party: "Perú Primero",          color: "#1A8C6B",
+        enc: null, emitidos: 1.8,  validos: 2.4,  nota: "" },
+      { name: "J. Nieto",        party: "Partido Buen Gob.",     color: "#8C8C1A",
+        enc: null, emitidos: 1.7,  validos: 2.3,  nota: "" },
+      { name: "R. Sánchez",      party: "Juntos p/ el Perú",     color: "#8C1A5A",
+        enc: null, emitidos: 1.4,  validos: 1.8,  nota: "" },
+    ],
+    blanco_enc: null, blanco_sim: 24.5,
   }
 };
 
@@ -2714,58 +2862,54 @@ const simulacros = {
 function renderSimulacro(key) {
   const s = simulacros[key];
   if (!s) return;
-  const tb = document.getElementById('simulacro-body');
-  const barsDiv = document.getElementById('simulacro-bars');
+
+  const isCIT = (key === 'cit-mar');
+  const tbId   = isCIT ? 'simulacro-body-cit'  : 'simulacro-body';
+  const barsId = isCIT ? 'simulacro-bars-cit'  : 'simulacro-bars';
+
+  const tb = document.getElementById(tbId);
+  const barsDiv = document.getElementById(barsId);
   if (!tb || !barsDiv) return;
   tb.innerHTML = '';
   barsDiv.innerHTML = '';
 
-  const maxValidos = Math.max(...s.candidates.map(c => c.validos));
-
   s.candidates.forEach(c => {
-    const diff = c.validos - c.enc;
-    const diffClr = diff > 0 ? '#4CAF50' : diff < 0 ? '#e74c3c' : '#888';
-    const diffStr = (diff > 0 ? '+' : '') + diff.toFixed(1);
+    const encStr  = c.enc !== null ? c.enc.toFixed(1).replace('.',',') + ' %' : '—';
+    const diff    = c.enc !== null ? c.validos - c.enc : null;
+    const diffClr = diff === null ? '#888' : diff > 0 ? '#4CAF50' : diff < 0 ? '#e74c3c' : '#888';
+    const diffStr = diff === null ? '—' : (diff > 0 ? '+' : '') + diff.toFixed(1);
 
-    // Heatmap alpha for enc and validos columns
-    function heatBg(v, max, baseColor) {
-      const alpha = Math.min(v / max, 1) * 0.75;
-      return baseColor;
-    }
-
-    const encAlpha = Math.min(c.enc / 20, 1);
-    const validosAlpha = Math.min(c.validos / 20, 1);
-    const encBg = `rgba(160,196,232,${(encAlpha * 0.6).toFixed(2)})`;
-    const validosBg = `background:${c.color};opacity:${(0.3 + validosAlpha * 0.7).toFixed(2)}`;
+    const encAlpha    = c.enc !== null ? Math.min(c.enc / 20, 1) : 0;
+    const encBg       = `rgba(160,196,232,${(encAlpha * 0.6).toFixed(2)})`;
+    const validosAlpha = Math.min(c.validos / 25, 1);
 
     tb.innerHTML += `<tr>
       <td class="d-cand">${c.name}<small>${c.party}</small></td>
-      <td class="heat-cell" style="background:${encBg};color:#ddd;text-align:center">${c.enc.toFixed(1).replace('.',',')} %</td>
+      <td class="heat-cell" style="background:${encBg};color:#ddd;text-align:center">${encStr}</td>
       <td style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#70C890">${c.emitidos.toFixed(1).replace('.',',')} %</td>
       <td class="heat-cell" style="background:${c.color};opacity:0.85;color:#fff;font-weight:700;text-align:center">${c.validos.toFixed(1).replace('.',',')} %</td>
-      <td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:${diffClr};text-align:center;font-weight:600">${diffStr}</td>
+      ${isCIT ? '' : `<td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:${diffClr};text-align:center;font-weight:600">${diffStr}</td>`}
       <td style="font-size:10px;color:var(--text-dim)">${c.nota}</td>
     </tr>`;
 
-    // Bar visual
-    const encW = ((c.enc / 20) * 100).toFixed(1);
-    const validosW = ((c.validos / 20) * 100).toFixed(1);
+    // Bar visual: emitidos vs válidos
+    const emitW  = ((c.emitidos / 25) * 100).toFixed(1);
+    const validW = ((c.validos  / 25) * 100).toFixed(1);
     barsDiv.innerHTML += `
-      <div style="display:grid;grid-template-columns:140px 1fr 1fr 60px;gap:6px;align-items:center">
+      <div style="display:grid;grid-template-columns:140px 1fr 1fr;gap:6px;align-items:center">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);text-align:right;text-transform:uppercase;letter-spacing:0.5px">${c.name}</div>
         <div>
-          <div style="font-size:8px;color:#a0c4e8;margin-bottom:2px;font-family:'IBM Plex Mono',monospace">ENCUESTA ${c.enc}%</div>
+          <div style="font-size:8px;color:#70C890;margin-bottom:2px;font-family:'IBM Plex Mono',monospace">EMITIDOS ${c.emitidos}%</div>
           <div style="background:#2A2A2A;border-radius:2px;height:8px;overflow:hidden">
-            <div style="width:${encW}%;height:100%;background:#a0c4e8;border-radius:2px;opacity:0.7"></div>
+            <div style="width:${emitW}%;height:100%;background:#70C890;border-radius:2px;opacity:0.7"></div>
           </div>
         </div>
         <div>
-          <div style="font-size:8px;color:${c.color};margin-bottom:2px;font-family:'IBM Plex Mono',monospace">SIMULACRO ${c.validos}%</div>
+          <div style="font-size:8px;color:${c.color};margin-bottom:2px;font-family:'IBM Plex Mono',monospace">VÁLIDOS ${c.validos}%</div>
           <div style="background:#2A2A2A;border-radius:2px;height:8px;overflow:hidden">
-            <div style="width:${validosW}%;height:100%;background:${c.color};border-radius:2px"></div>
+            <div style="width:${validW}%;height:100%;background:${c.color};border-radius:2px"></div>
           </div>
         </div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${diff > 0 ? '#4CAF50' : diff < 0 ? '#e74c3c' : '#888'};font-weight:600">${diff > 0 ? '+' : ''}${diff.toFixed(1)}</div>
       </div>`;
   });
 }
