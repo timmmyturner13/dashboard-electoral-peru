@@ -1817,7 +1817,13 @@ function drawLineChart(canvasId, labels, seriesData, candidates) {
   const PAD  = { top: 24, right: 72, bottom: 68, left: 52 };
   const CW   = W - PAD.left - PAD.right;
   const CH   = H - PAD.top  - PAD.bottom;
-  const yMax = 18, yMin = 0;
+
+  // Calcular yMax dinámicamente: máximo valor de los datos + margen del 15%
+  const allValues = seriesData.flatMap(s => s.filter(v => v !== null && v !== undefined));
+  const dataMax = allValues.length > 0 ? Math.max(...allValues) : 18;
+  // Redondear al múltiplo de 3 más cercano por encima
+  const yMax = Math.ceil((dataMax * 1.15) / 3) * 3;
+  const yMin = 0;
   const n    = labels.length;
 
   // Función posición X: si hay un solo punto lo centramos
@@ -1828,8 +1834,10 @@ function drawLineChart(canvasId, labels, seriesData, candidates) {
   ctx.fillStyle = '#1C1C1C';
   ctx.fillRect(0, 0, W, H);
 
-  // ── Grid Y ───────────────────────────────────────────────────────────────
-  const yTicks = [0, 3, 6, 9, 12, 15, 18];
+  // ── Grid Y ─────────────────────────────────────────────────────────────
+  // Generar ticks dinámicos cada 3 puntos hasta yMax
+  const yTicks = [];
+  for (let y = 0; y <= yMax; y += 3) yTicks.push(y);
   ctx.save();
   ctx.strokeStyle = '#2A2A2A';
   ctx.lineWidth   = 1;
