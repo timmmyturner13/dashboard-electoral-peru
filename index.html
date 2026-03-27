@@ -638,9 +638,9 @@
   </div>
   <h1>Encuestas<br>Presidenciales<br><span>Perú 2026</span></h1>
   <div class="hero-meta">
-    <div class="hero-meta-item">Período<strong>1 ene – 22 mar 2026</strong></div>
+    <div class="hero-meta-item">Período<strong>1 ene – 27 mar 2026</strong></div>
     <div class="hero-meta-item">Encuestadoras<strong>6 empresas con reg. JNE</strong></div>
-    <div class="hero-meta-item">Total encuestas<strong>21 mediciones</strong></div>
+    <div class="hero-meta-item">Total encuestas<strong>23 mediciones</strong></div>
     <div class="hero-meta-item">Primera vuelta<strong>12 de abril de 2026</strong></div>
     <div class="hero-meta-item">Balotaje<strong>7 de junio de 2026</strong></div>
   </div>
@@ -658,12 +658,12 @@
   <div class="stats-row">
     <div class="stat-card">
       <div class="stat-label">Candidato líder (media)</div>
-      <div class="stat-value">12,6%</div>
+      <div class="stat-value">12,4%</div>
       <div class="stat-sub">Rafael López Aliaga — Renovación Popular</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">2.° lugar (media)</div>
-      <div class="stat-value">8,8%</div>
+      <div class="stat-value">9,0%</div>
       <div class="stat-sub">Keiko Fujimori — Fuerza Popular</div>
     </div>
     <div class="stat-card">
@@ -682,7 +682,7 @@
   <p class="section-title">Media de intención de voto por candidato</p>
   <div class="chart-section">
     <div class="chart-title">Promedio entre encuestas (enero – marzo 2026)</div>
-    <div class="chart-subtitle">Media simple — 21 encuestas · 6 encuestadoras con registro JNE · Última: DATUM (13-17 mar, pub. 22 mar)</div>
+    <div class="chart-subtitle">Media simple — 23 encuestas · 6 encuestadoras con registro JNE · Última: CPI (21-23 mar, pub. 27 mar)</div>
     <div class="bar-chart" id="mainChart"></div>
   </div>
 
@@ -733,15 +733,17 @@
   <!-- ═══════════════════════════════════════════════════════════════════
        SIMULACROS DE VOTACIÓN
   ════════════════════════════════════════════════════════════════════ -->
-  <p class="section-title">Simulacros de votación — IPSOS (Perú 21) · CIT (Panorama/Panamericana)</p>
+  <p class="section-title">Simulacros de votación — IPSOS (Perú 21) · CIT (Panorama/Panamericana) · CPI (RPP)</p>
   <div class="chart-section" id="simulacros-section">
     <div class="chart-title">Comparativo: Intención de voto vs. Simulacro nacional</div>
     <div class="chart-subtitle">Metodología: réplica de cédula electoral con foto y símbolo de partido · ánfora anónima · votos válidos excluyen blancos/viciados</div>
 
     <!-- Tabs de medición -->
-    <div style="display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:0">
-      <div class="enc-btn active" id="stab-ipsos-mar" onclick="showSimTab('ipsos-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">IPSOS · 5–6 mar 2026</div>
-      <div class="enc-btn" id="stab-cit-mar" onclick="showSimTab('cit-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 22px;letter-spacing:1.5px">CIT · 6–9 mar 2026</div>
+    <div style="display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:0;flex-wrap:wrap">
+      <div class="enc-btn active" id="stab-ipsos-mar" onclick="showSimTab('ipsos-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">IPSOS · 5–6 mar</div>
+      <div class="enc-btn" id="stab-cit-mar" onclick="showSimTab('cit-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">CIT · 6–9 mar</div>
+      <div class="enc-btn" id="stab-ipsos-mar2" onclick="showSimTab('ipsos-mar2')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">IPSOS · 21–22 mar ★</div>
+      <div class="enc-btn" id="stab-cpi-mar" onclick="showSimTab('cpi-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">CPI · 21–23 mar ★</div>
     </div>
 
     <!-- Panel IPSOS Mar 2026 -->
@@ -800,8 +802,89 @@
       </div>
     </div>
 
-    <!-- Panel CIT Mar 2026 -->
-    <div id="spanel-cit-mar" style="display:none;padding-top:24px">
+    <!-- Panel IPSOS-2 Mar 2026 -->
+    <div id="spanel-ipsos-mar2" style="display:none;padding-top:24px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center">
+        <span class="enc-badge badge-ipsos" style="padding:3px 10px">IPSOS Perú · 2.º Simulacro · pub. 25 mar 2026</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--oro);padding:3px 10px;border:1px solid var(--oro);border-radius:3px">001-REE/JNE</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">Encuesta n=1.203 · ±2,8% · 95%</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">Simulacro n=1.189 · ±2,8% · 95%</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">Perú 21</span>
+      </div>
+      <div style="margin-bottom:20px;padding:14px 18px;background:rgba(200,153,30,0.06);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.8;margin:0">
+          2.º simulacro nacional de IPSOS. Realizado <strong style="color:var(--text)">tras</strong> conocerse los vínculos de Grozo con Zamir Villaverde — por eso Grozo pasa al rubro "Otros". Fujimori e invierte posiciones con Aliaga en la encuesta de intención. <strong style="color:var(--text)">Cuádruple empate en el 3.° lugar</strong>: López Chau, Sánchez, Álvarez y Nieto, todos al 5%.
+        </p>
+      </div>
+      <div class="table-wrap" style="margin-bottom:20px">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width:180px">Candidato / Partido</th>
+              <th style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:10px">Encuesta<br>21-22 mar (%)</th>
+              <th style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:10px">Simulacro<br>Votos Emitidos (%)</th>
+              <th style="text-align:center;color:var(--oro);border-bottom:2px solid var(--oro);font-size:10px">Simulacro<br>Votos Válidos (%)</th>
+              <th style="text-align:center;color:#a0a0a0;font-size:10px">Δ Enc→V.Válidos</th>
+              <th style="text-align:center;color:#a0a0a0;font-size:10px">Nota</th>
+            </tr>
+          </thead>
+          <tbody id="simulacro-body-ipsos2"></tbody>
+        </table>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:14px">Comparativo visual — Encuesta vs. Votos Válidos (IPSOS 2.º)</div>
+      <div id="simulacro-bars-ipsos2" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px"></div>
+      <div style="padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Hallazgos clave IPSOS 2.º simulacro:</strong>
+          Fujimori lidera por primera vez los votos válidos con <strong style="color:#9b59b6">17,3%</strong>, igualando virtualmente a Aliaga (<strong style="color:#e74c3c">17,2%</strong>) — empate histórico en la punta.
+          Sánchez sube al 4.° en votos válidos (7,5%), superando a Álvarez (7,4%).
+          Nieto aparece por primera vez con 5,4% en votos válidos.
+          Lima sigue siendo el bastión de Aliaga: <strong style="color:#e74c3c">28,2% de votos válidos</strong>. Fujimori domina el Oriente: <strong style="color:#9b59b6">35,1%</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Panel CPI Mar 2026 -->
+    <div id="spanel-cpi-mar" style="display:none;padding-top:24px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center">
+        <span class="enc-badge badge-cpi" style="padding:3px 10px">CPI · pub. 26-27 mar 2026</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--oro);padding:3px 10px;border:1px solid var(--oro);border-radius:3px">00428-REE/JNE</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">n=1.300 · ±2,7% · rep. 97,2%</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">RPP</span>
+      </div>
+      <div style="margin-bottom:20px;padding:14px 18px;background:rgba(200,153,30,0.06);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.8;margin:0">
+          Encuesta + simulacro de CPI realizados <strong style="color:var(--text)">antes del debate presidencial del JNE</strong>. Grozo no aparece desglosado individualmente en el simulacro — figura en el bloque 4,3%–4,9% junto a Acuña, Sánchez y Luna. Los votos válidos de ese bloque son aproximados.
+        </p>
+      </div>
+      <div class="table-wrap" style="margin-bottom:20px">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width:180px">Candidato / Partido</th>
+              <th style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:10px">Encuesta<br>21-23 mar (%)</th>
+              <th style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:10px">Simulacro<br>Votos Emitidos (%)</th>
+              <th style="text-align:center;color:var(--oro);border-bottom:2px solid var(--oro);font-size:10px">Simulacro<br>Votos Válidos (%)</th>
+              <th style="text-align:center;color:#a0a0a0;font-size:10px">Δ Enc→V.Válidos</th>
+              <th style="text-align:center;color:#a0a0a0;font-size:10px">Nota</th>
+            </tr>
+          </thead>
+          <tbody id="simulacro-body-cpi"></tbody>
+        </table>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:14px">Comparativo visual — Encuesta vs. Votos Válidos (CPI)</div>
+      <div id="simulacro-bars-cpi" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px"></div>
+      <div style="padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Hallazgos clave CPI:</strong>
+          Aliaga lidera con <strong style="color:#e74c3c">17,9%</strong> de votos válidos vs. Fujimori con <strong style="color:#9b59b6">17,3%</strong>.
+          López Chau confirma su fortaleza en simulacro: <strong style="color:#3498db">10,5%</strong> de votos válidos, el mejor resultado de su campaña.
+          Nieto se consolida en 6.° con <strong style="color:#8C5A8C">6,7%</strong> de votos válidos.
+          El 24,2% de votos en blanco/viciados sigue superando individualmente a cualquier candidato.
+        </p>
+      </div>
+    </div>
+  </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center">
         <span class="enc-badge badge-cit" style="padding:3px 10px">CIT Opinión & Mercado · pub. 15 mar 2026</span>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--oro);padding:3px 10px;border:1px solid var(--oro);border-radius:3px">00404-REE/JNE</span>
@@ -1322,7 +1405,7 @@
 </main>
 
 <footer>
-  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 22 marzo 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
+  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 27 marzo 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
   <p>Elecciones Generales Perú · <strong>12 de abril de 2026</strong> (1.ª vuelta) · <strong>7 de junio de 2026</strong> (balotaje)</p>
 </footer>
 
@@ -1330,8 +1413,18 @@
 // ── DATOS ────────────────────────────────────────────────────────────────────
 const encuestas = [
   {
+    enc: "CPI", badge: "badge-cpi", reg: "00428-REE/JNE",
+    medio: "RPP", campo: "21-23/03/2026 ★NUEVA", muestra: "1.300",
+    lopez: 11.7, fujimori: 10.1, alvarez: 3.5, acuna: 3.2, vizcarra: null, lopezchau: 6.6, nsnc: "23,1 % ind. · 24,2 % blanco/vic."
+  },
+  {
+    enc: "IPSOS Perú", badge: "badge-ipsos", reg: "001-REE/JNE",
+    medio: "Perú 21", campo: "21-22/03/2026 ★NUEVA", muestra: "1.203",
+    lopez: 10, fujimori: 11, alvarez: 5, acuna: 3, vizcarra: 2, lopezchau: 5, nsnc: "21 % bl/vic/ning · 15 % no precisa"
+  },
+  {
     enc: "DATUM Internacional", badge: "badge-datum", reg: "002-REE/JNE",
-    medio: "El Comercio", campo: "13-17/03/2026 ★NUEVA", muestra: "1.500",
+    medio: "El Comercio", campo: "13-17/03/2026", muestra: "1.500",
     lopez: 11.7, fujimori: 11.9, alvarez: 5.0, acuna: 3.6, vizcarra: 1.2, lopezchau: 6.5, nsnc: "35,8 %"
   },
   {
@@ -1439,7 +1532,7 @@ const encuestas = [
 const candidatos = [
   {
     nombre: "Rafael López Aliaga", partido: "Renovación Popular",
-    avg: 12.6, leader: true,
+    avg: 12.4, leader: true,
     bars: [
       { label: "CIT (16 feb)", val: 15.3 },
       { label: "IEP (ene)", val: 14.7 },
@@ -1459,9 +1552,10 @@ const candidatos = [
   },
   {
     nombre: "Keiko Fujimori", partido: "Fuerza Popular",
-    avg: 8.6, leader: false,
+    avg: 9.0, leader: false,
     bars: [
-      { label: "DATUM (13-17 mar)★", val: 11.9 },
+      { label: "IPSOS (21-22 mar)★", val: 11.0 },
+      { label: "DATUM (13-17 mar)", val: 11.9 },
       { label: "DATUM (6-10 mar)", val: 10.9 },
       { label: "DATUM (27f-4mar)", val: 10.7 },
       { label: "IEP (23 feb)", val: 10.3 },
@@ -1481,7 +1575,8 @@ const candidatos = [
     nombre: "Alfonso López Chau", partido: "Ahora Nación",
     avg: 4.9, leader: false,
     bars: [
-      { label: "DATUM (13-17 mar)★", val: 6.5 },
+      { label: "CPI (21-23 mar)★", val: 6.6 },
+      { label: "DATUM (13-17 mar)", val: 6.5 },
       { label: "IEP (~6-11 mar)", val: 6.8 },
       { label: "DATUM (6-10 mar)", val: 6.5 },
       { label: "CIT (16 feb)", val: 6.0 },
@@ -1510,7 +1605,8 @@ const candidatos = [
       { label: "DATUM (27f-4mar)", val: 5.0 },
       { label: "CIT (16 feb)", val: 5.0 },
       { label: "IEP (23 feb)", val: 4.9 },
-      { label: "DATUM (13-17 mar)★", val: 5.0 },
+      { label: "IPSOS (21-22 mar)★", val: 5.0 },
+      { label: "DATUM (13-17 mar)", val: 5.0 },
       { label: "DATUM (6-10 mar)", val: 4.0 },
       { label: "IPSOS (5 feb)", val: 4.0 },
       { label: "IEP (~6-11 mar)", val: 3.9 },
@@ -1541,7 +1637,8 @@ const candidatos = [
       { label: "IPSOS (5-6 mar)", val: 4.0 },
       { label: "IPSOS (5 feb)", val: 4.0 },
       { label: "IPSOS (19-20 feb)", val: 4.0 },
-      { label: "DATUM (13-17 mar)★", val: 3.6 },
+      { label: "CPI (21-23 mar)★", val: 3.2 },
+      { label: "DATUM (13-17 mar)", val: 3.6 },
       { label: "DATUM (6-10 mar)", val: 3.8 },
       { label: "DATUM (30 ene)", val: 3.8 },
       { label: "CPI (28f-5mar)", val: 3.4 },
@@ -1551,7 +1648,7 @@ const candidatos = [
   },
   {
     nombre: "Mario Vizcarra", partido: "Perú Primero",
-    avg: 3.2, leader: false,
+    avg: 3.0, leader: false,
     bars: [
       { label: "CPI (29 ene)", val: 4.7 },
       { label: "IEP (ene)", val: 4.4 },
@@ -1566,7 +1663,8 @@ const candidatos = [
       { label: "DATUM (27f-4mar)", val: 2.3 },
       { label: "IPSOS (19-20 feb)", val: 2.0 },
       { label: "DATUM (6-10 mar)", val: 1.7 },
-      { label: "DATUM (13-17 mar)★", val: 1.2 },
+      { label: "DATUM (13-17 mar)", val: 1.2 },
+      { label: "IPSOS (21-22 mar)★", val: 2.0 },
     ]
   },
 ];
@@ -1581,16 +1679,16 @@ const candidatos = [
 
 // ── GRÁFICO PRINCIPAL ─────────────────────────────────────────────────────────
 const allCands = [
-  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 12.6, color: "#c0392b" },
-  { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 8.8,  color: "#6B2FAF" },
-  { name: "Carlos Álvarez",   party: "País para Todos",        avg: 4.8,  color: "#1A6B3A" },
-  { name: "A. López Chau",    party: "Ahora Nación",           avg: 5.0,  color: "#1A5CAF" },
+  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 12.4, color: "#c0392b" },
+  { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 9.0,  color: "#6B2FAF" },
+  { name: "A. López Chau",    party: "Ahora Nación",           avg: 5.1,  color: "#1A5CAF" },
+  { name: "Carlos Álvarez",   party: "País para Todos",        avg: 4.7,  color: "#1A6B3A" },
   { name: "W. Grozo",         party: "Integridad Democrática", avg: 4.2,  color: "#e67e22" },
-  { name: "César Acuña",      party: "APP",                    avg: 4.1,  color: "#8C5A1A" },
-  { name: "Mario Vizcarra",   party: "Perú Primero",           avg: 3.1,  color: "#1A8C6B" },
-  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 3.6,  color: "#8C5A8C" },
-  { name: "Yonhy Lescano",    party: "Cooperación Popular",    avg: 3.1,  color: "#5A8C1A" },
-  { name: "Roberto Sánchez",  party: "Juntos p/ el Perú",      avg: 2.5,  color: "#8C1A5A" },
+  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 4.0,  color: "#8C5A8C" },
+  { name: "César Acuña",      party: "APP",                    avg: 4.0,  color: "#8C5A1A" },
+  { name: "Yonhy Lescano",    party: "Cooperación Popular",    avg: 3.0,  color: "#5A8C1A" },
+  { name: "Mario Vizcarra",   party: "Perú Primero",           avg: 3.0,  color: "#1A8C6B" },
+  { name: "Roberto Sánchez",  party: "Juntos p/ el Perú",      avg: 2.8,  color: "#8C1A5A" },
   { name: "José Williams",    party: "Avanza País",            avg: 2.5,  color: "#C08000" },
   { name: "George Forsyth",   party: "Somos Perú",             avg: 2.2,  color: "#8C1A8C" },
   { name: "Ricardo Belmont",  party: "Obras",                  avg: 2.0,  color: "#1A5A8C" },
@@ -1693,47 +1791,49 @@ const mediaData = {
   // Período 4: 1ª quinc. feb   (IPSOS 5-6f + CIT 16f + CPI 14-18f + DATUM 13-17f, n=4)
   // Período 5: 2ª quinc. feb/ini mar (IEP 23f + IPSOS 19-20f + CIT 20-24f + CPI 28f-5mar + DATUM 27f-4mar, n=5)
   // Período 6: 1ª quinc. marzo (IPSOS 5-6mar + IEP ~6-11mar + DATUM 6-10mar, n=3)
-  // Período 7: 2ª quinc. marzo (DATUM 13-17mar, n=1)
+  // Período 7: 2ª quinc. marzo (DATUM 13-17mar + IPSOS 21-22mar + CPI 21-23mar, n=3)
   labels: [
     "1ª quinc.\nEnero\n(n=4)", "2ª quinc.\nEnero\n(n=1)",
     "Fin ene /\nIni feb\n(n=3)", "1ª quinc.\nFebrero\n(n=4)",
-    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc.\nMarzo\n(n=1)"
+    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc.\nMarzo\n(n=3)"
   ],
   series: [
-    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4, 11.7],   // Aliaga
-    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 11.9],   // Fujimori
-    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  5.0],   // Álvarez
-    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  6.5],   // López Chau
-    [4.4,  4.4,  3.8,  3.0,  2.8,   2.6,  1.2],   // Vizcarra
-    [null, null, null, null, 4.3,   4.5,  2.5],   // Grozo ★emerg.
-    [null, null, 4.2,  4.4,  4.2,   3.5,  3.6],   // Acuña ★emerg.
-    [null, null, null, null, null,  null, 4.6],   // Nieto ★emerg. (debut DATUM 13-17 mar)
+    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4, 11.1],   // Aliaga:   (11.7+10+11.7)/3
+    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 11.0],   // Fujimori: (11.9+11+10.1)/3
+    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  4.5],   // Álvarez:  (5.0+5+3.5)/3
+    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  6.0],   // LChau:    (6.5+5+6.6)/3
+    [4.4,  4.4,  3.8,  3.0,  2.8,   2.6,  1.6],   // Vizcarra: (1.2+2)/2 n=2
+    [null, null, null, null, 4.3,   4.5,  2.5],   // Grozo ★emerg. n=1 (solo DATUM)
+    [null, null, 4.2,  4.4,  4.2,   3.5,  3.3],   // Acuña ★emerg.: (3.6+3+3.2)/3
+    [null, null, null, null, null,  null, 4.5],   // Nieto ★emerg.: (4.6+5+3.9)/3
   ]
 };
 
 const encData = {
   "IPSOS": {
-    labels: ["07-08 ene", "05-06 feb", "19-20 feb", "05-06 mar"],
+    labels: ["07-08 ene", "05-06 feb", "19-20 feb", "05-06 mar", "21-22 mar"],
     series: [
-      [10.0, 12.0, 10.0, 11.0],
-      [7.0,  8.0,  9.0, 10.0],
-      [null, 4.0,  3.0,  6.0],
-      [null, 4.0,  4.0,  4.0],
-      [null, 4.0,  2.0,  3.0],
-      [null, null, null,  4.0],   // Grozo ★emerg.
-      [null, 4.0,  4.0,  4.0],   // Acuña ★emerg.
+      [10.0, 12.0, 10.0, 11.0, 10.0],
+      [7.0,  8.0,  9.0, 10.0, 11.0],
+      [null, 4.0,  3.0,  6.0,  5.0],   // Álvarez
+      [null, 4.0,  4.0,  4.0,  5.0],   // López Chau
+      [null, 4.0,  2.0,  3.0,  2.0],   // Vizcarra
+      [null, null, null, 4.0,  null],  // Grozo ★emerg. (en Otros en 21-22 mar)
+      [null, 4.0,  4.0,  4.0,  3.0],   // Acuña ★emerg.
+      [null, null, null, null, 5.0],   // Nieto ★emerg.
     ]
   },
   "CPI": {
-    labels: ["02-16 ene", "29ene-2feb", "14-18 feb", "28feb-5mar"],
+    labels: ["02-16 ene", "29ene-2feb", "14-18 feb", "28feb-5mar", "21-23 mar"],
     series: [
-      [13.6, 14.6, 13.9, 12.7],
-      [7.1,  6.6,  7.0,  8.0],
-      [null, null, 4.0,  5.0],
-      [null, null, 5.1,  5.6],
-      [4.4,  4.7,  3.2,  2.5],
-      [null, null, null, 4.8],   // Grozo ★emerg.
-      [null, null, 4.4,  3.4],   // Acuña ★emerg.
+      [13.6, 14.6, 13.9, 12.7, 11.7],
+      [7.1,  6.6,  7.0,  8.0, 10.1],
+      [null, null, 4.0,  5.0,  3.5],
+      [null, null, 5.1,  5.6,  6.6],
+      [4.4,  4.7,  3.2,  2.5,  null],  // Vizcarra (CPI no publica en 21-23 mar)
+      [null, null, null, 4.8,  null],  // Grozo ★emerg. (no desglosado)
+      [null, null, 4.4,  3.4,  3.2],   // Acuña ★emerg.
+      [null, null, null, null, 3.9],   // Nieto ★emerg.
     ]
   },
   "DATUM": {
@@ -2220,20 +2320,24 @@ const simMediaCands = [
   { nombre: "Álvarez",      short: "Álvarez",  color: "#27ae60" },
   { nombre: "Acuña",        short: "Acuña",    color: "#16a085" },
   { nombre: "López Chau",   short: "L. Chau",  color: "#3498db" },
-  { nombre: "Grozo",        short: "Grozo",    color: "#e67e22", dashed: true },
+  { nombre: "Nieto",        short: "Nieto",    color: "#8C5A8C", dashed: true },
 ];
 const simMediaData = {
-  // Votos válidos de cada simulacro
-  // IPSOS 5-6 mar: Aliaga 17.2 · Fujimori 14.2 · Álvarez 8.9 · Acuña 8.1 · LChau 6.4 · Grozo 5.1
-  // CIT  6-9 mar:  Aliaga 21.4 · Fujimori 12.8 · Álvarez 6.8 · Acuña 9.3 · LChau 9.1 · Grozo 6.0
-  labels: ["IPSOS\n5-6 mar", "CIT\n6-9 mar", "Media\nambos"],
+  // Votos válidos por simulacro:
+  // IPSOS-1 5-6 mar:  Aliaga 17.2 · Fujimori 14.2 · Álvarez 8.9 · Acuña 8.1  · LChau 6.4 · Nieto —
+  // CIT     6-9 mar:  Aliaga 21.4 · Fujimori 12.8 · Álvarez 6.8 · Acuña 9.3  · LChau 9.1 · Nieto —
+  // IPSOS-2 21-22 mar: Aliaga 17.2 · Fujimori 17.3 · Álvarez 7.4 · Acuña 5.2 · LChau 7.9 · Nieto 5.4
+  // CPI     21-23 mar: Aliaga 17.9 · Fujimori 17.3 · Álvarez 5.7 · Acuña 4.9 · LChau 10.5· Nieto 6.7
+  // Media 1ª quinc. mar (IPSOS-1 + CIT):         Aliaga 19.3 · Fujimori 13.5 · Álvarez 7.85 · Acuña 8.7  · LChau 7.75· Nieto —
+  // Media 2ª quinc. mar (IPSOS-2 + CPI):         Aliaga 17.6 · Fujimori 17.3 · Álvarez 6.55 · Acuña 5.05 · LChau 9.2 · Nieto 6.1
+  labels: ["IPSOS-1\n5-6 mar", "CIT\n6-9 mar", "Media\n1ª quinc.", "IPSOS-2\n21-22 mar", "CPI\n21-23 mar", "Media\n2ª quinc."],
   series: [
-    [17.2, 21.4, 19.3],   // Aliaga
-    [14.2, 12.8, 13.5],   // Fujimori
-    [8.9,   6.8,  7.9],   // Álvarez
-    [8.1,   9.3,  8.7],   // Acuña
-    [6.4,   9.1,  7.8],   // López Chau
-    [5.1,   6.0,  5.6],   // Grozo
+    [17.2, 21.4, 19.3, 17.2, 17.9, 17.6],   // Aliaga
+    [14.2, 12.8, 13.5, 17.3, 17.3, 17.3],   // Fujimori
+    [8.9,   6.8,  7.9,  7.4,  5.7,  6.6],   // Álvarez
+    [8.1,   9.3,  8.7,  5.2,  4.9,  5.1],   // Acuña
+    [6.4,   9.1,  7.8,  7.9, 10.5,  9.2],   // López Chau
+    [null, null, null,  5.4,  6.7,  6.1],   // Nieto ★emerg.
   ]
 };
 
@@ -2831,8 +2935,51 @@ const simulacros = {
     ],
     blanco_enc: 20, blanco_sim: 34.8,
   },
+  "ipsos-mar2": {
+    fecha: "21–22 mar 2026",
+    fuente: "IPSOS Perú · 2.º Simulacro para Perú 21 · n enc=1.203 · n sim=1.189 · ±2,8% · 95%",
+    candidates: [
+      { name: "Keiko Fujimori",  party: "Fuerza Popular",        color: "#9b59b6",
+        enc: 11, emitidos: 12.3, validos: 17.3, nota: "1.ª vez que lidera los votos válidos" },
+      { name: "R. López Aliaga", party: "Renovación Popular",    color: "#e74c3c",
+        enc: 10, emitidos: 12.2, validos: 17.2, nota: "Domina Lima: 28,2% votos válidos" },
+      { name: "A. López Chau",   party: "Ahora Nación",          color: "#3498db",
+        enc: 5,  emitidos: 5.6,  validos: 7.9,  nota: "Fuerte en Sur (16,2%) y Centro (8,9%)" },
+      { name: "R. Sánchez",      party: "Juntos p/ el Perú",     color: "#8C1A5A",
+        enc: 5,  emitidos: 5.4,  validos: 7.5,  nota: "Sube al 4.° en simulacro" },
+      { name: "Carlos Álvarez",  party: "País para Todos",       color: "#27ae60",
+        enc: 5,  emitidos: 5.2,  validos: 7.4,  nota: "" },
+      { name: "Jorge Nieto",     party: "Partido Buen Gob.",     color: "#8C5A8C",
+        enc: 5,  emitidos: 3.8,  validos: 5.4,  nota: "1.ª aparición en simulacro IPSOS" },
+      { name: "César Acuña",     party: "Alianza p/ Progreso",   color: "#16a085",
+        enc: 3,  emitidos: 3.7,  validos: 5.2,  nota: "" },
+      { name: "R. Belmont",      party: "Obras",                 color: "#C08000",
+        enc: 2,  emitidos: 2.1,  validos: 2.9,  nota: "" },
+    ],
+    blanco_enc: 21, blanco_sim: 29.0,
+  },
+  "cpi-mar": {
+    fecha: "21–23 mar 2026",
+    fuente: "CPI para RPP · n=1.300 · ±2,7% · rep. 97,2% · 21 departamentos",
+    candidates: [
+      { name: "R. López Aliaga", party: "Renovación Popular",    color: "#e74c3c",
+        enc: 11.7, emitidos: 13.5, validos: 17.9, nota: "Lidera en votos válidos" },
+      { name: "Keiko Fujimori",  party: "Fuerza Popular",        color: "#9b59b6",
+        enc: 10.1, emitidos: 13.1, validos: 17.3, nota: "Empate técnico en la punta" },
+      { name: "A. López Chau",   party: "Ahora Nación",          color: "#3498db",
+        enc: 6.6,  emitidos: 7.9,  validos: 10.5, nota: "Mejor resultado de su campaña en simulacro" },
+      { name: "Jorge Nieto",     party: "Partido Buen Gob.",     color: "#8C5A8C",
+        enc: 3.9,  emitidos: null, validos: 6.7,  nota: "" },
+      { name: "Carlos Álvarez",  party: "País para Todos",       color: "#27ae60",
+        enc: 3.5,  emitidos: null, validos: 5.7,  nota: "" },
+      { name: "César Acuña",     party: "Alianza p/ Progreso",   color: "#16a085",
+        enc: 3.2,  emitidos: null, validos: 4.9,  nota: "Bloque con Sánchez/Luna/Grozo 4,3–4,9%" },
+      { name: "R. Sánchez",      party: "Juntos p/ el Perú",     color: "#8C1A5A",
+        enc: 3.1,  emitidos: null, validos: 4.5,  nota: "Valor aproximado del bloque" },
+    ],
+    blanco_enc: 24.2, blanco_sim: 24.2,
+  },
   "cit-mar": {
-    fecha: "6–9 mar 2026",
     fuente: "CIT Opinión & Mercado para Panorama/Panamericana · n=1.220 · ±2,8% · 95%",
     candidates: [
       { name: "R. López Aliaga", party: "Renovación Popular",    color: "#e74c3c",
