@@ -2259,7 +2259,8 @@ function renderEncChart() {
 
   let candidates, series;
   if (isIEP) {
-    candidates = TOP5;                                             // 9 series (inc. Sánchez)
+    // IEP: 8 series — incluye Sánchez (iepOnly) pero NO Nieto (IEP no lo mide individualmente)
+    candidates = TOP5.filter(c => c.short !== 'Nieto');
     series = d.series;
   } else if (isDATUM) {
     candidates = TOP5.filter(c => !c.iepOnly);                    // 8: sin Sánchez, con Nieto
