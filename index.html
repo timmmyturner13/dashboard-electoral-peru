@@ -1863,55 +1863,54 @@ const mediaData = {
 };
 
 const encData = {
+  // Series order = TOP5: Aliaga · Fujimori · Álvarez · LChau · Acuña · Nieto · Sánchez
   "IPSOS": {
     labels: ["07-08 ene", "05-06 feb", "19-20 feb", "05-06 mar", "21-22 mar", "26-27 mar"],
     series: [
       [10.0, 12.0, 10.0, 11.0, 10.0,  9.0],   // Aliaga
-      [7.0,  8.0,  9.0, 10.0, 11.0, 11.0],   // Fujimori
-      [null, 4.0,  3.0,  6.0,  5.0,  7.0],   // Álvarez
-      [null, 4.0,  4.0,  4.0,  5.0,  4.0],   // López Chau
-      [null, 4.0,  2.0,  3.0,  null, null],  // Vizcarra (solo hasta mar I)
-      [null, null, null, 4.0,  null, null],  // Grozo ★emerg. (solo mar I, luego pasa a Otros)
-      [null, 4.0,  4.0,  4.0,  null, null],  // Acuña ★emerg. (solo hasta mar I)
-      [null, null, null, null, 5.0,  5.0],   // Nieto ★emerg. (desde mar II)
-      [null, null, null, null, 5.0,  4.0],   // Sánchez ↗ (21-22: 5% · 26-27: 4%)
+      [7.0,  8.0,  9.0, 10.0, 11.0, 11.0],    // Fujimori
+      [null, 4.0,  3.0,  6.0,  5.0,  7.0],    // Álvarez
+      [null, 4.0,  4.0,  4.0,  5.0,  4.0],    // López Chau
+      [null, 4.0,  4.0,  4.0,  null, null],   // Acuña (no desglosado en mar II)
+      [null, null, null, null, 5.0,  5.0],    // Nieto (desde 21-22 mar)
+      [null, null, null, null, 5.0,  4.0],    // Sánchez (desde 21-22 mar)
     ]
   },
+  // Series order = TOP5: Aliaga · Fujimori · Álvarez · LChau · Acuña · Nieto · Sánchez
   "CPI": {
     labels: ["02-16 ene", "29ene-2feb", "14-18 feb", "28feb-5mar", "21-23 mar"],
     series: [
-      [13.6, 14.6, 13.9, 12.7, 11.7],
-      [7.1,  6.6,  7.0,  8.0, 10.1],
-      [null, null, 4.0,  5.0,  3.5],
-      [null, null, 5.1,  5.6,  6.6],
-      [4.4,  4.7,  3.2,  2.5,  null],  // Vizcarra (CPI no publica en 21-23 mar)
-      [null, null, null, 4.8,  null],  // Grozo ★emerg. (no desglosado)
-      [null, null, 4.4,  3.4,  3.2],   // Acuña ★emerg.
-      [null, null, null, null, 3.9],   // Nieto ★emerg.
+      [13.6, 14.6, 13.9, 12.7, 11.7],   // Aliaga
+      [7.1,  6.6,  7.0,  8.0, 10.1],    // Fujimori
+      [null, null, 4.0,  5.0,  3.5],    // Álvarez
+      [null, null, 5.1,  5.6,  6.6],    // López Chau
+      [null, null, 4.4,  3.4,  3.2],    // Acuña
+      [null, null, null, null, 3.9],    // Nieto (desde 21-23 mar)
+      [null, null, null, null, 3.1],    // Sánchez (desde 21-23 mar)
     ]
   },
   "DATUM": {
     labels: ["02-18 ene", "30ene-3feb", "13-17 feb", "27feb-4mar", "6-10 mar", "13-17 mar", "25-27 mar"],
     series: [
       [11.7, 11.9, 13.4, 10.0, 11.4, 11.7, 11.7],   // Aliaga
-      [8.0,  9.2,  9.7, 10.7, 10.9, 11.9, 13.0],   // Fujimori
-      [null, 5.8,  6.0,  5.0,  4.0,  5.0,  6.9],   // Álvarez
-      [null, 3.8,  5.7,  5.5,  6.5,  6.5,  6.1],   // López Chau
-      [null, 3.6,  2.6,  2.3,  1.7,  1.2,  null],  // Vizcarra (no en 25-27)
-      [null, null, null, 4.2,  5.1,  2.5,  2.1],   // Grozo ★emerg.
-      [null, 3.8,  3.0,  5.2,  3.8,  3.6,  4.0],   // Acuña ★emerg.
-      [null, null, null, null, 2.5,  4.6,  5.9],   // Nieto ★emerg.
-      [null, null, null, null, null, null, 4.9],   // Sánchez ↗ (solo DATUM 25-27: 4.9%)
+      [8.0,  9.2,  9.7, 10.7, 10.9, 11.9, 13.0],    // Fujimori
+      [null, 5.8,  6.0,  5.0,  4.0,  5.0,  6.9],    // Álvarez
+      [null, 3.8,  5.7,  5.5,  6.5,  6.5,  6.1],    // López Chau
+      [null, 3.8,  3.0,  5.2,  3.8,  3.6,  4.0],    // Acuña
+      [null, null, null, null, 2.5,  4.6,  5.9],    // Nieto (desde 6-10 mar)
+      [null, null, null, null, null, null, 4.9],    // Sánchez (desde 25-27 mar)
     ]
   },
   "CIT": {
     labels: ["16-20 ene", "16 feb", "20-24 feb"],
     series: [
-      [15.1, 15.3, 14.0],
-      [9.3,  8.0,  6.8],
-      [null, 5.0,  6.1],
-      [null, 6.0,  5.1],
-      [null, 2.3,  3.2],
+      [15.1, 15.3, 14.0],   // Aliaga
+      [9.3,  8.0,  6.8],    // Fujimori
+      [null, 5.0,  6.1],    // Álvarez
+      [null, 6.0,  5.1],    // López Chau
+      [null, 2.3,  3.2],    // Acuña
+      [null, null, null],   // Nieto — CIT no lo mide individualmente
+      [null, null, null],   // Sánchez — CIT no lo mide individualmente
     ]
   },
   "IEP": {
@@ -1921,19 +1920,21 @@ const encData = {
       [8.1,  10.3,  9.4],   // Fujimori
       [4.0,   4.9,  3.9],   // Álvarez
       [4.0,   5.3,  6.8],   // López Chau
-      [1.4,   2.3,  2.7],   // Acuña ★emerg.
+      [1.4,   2.3,  2.7],   // Acuña
       [null, null,  null],  // Nieto — IEP no lo mide individualmente
-      [0.6,   2.4,  3.7],   // R. Sánchez ↗
+      [0.6,   2.4,  3.7],   // Sánchez
     ]
   },
   "IMASOLU": {
     labels: ["28-31 ene"],
     series: [
-      [13.6],
-      [8.9],
-      [5.4],
-      [3.9],
-      [3.1],
+      [13.6],   // Aliaga
+      [8.9],    // Fujimori
+      [5.4],    // Álvarez
+      [3.9],    // López Chau
+      [3.1],    // Acuña
+      [null],   // Nieto
+      [null],   // Sánchez
     ]
   },
 };
@@ -2304,32 +2305,16 @@ function selectEnc(enc) {
 function renderEncChart() {
   const d = encData[activeEnc];
   if (!d) return;
-  const encSupportsEmerg = (activeEnc === 'CPI' || activeEnc === 'DATUM' || activeEnc === 'IPSOS' || activeEnc === 'IEP');
-  const isIEP   = (activeEnc === 'IEP');
-  const isDATUM = (activeEnc === 'DATUM');
-  const isIPSOS = (activeEnc === 'IPSOS');
 
-  let candidates, series;
-  if (isIEP) {
-    // IEP: 7 series — incluye Sánchez, sin Grozo/Vizcarra/Nieto (IEP no los mide individualmente)
-    candidates = TOP5.filter(c => c.short !== 'Nieto');
-    series = d.series;
-  } else if (isDATUM) {
-    // DATUM: 8 series — incluye Nieto y Sánchez, sin Grozo/Vizcarra
-    candidates = TOP5;
-    series = d.series;
-  } else if (isIPSOS) {
-    // IPSOS: 8 series — incluye Nieto y Sánchez (cuando disponibles)
-    candidates = TOP5;
-    series = d.series;
-  } else if (encSupportsEmerg) {
-    // CPI: 7 series sin Nieto ni Sánchez
-    candidates = TOP5.filter(c => c.short !== 'Nieto' && c.short !== 'Sánchez');
-    series = d.series.slice(0, 5);
-  } else {
-    candidates = TOP5.filter(c => !c.dashed);
-    series = d.series.slice(0, 4);
-  }
+  // Todas las encuestadoras ahora tienen series alineadas al TOP5 completo.
+  // IEP no mide Nieto individualmente → lo excluimos de la leyenda (su serie es all-null).
+  // El resto muestra los 7 candidatos completos (con null donde no hay datos).
+  const isIEP = (activeEnc === 'IEP');
+  const candidates = isIEP ? TOP5.filter(c => c.short !== 'Nieto') : TOP5;
+  const series     = isIEP
+    ? d.series.filter((_, i) => i !== 5)   // quitar serie Nieto (índice 5) de IEP
+    : d.series;
+
   buildLegend('legendEnc', candidates);
   drawLineChart('canvasEnc', d.labels, series, candidates);
   attachTooltip('canvasEnc');
