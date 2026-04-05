@@ -638,9 +638,9 @@
   </div>
   <h1>Encuestas<br>Presidenciales<br><span>Perú 2026</span></h1>
   <div class="hero-meta">
-    <div class="hero-meta-item">Período<strong>1 ene – 3 abr 2026</strong></div>
+    <div class="hero-meta-item">Período<strong>1 ene – 4 abr 2026</strong></div>
     <div class="hero-meta-item">Encuestadoras<strong>6 empresas con reg. JNE</strong></div>
-    <div class="hero-meta-item">Total encuestas<strong>26 mediciones</strong></div>
+    <div class="hero-meta-item">Total encuestas<strong>27 mediciones</strong></div>
     <div class="hero-meta-item">Primera vuelta<strong>12 de abril de 2026</strong></div>
     <div class="hero-meta-item">Balotaje<strong>7 de junio de 2026</strong></div>
   </div>
@@ -658,12 +658,12 @@
   <div class="stats-row">
     <div class="stat-card">
       <div class="stat-label">Candidato líder (media)</div>
-      <div class="stat-value">12,1%</div>
+      <div class="stat-value">11,9%</div>
       <div class="stat-sub">Rafael López Aliaga — Renovación Popular</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">2.° lugar (media)</div>
-      <div class="stat-value">9,3%</div>
+      <div class="stat-value">9,4%</div>
       <div class="stat-sub">Keiko Fujimori — Fuerza Popular</div>
     </div>
     <div class="stat-card">
@@ -682,7 +682,7 @@
   <p class="section-title">Media de intención de voto por candidato</p>
   <div class="chart-section">
     <div class="chart-title">Promedio entre encuestas (enero – marzo 2026)</div>
-    <div class="chart-subtitle">Media simple — 26 encuestas · 6 encuestadoras con registro JNE · Última: IEP (mar II, pub. 3 abr)</div>
+    <div class="chart-subtitle">Media simple — 27 encuestas · 6 encuestadoras con registro JNE · Última: IPSOS (1-2 abr, pub. 4 abr)</div>
     <div class="bar-chart" id="mainChart"></div>
   </div>
 
@@ -744,7 +744,8 @@
       <div class="enc-btn" id="stab-cit-mar" onclick="showSimTab('cit-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">CIT · 6–9 mar</div>
       <div class="enc-btn" id="stab-ipsos-mar2" onclick="showSimTab('ipsos-mar2')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">IPSOS · 21–22 mar ★</div>
       <div class="enc-btn" id="stab-cpi-mar" onclick="showSimTab('cpi-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">CPI · 21–23 mar ★</div>
-      <div class="enc-btn" id="stab-datum-mar" onclick="showSimTab('datum-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">DATUM · 25–27 mar ★</div>
+      <div class="enc-btn" id="stab-datum-mar" onclick="showSimTab('datum-mar')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">DATUM · 25–27 mar</div>
+      <div class="enc-btn" id="stab-ipsos-abr" onclick="showSimTab('ipsos-abr')" style="border-radius:0;border-left:none;border-top:none;border-right:none;padding:10px 18px;letter-spacing:1px;font-size:10px">IPSOS · 1–2 abr ★</div>
     </div>
 
     <!-- Panel IPSOS Mar 2026 -->
@@ -922,6 +923,48 @@
           Fujimori consolida el 1.° con <strong style="color:#9b59b6">18,5% de votos válidos</strong> — la cifra más alta de cualquier candidato en todos los simulacros.
           Aliaga cae a <strong style="color:#e74c3c">13,3%</strong>, su mínimo en simulacros. Álvarez sube al 3.° (8,9%).
           Sánchez sube al 4.° (7,4%). Grozo se hunde al 2,6%. Blanco+Nulo: <strong style="color:#888">28,9%</strong> de votos emitidos.
+        </p>
+      </div>
+    </div>
+
+    <!-- Panel IPSOS 3.er Simulacro Abr 2026 -->
+    <div id="spanel-ipsos-abr" style="display:none;padding-top:24px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center">
+        <span class="enc-badge badge-ipsos" style="padding:3px 10px">IPSOS Perú · 3.er Simulacro · pub. 4 abr 2026</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--oro);padding:3px 10px;border:1px solid var(--oro);border-radius:3px">001-REE/JNE</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">n=1.212 · ±2,8% · 95%</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);padding:3px 10px;border:1px solid var(--border);border-radius:3px">Perú 21</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#e74c3c;padding:3px 10px;border:1px solid #e74c3c;border-radius:3px">★ ÚLTIMA ANTES DE LA VEDA</span>
+      </div>
+      <div style="margin-bottom:20px;padding:14px 18px;background:rgba(200,153,30,0.06);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.8;margin:0">
+          Último simulacro antes de la veda electoral del 5 de abril. Campo: <strong style="color:var(--text)">1 y 2 de abril</strong>, tras la conclusión de los 6 debates presidenciales del JNE. <strong style="color:var(--text)">Carlos Álvarez sube al 2.° lugar</strong> (12,1% votos válidos), desplazando a Aliaga al 3.° (10,9%) — el movimiento más significativo de toda la campaña. Fujimori consolida el 1.° (18,6%). Sánchez sube al 9,0%.
+        </p>
+      </div>
+      <div class="table-wrap" style="margin-bottom:20px">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width:180px">Candidato / Partido</th>
+              <th style="text-align:center;color:#a0c4e8;border-bottom:2px solid #a0c4e8;font-size:10px">Encuesta<br>1-2 abr (%)</th>
+              <th style="text-align:center;color:#70C890;border-bottom:2px solid #27ae60;font-size:10px">Simulacro<br>Votos Válidos (%)</th>
+              <th style="text-align:center;color:var(--oro);border-bottom:2px solid var(--oro);font-size:10px">Δ vs. sim. anterior<br>(22 mar)</th>
+              <th style="text-align:center;color:#a0a0a0;font-size:10px">Nota</th>
+            </tr>
+          </thead>
+          <tbody id="simulacro-body-ipsos-abr"></tbody>
+        </table>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--oro);margin-bottom:14px">Comparativo visual — Encuesta vs. Votos Válidos (IPSOS 3.er sim.)</div>
+      <div id="simulacro-bars-ipsos-abr" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px"></div>
+      <div style="padding:12px 16px;background:rgba(200,153,30,0.07);border-left:3px solid var(--oro);border-radius:0 4px 4px 0">
+        <p style="font-size:11px;color:var(--text-dim);line-height:1.7">
+          💡 <strong style="color:var(--text)">Hallazgos clave IPSOS 3.er simulacro:</strong>
+          Álvarez sube a <strong style="color:#27ae60">12,1%</strong> de votos válidos (+4,7 pp) — el mayor salto individual de toda la campaña en simulacros.
+          Aliaga cae a <strong style="color:#e74c3c">10,9%</strong> (−6,3 pp), su mínimo histórico.
+          Fujimori consolida <strong style="color:#9b59b6">18,6%</strong> (+1,3 pp).
+          En Lima: Álvarez (18,6%) supera por primera vez a Aliaga (15,5%).
+          Sánchez sube al 9,0% votos válidos. Blanco/Nulo sigue cayendo — señal de que el electorado se define.
         </p>
       </div>
     </div>
@@ -1446,7 +1489,7 @@
 </main>
 
 <footer>
-  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 3 abril 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
+  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 4 abril 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
   <p>Elecciones Generales Perú · <strong>12 de abril de 2026</strong> (1.ª vuelta) · <strong>7 de junio de 2026</strong> (balotaje)</p>
 </footer>
 
@@ -1454,8 +1497,13 @@
 // ── DATOS ────────────────────────────────────────────────────────────────────
 const encuestas = [
   {
+    enc: "IPSOS Perú", badge: "badge-ipsos", reg: "001-REE/JNE",
+    medio: "Perú 21", campo: "1-2/04/2026 ★ÚLTIMA", muestra: "1.212",
+    lopez: 8.0, fujimori: 13.0, alvarez: 9.0, acuna: null, vizcarra: null, lopezchau: null, nsnc: "Post 2.ª ronda debates JNE · ÚLTIMA antes de veda"
+  },
+  {
     enc: "IEP", badge: "badge-iep", reg: "000485-REE/JNE",
-    medio: "La República", campo: "Mar II 2026 ★NUEVA", muestra: "1.203",
+    medio: "La República", campo: "Mar II 2026", muestra: "1.203",
     lopez: 8.7, fujimori: 10.0, alvarez: 6.9, acuna: 2.2, vizcarra: 1.9, lopezchau: 6.3, nsnc: "17,0% no precisa · 9,0% ninguno · 2,8% bl/nulo"
   },
   {
@@ -1588,7 +1636,7 @@ const encuestas = [
 const candidatos = [
   {
     nombre: "Rafael López Aliaga", partido: "Renovación Popular",
-    avg: 12.1, leader: true,
+    avg: 11.9, leader: true,
     bars: [
       { label: "CIT (16 feb)", val: 15.3 },
       { label: "IEP (ene)", val: 14.7 },
@@ -1610,7 +1658,8 @@ const candidatos = [
     nombre: "Keiko Fujimori", partido: "Fuerza Popular",
     avg: 9.0, leader: false,
     bars: [
-      { label: "IEP (mar II)★", val: 10.0 },
+      { label: "IPSOS (1-2 abr)★", val: 13.0 },
+      { label: "IEP (mar II)", val: 10.0 },
       { label: "DATUM (25-27 mar)", val: 13.0 },
       { label: "IPSOS (26-27 mar)", val: 11.0 },
       { label: "IPSOS (21-22 mar)", val: 11.0 },
@@ -1666,7 +1715,8 @@ const candidatos = [
       { label: "DATUM (27f-4mar)", val: 5.0 },
       { label: "CIT (16 feb)", val: 5.0 },
       { label: "IEP (23 feb)", val: 4.9 },
-      { label: "IEP (mar II)★", val: 6.9 },
+      { label: "IPSOS (1-2 abr)★", val: 9.0 },
+      { label: "IEP (mar II)", val: 6.9 },
       { label: "DATUM (25-27 mar)", val: 6.9 },
       { label: "IPSOS (26-27 mar)", val: 7.0 },
       { label: "IPSOS (21-22 mar)", val: 5.0 },
@@ -1743,11 +1793,11 @@ const candidatos = [
 
 // ── GRÁFICO PRINCIPAL ─────────────────────────────────────────────────────────
 const allCands = [
-  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 12.1, color: "#c0392b" },
-  { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 9.3,  color: "#6B2FAF" },
+  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 11.9, color: "#c0392b" },
+  { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 9.4,  color: "#6B2FAF" },
   { name: "A. López Chau",    party: "Ahora Nación",           avg: 5.1,  color: "#1A5CAF" },
-  { name: "Carlos Álvarez",   party: "País para Todos",        avg: 5.0,  color: "#1A6B3A" },
-  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 4.6,  color: "#8C5A8C" },
+  { name: "Carlos Álvarez",   party: "País para Todos",        avg: 5.2,  color: "#1A6B3A" },
+  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 4.7,  color: "#8C5A8C" },
   { name: "W. Grozo",         party: "Integridad Democrática", avg: 4.2,  color: "#e67e22" },
   { name: "César Acuña",      party: "APP",                    avg: 4.0,  color: "#8C5A1A" },
   { name: "Yonhy Lescano",    party: "Cooperación Popular",    avg: 3.0,  color: "#5A8C1A" },
@@ -1853,35 +1903,35 @@ const mediaData = {
   // Período 4: 1ª quinc. feb   (IPSOS 5-6f + CIT 16f + CPI 14-18f + DATUM 13-17f, n=4)
   // Período 5: 2ª quinc. feb/ini mar (IEP 23f + IPSOS 19-20f + CIT 20-24f + CPI 28f-5mar + DATUM 27f-4mar, n=5)
   // Período 6: 1ª quinc. marzo (IPSOS 5-6mar + IEP ~6-11mar + DATUM 6-10mar, n=3)
-  // Período 7: 2ª quinc. marzo (DATUM 13-17mar + IPSOS 21-22mar + CPI 21-23mar + IPSOS 26-27mar + DATUM 25-27mar + IEP Mar II, n=6)
+  // Período 7: 2ª quinc. mar/ini abr (DATUM 13-17mar+IPSOS 21-22mar+CPI 21-23mar+IPSOS 26-27mar+DATUM 25-27mar+IEP Mar II+IPSOS 1-2abr, n=7)
   labels: [
     "1ª quinc.\nEnero\n(n=4)", "2ª quinc.\nEnero\n(n=1)",
     "Fin ene /\nIni feb\n(n=3)", "1ª quinc.\nFebrero\n(n=4)",
-    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc.\nMarzo\n(n=6)"
+    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc. mar /\nini abr\n(n=7)"
   ],
   series: [
-    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4, 10.5],   // Aliaga:   (11.7+10+11.7+9+11.7+8.7)/6
-    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 11.2],   // Fujimori: (11.9+11+10.1+11+13+10)/6
-    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  5.7],   // Álvarez:  (5.0+5+3.5+7+6.9+6.9)/6
-    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  5.8],   // LChau:    (6.5+5+6.6+4+6.1+6.3)/6
-    [null, null, 4.2,  4.4,  4.2,   3.5,  3.3],   // Acuña ★emerg.: (3.6+3+3.2+4+2.2)/5 n=5
-    [null, null, null, null, null,  null, 5.0],   // Nieto ★emerg.: (4.6+5+3.9+5+5.9+5.4)/6
-    [null, null, null, 2.4,  2.4,   3.7,  4.7],   // Sánchez ↗: (5+3.1+4+4.9+6.7)/5 n=5
+    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4, 10.1],   // Aliaga:   (11.7+10+11.7+9+11.7+8.7+8)/7
+    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 11.4],   // Fujimori: (11.9+11+10.1+11+13+10+13)/7
+    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  6.2],   // Álvarez:  (5.0+5+3.5+7+6.9+6.9+9)/7
+    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  5.8],   // LChau: sin dato IPSOS abr → n=6
+    [null, null, 4.2,  4.4,  4.2,   3.5,  3.2],   // Acuña ★emerg.: (3.6+3+3.2+4+2.2+5.1)/6
+    [null, null, null, null, null,  null, 5.0],   // Nieto ★emerg.: (4.6+5+3.9+5+5.9+5.4+5)/7
+    [null, null, null, 2.4,  2.4,   3.7,  4.9],   // Sánchez ↗: (5+3.1+4+4.9+6.7+6)/6
   ]
 };
 
 const encData = {
   // Series order = TOP5: Aliaga · Fujimori · Álvarez · LChau · Acuña · Nieto · Sánchez
   "IPSOS": {
-    labels: ["07-08 ene", "05-06 feb", "19-20 feb", "05-06 mar", "21-22 mar", "26-27 mar"],
+    labels: ["07-08 ene", "05-06 feb", "19-20 feb", "05-06 mar", "21-22 mar", "26-27 mar", "1-2 abr"],
     series: [
-      [10.0, 12.0, 10.0, 11.0, 10.0,  9.0],   // Aliaga
-      [7.0,  8.0,  9.0, 10.0, 11.0, 11.0],    // Fujimori
-      [null, 4.0,  3.0,  6.0,  5.0,  7.0],    // Álvarez
-      [null, 4.0,  4.0,  4.0,  5.0,  4.0],    // López Chau
-      [null, 4.0,  4.0,  4.0,  null, null],   // Acuña (no desglosado en mar II)
-      [null, null, null, null, 5.0,  5.0],    // Nieto (desde 21-22 mar)
-      [null, null, null, null, 5.0,  4.0],    // Sánchez (desde 21-22 mar)
+      [10.0, 12.0, 10.0, 11.0, 10.0,  9.0,  8.0],   // Aliaga
+      [7.0,  8.0,  9.0, 10.0, 11.0, 11.0, 13.0],    // Fujimori
+      [null, 4.0,  3.0,  6.0,  5.0,  7.0,  9.0],    // Álvarez
+      [null, 4.0,  4.0,  4.0,  5.0,  4.0,  null],   // López Chau (no desglosado abr)
+      [null, 4.0,  4.0,  4.0,  null, null, null],   // Acuña (no desglosado mar-abr)
+      [null, null, null, null, 5.0,  5.0,  5.0],    // Nieto
+      [null, null, null, null, 5.0,  4.0,  6.0],    // Sánchez
     ]
   },
   // Series order = TOP5: Aliaga · Fujimori · Álvarez · LChau · Acuña · Nieto · Sánchez
@@ -2375,16 +2425,17 @@ const simMediaData = {
   // IPSOS-2 21-22 mar: Aliaga 17.2 · Fujimori 17.3 · Álvarez 7.4  · Acuña 5.2  · LChau 7.9  · Nieto 5.4
   // CPI     21-23 mar: Aliaga 17.9 · Fujimori 17.3 · Álvarez 5.7  · Acuña 4.9  · LChau 10.5 · Nieto 6.7
   // DATUM   25-27 mar: Aliaga 13.3 · Fujimori 18.5 · Álvarez 8.9  · Acuña 5.5  · LChau 5.9  · Nieto 6.8
+  // IPSOS-3 1-2 abr:   Aliaga 10.9 · Fujimori 18.6 · Álvarez 12.1 · Acuña 5.1  · LChau 4.4  · Nieto 5.6
   // Media 1ª quinc. mar (IPSOS-1 + CIT):              Aliaga 19.3 · Fujimori 13.5 · Álvarez 7.9 · Acuña 8.7  · LChau 7.75 · Nieto —
-  // Media 2ª quinc. mar (IPSOS-2 + CPI + DATUM):      Aliaga 16.1 · Fujimori 17.7 · Álvarez 7.3 · Acuña 5.2  · LChau 8.1  · Nieto 6.3
-  labels: ["IPSOS-1\n5-6 mar", "CIT\n6-9 mar", "Media\n1ª quinc.", "IPSOS-2\n21-22 mar", "CPI\n21-23 mar", "DATUM\n25-27 mar", "Media\n2ª quinc."],
+  // Media 2ª quinc. (IPSOS-2+CPI+DATUM+IPSOS-3):      Aliaga 14.8 · Fujimori 17.9 · Álvarez 8.5 · Acuña 5.2  · LChau 7.2  · Nieto 6.1
+  labels: ["IPSOS-1\n5-6 mar", "CIT\n6-9 mar", "Media\n1ª quinc.", "IPSOS-2\n21-22 mar", "CPI\n21-23 mar", "DATUM\n25-27 mar", "IPSOS-3\n1-2 abr", "Media\n2ª quinc."],
   series: [
-    [17.2, 21.4, 19.3, 17.2, 17.9, 13.3, 16.1],   // Aliaga
-    [14.2, 12.8, 13.5, 17.3, 17.3, 18.5, 17.7],   // Fujimori
-    [8.9,   6.8,  7.9,  7.4,  5.7,  8.9,  7.3],   // Álvarez
-    [8.1,   9.3,  8.7,  5.2,  4.9,  5.5,  5.2],   // Acuña
-    [6.4,   9.1,  7.8,  7.9, 10.5,  5.9,  8.1],   // López Chau
-    [null, null, null,  5.4,  6.7,  6.8,  6.3],   // Nieto ★emerg.
+    [17.2, 21.4, 19.3, 17.2, 17.9, 13.3, 10.9, 14.8],   // Aliaga
+    [14.2, 12.8, 13.5, 17.3, 17.3, 18.5, 18.6, 17.9],   // Fujimori
+    [8.9,   6.8,  7.9,  7.4,  5.7,  8.9, 12.1,  8.5],   // Álvarez
+    [8.1,   9.3,  8.7,  5.2,  4.9,  5.5,  5.1,  5.2],   // Acuña
+    [6.4,   9.1,  7.8,  7.9, 10.5,  5.9,  4.4,  7.2],   // López Chau
+    [null, null, null,  5.4,  6.7,  6.8,  5.6,  6.1],   // Nieto ★emerg.
   ]
 };
 
@@ -3026,6 +3077,35 @@ const simulacros = {
     ],
     blanco_enc: 24.2, blanco_sim: 24.2,
   },
+  "ipsos-abr": {
+    fecha: "1–2 abr 2026",
+    fuente: "IPSOS Perú para Perú 21 · 3.er Simulacro · n=1.212 · ±2,8% · 95% · 001-REE/JNE",
+    candidates: [
+      { name: "Keiko Fujimori",  party: "Fuerza Popular",       color: "#9b59b6",
+        enc: 13.0, emitidos: null, validos: 18.6, nota: "Consolida 1.° · Lima 18,2% · Oriente 36,9%" },
+      { name: "Carlos Álvarez",  party: "País para Todos",      color: "#27ae60",
+        enc: 9.0,  emitidos: null, validos: 12.1, nota: "🚨 Sube al 2.° · Lima 18,6% · +4,7 pp vs. sim. anterior" },
+      { name: "R. López Aliaga", party: "Renovación Popular",   color: "#e74c3c",
+        enc: 8.0,  emitidos: null, validos: 10.9, nota: "Baja al 3.° · Lima 15,5% · −6,3 pp vs. sim. anterior" },
+      { name: "R. Sánchez",      party: "Juntos p/ el Perú",    color: "#8C1A5A",
+        enc: 6.0,  emitidos: null, validos: 9.0,  nota: "Sube al 4.° (+1,5 pp)" },
+      { name: "Jorge Nieto",     party: "Partido Buen Gob.",    color: "#8C5A8C",
+        enc: 5.0,  emitidos: null, validos: 5.6,  nota: "" },
+      { name: "César Acuña",     party: "APP",                  color: "#16a085",
+        enc: null, emitidos: null, validos: 5.1,  nota: "" },
+      { name: "A. López Chau",   party: "Ahora Nación",         color: "#3498db",
+        enc: null, emitidos: null, validos: 4.4,  nota: "Baja en simulacro" },
+      { name: "R. Belmont",      party: "Obras",                color: "#C08000",
+        enc: null, emitidos: null, validos: 4.3,  nota: "↑ Efecto debates" },
+      { name: "M. Pérez Tello",  party: "Primero la Gente",     color: "#5A7A8C",
+        enc: null, emitidos: null, validos: 3.9,  nota: "↑ Efecto debates" },
+      { name: "Y. Lescano",      party: "Cooperación Popular",  color: "#5A8C1A",
+        enc: null, emitidos: null, validos: 3.2,  nota: "" },
+      { name: "C. Espá",         party: "SíCreo",               color: "#8C5A1A",
+        enc: null, emitidos: null, validos: 2.8,  nota: "↑ Efecto debates" },
+    ],
+    blanco_enc: null, blanco_sim: null,
+  },
   "datum-mar": {
     fecha: "25–27 mar 2026",
     fuente: "DATUM Internacional para América TV/Cuarto Poder · n=2.000 · ±2,2% · 95%",
@@ -3094,8 +3174,9 @@ function renderSimulacro(key) {
 
   const isCIT   = (key === 'cit-mar');
   const isDATUM_SIM = (key === 'datum-mar');
-  const tbId   = isCIT ? 'simulacro-body-cit'   : isDATUM_SIM ? 'simulacro-body-datum'   : key === 'ipsos-mar2' ? 'simulacro-body-ipsos2' : key === 'cpi-mar' ? 'simulacro-body-cpi' : 'simulacro-body';
-  const barsId = isCIT ? 'simulacro-bars-cit'   : isDATUM_SIM ? 'simulacro-bars-datum'   : key === 'ipsos-mar2' ? 'simulacro-bars-ipsos2' : key === 'cpi-mar' ? 'simulacro-bars-cpi' : 'simulacro-bars';
+  const isIPSOS_ABR = (key === 'ipsos-abr');
+  const tbId   = isCIT ? 'simulacro-body-cit' : isDATUM_SIM ? 'simulacro-body-datum' : isIPSOS_ABR ? 'simulacro-body-ipsos-abr' : key === 'ipsos-mar2' ? 'simulacro-body-ipsos2' : key === 'cpi-mar' ? 'simulacro-body-cpi' : 'simulacro-body';
+  const barsId = isCIT ? 'simulacro-bars-cit' : isDATUM_SIM ? 'simulacro-bars-datum' : isIPSOS_ABR ? 'simulacro-bars-ipsos-abr' : key === 'ipsos-mar2' ? 'simulacro-bars-ipsos2' : key === 'cpi-mar' ? 'simulacro-bars-cpi' : 'simulacro-bars';
 
   const tb = document.getElementById(tbId);
   const barsDiv = document.getElementById(barsId);
