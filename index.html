@@ -638,9 +638,9 @@
   </div>
   <h1>Encuestas<br>Presidenciales<br><span>Perú 2026</span></h1>
   <div class="hero-meta">
-    <div class="hero-meta-item">Período<strong>1 ene – 30 mar 2026</strong></div>
+    <div class="hero-meta-item">Período<strong>1 ene – 3 abr 2026</strong></div>
     <div class="hero-meta-item">Encuestadoras<strong>6 empresas con reg. JNE</strong></div>
-    <div class="hero-meta-item">Total encuestas<strong>25 mediciones</strong></div>
+    <div class="hero-meta-item">Total encuestas<strong>26 mediciones</strong></div>
     <div class="hero-meta-item">Primera vuelta<strong>12 de abril de 2026</strong></div>
     <div class="hero-meta-item">Balotaje<strong>7 de junio de 2026</strong></div>
   </div>
@@ -658,7 +658,7 @@
   <div class="stats-row">
     <div class="stat-card">
       <div class="stat-label">Candidato líder (media)</div>
-      <div class="stat-value">12,2%</div>
+      <div class="stat-value">12,1%</div>
       <div class="stat-sub">Rafael López Aliaga — Renovación Popular</div>
     </div>
     <div class="stat-card">
@@ -682,7 +682,7 @@
   <p class="section-title">Media de intención de voto por candidato</p>
   <div class="chart-section">
     <div class="chart-title">Promedio entre encuestas (enero – marzo 2026)</div>
-    <div class="chart-subtitle">Media simple — 25 encuestas · 6 encuestadoras con registro JNE · Última: DATUM (25-27 mar, pub. 30 mar)</div>
+    <div class="chart-subtitle">Media simple — 26 encuestas · 6 encuestadoras con registro JNE · Última: IEP (mar II, pub. 3 abr)</div>
     <div class="bar-chart" id="mainChart"></div>
   </div>
 
@@ -1446,7 +1446,7 @@
 </main>
 
 <footer>
-  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 30 marzo 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
+  <p>Dashboard elaborado con base en encuestas publicadas entre el <strong>1 enero y 3 abril 2026</strong>.<br>Solo se incluyen encuestadoras con número de registro verificado ante el Jurado Nacional de Elecciones del Perú.</p>
   <p>Elecciones Generales Perú · <strong>12 de abril de 2026</strong> (1.ª vuelta) · <strong>7 de junio de 2026</strong> (balotaje)</p>
 </footer>
 
@@ -1454,8 +1454,13 @@
 // ── DATOS ────────────────────────────────────────────────────────────────────
 const encuestas = [
   {
+    enc: "IEP", badge: "badge-iep", reg: "000485-REE/JNE",
+    medio: "La República", campo: "Mar II 2026 ★NUEVA", muestra: "1.203",
+    lopez: 8.7, fujimori: 10.0, alvarez: 6.9, acuna: 2.2, vizcarra: 1.9, lopezchau: 6.3, nsnc: "17,0% no precisa · 9,0% ninguno · 2,8% bl/nulo"
+  },
+  {
     enc: "DATUM Internacional", badge: "badge-datum", reg: "002-REE/JNE",
-    medio: "América TV / Cuarto Poder", campo: "25-27/03/2026 ★NUEVA", muestra: "2.000",
+    medio: "América TV / Cuarto Poder", campo: "25-27/03/2026", muestra: "2.000",
     lopez: 11.7, fujimori: 13.0, alvarez: 6.9, acuna: 4.0, vizcarra: null, lopezchau: 6.1, nsnc: "12,2% bl/vic · 11,7% no sabe"
   },
   {
@@ -1583,7 +1588,7 @@ const encuestas = [
 const candidatos = [
   {
     nombre: "Rafael López Aliaga", partido: "Renovación Popular",
-    avg: 12.2, leader: true,
+    avg: 12.1, leader: true,
     bars: [
       { label: "CIT (16 feb)", val: 15.3 },
       { label: "IEP (ene)", val: 14.7 },
@@ -1605,7 +1610,8 @@ const candidatos = [
     nombre: "Keiko Fujimori", partido: "Fuerza Popular",
     avg: 9.0, leader: false,
     bars: [
-      { label: "DATUM (25-27 mar)★", val: 13.0 },
+      { label: "IEP (mar II)★", val: 10.0 },
+      { label: "DATUM (25-27 mar)", val: 13.0 },
       { label: "IPSOS (26-27 mar)", val: 11.0 },
       { label: "IPSOS (21-22 mar)", val: 11.0 },
       { label: "DATUM (13-17 mar)", val: 11.9 },
@@ -1628,7 +1634,8 @@ const candidatos = [
     nombre: "Alfonso López Chau", partido: "Ahora Nación",
     avg: 4.9, leader: false,
     bars: [
-      { label: "DATUM (25-27 mar)★", val: 6.1 },
+      { label: "IEP (mar II)★", val: 6.3 },
+      { label: "DATUM (25-27 mar)", val: 6.1 },
       { label: "CPI (21-23 mar)", val: 6.6 },
       { label: "DATUM (13-17 mar)", val: 6.5 },
       { label: "IEP (~6-11 mar)", val: 6.8 },
@@ -1659,7 +1666,8 @@ const candidatos = [
       { label: "DATUM (27f-4mar)", val: 5.0 },
       { label: "CIT (16 feb)", val: 5.0 },
       { label: "IEP (23 feb)", val: 4.9 },
-      { label: "DATUM (25-27 mar)★", val: 6.9 },
+      { label: "IEP (mar II)★", val: 6.9 },
+      { label: "DATUM (25-27 mar)", val: 6.9 },
       { label: "IPSOS (26-27 mar)", val: 7.0 },
       { label: "IPSOS (21-22 mar)", val: 5.0 },
       { label: "DATUM (13-17 mar)", val: 5.0 },
@@ -1735,11 +1743,11 @@ const candidatos = [
 
 // ── GRÁFICO PRINCIPAL ─────────────────────────────────────────────────────────
 const allCands = [
-  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 12.2, color: "#c0392b" },
+  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 12.1, color: "#c0392b" },
   { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 9.3,  color: "#6B2FAF" },
   { name: "A. López Chau",    party: "Ahora Nación",           avg: 5.1,  color: "#1A5CAF" },
-  { name: "Carlos Álvarez",   party: "País para Todos",        avg: 4.9,  color: "#1A6B3A" },
-  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 4.5,  color: "#8C5A8C" },
+  { name: "Carlos Álvarez",   party: "País para Todos",        avg: 5.0,  color: "#1A6B3A" },
+  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 4.6,  color: "#8C5A8C" },
   { name: "W. Grozo",         party: "Integridad Democrática", avg: 4.2,  color: "#e67e22" },
   { name: "César Acuña",      party: "APP",                    avg: 4.0,  color: "#8C5A1A" },
   { name: "Yonhy Lescano",    party: "Cooperación Popular",    avg: 3.0,  color: "#5A8C1A" },
@@ -1845,20 +1853,20 @@ const mediaData = {
   // Período 4: 1ª quinc. feb   (IPSOS 5-6f + CIT 16f + CPI 14-18f + DATUM 13-17f, n=4)
   // Período 5: 2ª quinc. feb/ini mar (IEP 23f + IPSOS 19-20f + CIT 20-24f + CPI 28f-5mar + DATUM 27f-4mar, n=5)
   // Período 6: 1ª quinc. marzo (IPSOS 5-6mar + IEP ~6-11mar + DATUM 6-10mar, n=3)
-  // Período 7: 2ª quinc. marzo (DATUM 13-17mar + IPSOS 21-22mar + CPI 21-23mar + IPSOS 26-27mar + DATUM 25-27mar, n=5)
+  // Período 7: 2ª quinc. marzo (DATUM 13-17mar + IPSOS 21-22mar + CPI 21-23mar + IPSOS 26-27mar + DATUM 25-27mar + IEP Mar II, n=6)
   labels: [
     "1ª quinc.\nEnero\n(n=4)", "2ª quinc.\nEnero\n(n=1)",
     "Fin ene /\nIni feb\n(n=3)", "1ª quinc.\nFebrero\n(n=4)",
-    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc.\nMarzo\n(n=5)"
+    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc.\nMarzo\n(n=6)"
   ],
   series: [
-    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4, 10.8],   // Aliaga
-    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 11.4],   // Fujimori
-    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  5.5],   // Álvarez
-    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  5.6],   // LChau
-    [null, null, 4.2,  4.4,  4.2,   3.5,  3.5],   // Acuña ★emerg.
-    [null, null, null, null, null,  null, 4.9],   // Nieto ★emerg.: (4.6+5+3.9+5+5.9)/5
-    [null, null, null, 2.4,  2.4,   3.7,  4.3],   // Sánchez ↗: P4 IEP feb · P5 IEP 23f · P6 IEP mar · P7 (5+3.1+4+4.9)/4
+    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4, 10.5],   // Aliaga:   (11.7+10+11.7+9+11.7+8.7)/6
+    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 11.2],   // Fujimori: (11.9+11+10.1+11+13+10)/6
+    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  5.7],   // Álvarez:  (5.0+5+3.5+7+6.9+6.9)/6
+    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  5.8],   // LChau:    (6.5+5+6.6+4+6.1+6.3)/6
+    [null, null, 4.2,  4.4,  4.2,   3.5,  3.3],   // Acuña ★emerg.: (3.6+3+3.2+4+2.2)/5 n=5
+    [null, null, null, null, null,  null, 5.0],   // Nieto ★emerg.: (4.6+5+3.9+5+5.9+5.4)/6
+    [null, null, null, 2.4,  2.4,   3.7,  4.7],   // Sánchez ↗: (5+3.1+4+4.9+6.7)/5 n=5
   ]
 };
 
@@ -1914,15 +1922,15 @@ const encData = {
     ]
   },
   "IEP": {
-    labels: ["ene 2026", "23 feb 2026", "~6-11 mar"],
+    labels: ["ene 2026", "23 feb 2026", "~6-11 mar", "~mar II"],
     series: [
-      [14.7, 14.6, 11.7],   // Aliaga
-      [8.1,  10.3,  9.4],   // Fujimori
-      [4.0,   4.9,  3.9],   // Álvarez
-      [4.0,   5.3,  6.8],   // López Chau
-      [1.4,   2.3,  2.7],   // Acuña
-      [null, null,  null],  // Nieto — IEP no lo mide individualmente
-      [0.6,   2.4,  3.7],   // Sánchez
+      [14.7, 14.6, 11.7,  8.7],   // Aliaga
+      [8.1,  10.3,  9.4, 10.0],   // Fujimori
+      [4.0,   4.9,  3.9,  6.9],   // Álvarez
+      [4.0,   5.3,  6.8,  6.3],   // López Chau
+      [1.4,   2.3,  2.7,  2.2],   // Acuña
+      [null, null,  null, 5.4],   // Nieto (aparece en Mar II)
+      [0.6,   2.4,  3.7,  6.7],   // Sánchez
     ]
   },
   "IMASOLU": {
@@ -2306,14 +2314,10 @@ function renderEncChart() {
   const d = encData[activeEnc];
   if (!d) return;
 
-  // Todas las encuestadoras ahora tienen series alineadas al TOP5 completo.
-  // IEP no mide Nieto individualmente → lo excluimos de la leyenda (su serie es all-null).
-  // El resto muestra los 7 candidatos completos (con null donde no hay datos).
+  // IEP: 7 series completas — Nieto aparece desde Mar II (5,4%)
   const isIEP = (activeEnc === 'IEP');
-  const candidates = isIEP ? TOP5.filter(c => c.short !== 'Nieto') : TOP5;
-  const series     = isIEP
-    ? d.series.filter((_, i) => i !== 5)   // quitar serie Nieto (índice 5) de IEP
-    : d.series;
+  const candidates = TOP5;
+  const series     = d.series;
 
   buildLegend('legendEnc', candidates);
   drawLineChart('canvasEnc', d.labels, series, candidates);
