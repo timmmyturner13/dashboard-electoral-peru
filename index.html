@@ -657,14 +657,14 @@
   <p class="section-title">Indicadores clave</p>
   <div class="stats-row">
     <div class="stat-card">
-      <div class="stat-label">Candidato líder (media)</div>
-      <div class="stat-value">11,7%</div>
-      <div class="stat-sub">Rafael López Aliaga — Renovación Popular</div>
+      <div class="stat-label">Líder en simulacros (media 1ª quinc. abr)</div>
+      <div class="stat-value">16,7%</div>
+      <div class="stat-sub">Keiko Fujimori — Fuerza Popular · votos válidos</div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">2.° lugar (media)</div>
-      <div class="stat-value">9,7%</div>
-      <div class="stat-sub">Keiko Fujimori — Fuerza Popular</div>
+      <div class="stat-label">2.° en simulacros (media 1ª quinc. abr)</div>
+      <div class="stat-value">10,9%</div>
+      <div class="stat-sub">Carlos Álvarez — País para Todos · votos válidos</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">Indecisión / Blanco promedio</div>
@@ -679,13 +679,6 @@
   </div>
 
   <!-- GRÁFICO GENERAL -->
-  <p class="section-title">Media de intención de voto por candidato</p>
-  <div class="chart-section">
-    <div class="chart-title">Promedio entre encuestas (enero – abril 2026)</div>
-    <div class="chart-subtitle">Media simple — 29 encuestas · 6 encuestadoras con registro JNE · Última: CPI (3-4 abr, pub. 5 abr)</div>
-    <div class="bar-chart" id="mainChart"></div>
-  </div>
-
   <!-- CANDIDATOS DETALLE -->
 
   <!-- EVOLUCIÓN MEDIA GENERAL -->
@@ -725,7 +718,7 @@
   <p class="section-title">Evolución de simulacros — Media de votos válidos (principales candidatos)</p>
   <div class="chart-section">
     <div class="chart-title">Tendencia de votos válidos — Media entre simulacros nacionales</div>
-    <div class="chart-subtitle">Votos válidos excluyen blancos y viciados · Fuentes: IPSOS · CIT · CPI · DATUM (mar-abr) · 8 simulacros totales · Hover para detalle</div>
+    <div class="chart-subtitle">Votos válidos excluyen blancos y viciados · 8 simulacros totales · Medias de quincena destacadas · DATUM/CPI abril usan votos emitidos donde no hay válidos desglosados · Hover para detalle</div>
     <div class="legend-row" id="legendSimMedia"></div>
     <canvas id="canvasSimMedia" class="evo-canvas" height="320"></canvas>
   </div>
@@ -1498,7 +1491,14 @@
 </div><!-- .chart-section desagregación -->
 
   <div class="tooltip-box" id="tooltipBox"></div>
-  <p class="section-title">Detalle por candidato — Evolución entre encuestas</p>
+  <p class="section-title">Media de intención de voto por candidato</p>
+  <div class="chart-section">
+    <div class="chart-title">Promedio entre encuestas (enero – abril 2026)</div>
+    <div class="chart-subtitle">Media simple — 29 encuestas · 6 encuestadoras con registro JNE · Última: CPI (3-4 abr, pub. 5 abr)</div>
+    <div class="bar-chart" id="mainChart"></div>
+  </div>
+
+    <p class="section-title">Detalle por candidato — Evolución entre encuestas</p>
   <div class="candidates-grid" id="candidatesGrid"></div>
 
 
@@ -1724,7 +1724,7 @@ const encuestas = [
 const candidatos = [
   {
     nombre: "Rafael López Aliaga", partido: "Renovación Popular",
-    avg: 11.9, leader: true,
+    avg: 11.7, leader: true,
     bars: [
       { label: "CIT (16 feb)", val: 15.3 },
       { label: "IEP (ene)", val: 14.7 },
@@ -1744,7 +1744,7 @@ const candidatos = [
   },
   {
     nombre: "Keiko Fujimori", partido: "Fuerza Popular",
-    avg: 9.0, leader: false,
+    avg: 9.7, leader: false,
     bars: [
       { label: "DATUM (1-4 abr)★", val: 14.5 },
       { label: "CPI (3-4 abr)", val: 11.8 },
@@ -1820,18 +1820,6 @@ const candidatos = [
     ]
   },
   {
-    nombre: "Wolfgang Grozo ★", partido: "Integridad Democrática",
-    avg: 4.2, leader: false, emergente: true,
-    bars: [
-      { label: "DATUM (6-10 mar)", val: 5.1 },
-      { label: "CPI (28f-5mar)", val: 4.8 },
-      { label: "DATUM (13-17 mar)★", val: 2.5 },
-      { label: "IEP (~6-11 mar)", val: 4.3 },
-      { label: "DATUM (27f-4mar)", val: 4.2 },
-      { label: "IPSOS (5-6 mar)", val: 4.0 },
-    ]
-  },
-  {
     nombre: "César Acuña", partido: "Alianza p/ el Progreso",
     avg: 4.1, leader: false,
     bars: [
@@ -1853,24 +1841,39 @@ const candidatos = [
     ]
   },
   {
-    nombre: "Mario Vizcarra", partido: "Perú Primero",
-    avg: 3.0, leader: false,
+    nombre: "Jorge Nieto ↗", partido: "Partido del Buen Gobierno",
+    avg: 4.8, leader: false, emergente: true,
     bars: [
-      { label: "CPI (29 ene)", val: 4.7 },
-      { label: "IEP (ene)", val: 4.4 },
-      { label: "CPI ene", val: 4.4 },
-      { label: "IEP (23 feb)", val: 4.0 },
-      { label: "IPSOS (5 feb)", val: 4.0 },
-      { label: "DATUM (30 ene)", val: 3.6 },
-      { label: "CIT (20-24 feb)", val: 3.2 },
-      { label: "IEP (~6-11 mar)", val: 3.1 },
-      { label: "IPSOS (5-6 mar)", val: 3.0 },
-      { label: "CPI (28f-5mar)", val: 2.5 },
-      { label: "DATUM (27f-4mar)", val: 2.3 },
-      { label: "IPSOS (19-20 feb)", val: 2.0 },
-      { label: "DATUM (6-10 mar)", val: 1.7 },
-      { label: "DATUM (13-17 mar)", val: 1.2 },
-      { label: "IPSOS (21-22 mar)★", val: 2.0 },
+      { label: "DATUM (1-4 abr)★", val: 6.0 },
+      { label: "IEP (mar II)", val: 5.4 },
+      { label: "IPSOS (1-2 abr)", val: 5.0 },
+      { label: "IPSOS (26-27 mar)", val: 5.0 },
+      { label: "CPI (3-4 abr)", val: 4.8 },
+      { label: "DATUM (25-27 mar)", val: 5.9 },
+      { label: "IPSOS (21-22 mar)", val: 5.0 },
+      { label: "CPI (21-23 mar)", val: 3.9 },
+      { label: "DATUM (13-17 mar)", val: 4.6 },
+      { label: "DATUM (6-10 mar)", val: 2.5 },
+      { label: "IEP (~6-11 mar)", val: 2.1 },
+    ]
+  },
+  {
+    nombre: "R. Sánchez ↗", partido: "Juntos por el Perú",
+    avg: 4.8, leader: false, emergente: true,
+    bars: [
+      { label: "IEP (mar II)★", val: 6.7 },
+      { label: "IPSOS (1-2 abr)", val: 6.0 },
+      { label: "DATUM (25-27 mar)", val: 4.9 },
+      { label: "CPI (3-4 abr)", val: 3.8 },
+      { label: "DATUM (1-4 abr)", val: 4.9 },
+      { label: "IPSOS (26-27 mar)", val: 4.0 },
+      { label: "IPSOS (21-22 mar)", val: 5.0 },
+      { label: "CPI (21-23 mar)", val: 3.1 },
+      { label: "DATUM (13-17 mar)", val: 3.7 },
+      { label: "IEP (~6-11 mar)", val: 3.7 },
+      { label: "DATUM (27f-4mar)", val: 2.4 },
+      { label: "IEP (23 feb)", val: 2.4 },
+      { label: "IEP (ene)", val: 0.6 },
     ]
   },
 ];
@@ -2511,31 +2514,32 @@ const simMediaCands = [
   { nombre: "Nieto",        short: "Nieto",    color: "#8C5A8C", dashed: true },
 ];
 const simMediaData = {
-  // Votos válidos por simulacro:
+  // Votos válidos por simulacro (o emitidos cuando no hay válidos desglosados):
   // IPSOS-1 5-6 mar:   Aliaga 17.2 · Fujimori 14.2 · Álvarez 8.9  · Acuña 8.1  · LChau 6.4  · Nieto —
   // CIT     6-9 mar:   Aliaga 21.4 · Fujimori 12.8 · Álvarez 6.8  · Acuña 9.3  · LChau 9.1  · Nieto —
+  // Media 1ª quinc. (IPSOS-1+CIT):  Aliaga 19.3 · Fujimori 13.5 · Álvarez 7.9 · Acuña 8.7 · LChau 7.8
   // IPSOS-2 21-22 mar: Aliaga 17.2 · Fujimori 17.3 · Álvarez 7.4  · Acuña 5.2  · LChau 7.9  · Nieto 5.4
   // CPI     21-23 mar: Aliaga 17.9 · Fujimori 17.3 · Álvarez 5.7  · Acuña 4.9  · LChau 10.5 · Nieto 6.7
   // DATUM   25-27 mar: Aliaga 13.3 · Fujimori 18.5 · Álvarez 8.9  · Acuña 5.5  · LChau 5.9  · Nieto 6.8
+  // Media 2ª quinc. MAR (IPSOS-2+CPI-mar+DATUM-mar, n=3):
+  //   Aliaga 16.1 · Fujimori 17.7 · Álvarez 7.3 · Acuña 5.2 · LChau 8.1 · Nieto 6.3
   // IPSOS-3 1-2 abr:   Aliaga 10.9 · Fujimori 18.6 · Álvarez 12.1 · Acuña 5.1  · LChau 4.4  · Nieto 5.6
-  // DATUM   1-4 abr:   Aliaga 10.3 · Fujimori 18.1 · Álvarez 10.8 · Acuña —    · LChau 3.4  · Nieto —  (votos válidos/emitidos)
-  // CPI     3-4 abr:   Aliaga 10.6 · Fujimori 13.3 · Álvarez 9.7  · Acuña 3.7  · LChau 6.8  · Nieto 5.3 (votos emitidos)
-  // Media 1ª quinc. mar (IPSOS-1+CIT):                     Aliaga 19.3 · Fujimori 13.5 · Álvarez 7.9 · Acuña 8.7 · LChau 7.8 · Nieto —
-  // Media 2ª quinc./abr (IPSOS-2+CPI-mar+DATUM-mar+IPSOS-3+DATUM-abr+CPI-abr, n=6):
-  //   Aliaga:   (17.2+17.9+13.3+10.9+10.3+10.6)/6 = 13.4
-  //   Fujimori: (17.3+17.3+18.5+18.6+18.1+13.3)/6 = 17.2
-  //   Álvarez:  (7.4+5.7+8.9+12.1+10.8+9.7)/6     = 9.1
-  //   Acuña:    (5.2+4.9+5.5+5.1+—+3.7)/5          = 4.9
-  //   LChau:    (7.9+10.5+5.9+4.4+3.4+6.8)/6       = 6.5
-  //   Nieto:    (5.4+6.7+6.8+5.6+—+5.3)/5          = 6.0
-  labels: ["IPSOS-1\n5-6 mar", "CIT\n6-9 mar", "Media\n1ª quinc.", "IPSOS-2\n21-22 mar", "CPI\n21-23 mar", "DATUM\n25-27 mar", "IPSOS-3\n1-2 abr", "DATUM\n1-4 abr", "CPI\n3-4 abr", "Media\n2ª quinc."],
+  // DATUM   1-4 abr:   Aliaga 10.3 · Fujimori 18.1 · Álvarez 10.8 · Acuña —    · LChau 3.4  · Nieto —  (v.válidos)
+  // CPI     3-4 abr:   Aliaga 10.6 · Fujimori 13.3 · Álvarez 9.7  · Acuña 3.7  · LChau 6.8  · Nieto 5.3 (v.emitidos)
+  // Media 1ª quinc. ABR (IPSOS-3+DATUM-abr+CPI-abr, n=3):
+  //   Aliaga 10.6 · Fujimori 16.7 · Álvarez 10.9 · Acuña 4.4(n=2) · LChau 4.9 · Nieto 5.5(n=2)
+  labels: [
+    "IPSOS-1\n5-6 mar", "CIT\n6-9 mar", "Media\n1ª quinc.",
+    "IPSOS-2\n21-22 mar", "CPI\n21-23 mar", "DATUM\n25-27 mar", "Media\n2ª quinc.\nmarzo",
+    "IPSOS-3\n1-2 abr", "DATUM\n1-4 abr", "CPI\n3-4 abr", "Media\n1ª quinc.\nabril"
+  ],
   series: [
-    [17.2, 21.4, 19.3, 17.2, 17.9, 13.3, 10.9, 10.3, 10.6, 13.4],   // Aliaga
-    [14.2, 12.8, 13.5, 17.3, 17.3, 18.5, 18.6, 18.1, 13.3, 17.2],   // Fujimori
-    [8.9,   6.8,  7.9,  7.4,  5.7,  8.9, 12.1, 10.8,  9.7,  9.1],   // Álvarez
-    [8.1,   9.3,  8.7,  5.2,  4.9,  5.5,  5.1, null,  3.7,  4.9],   // Acuña
-    [6.4,   9.1,  7.8,  7.9, 10.5,  5.9,  4.4,  3.4,  6.8,  6.5],   // López Chau
-    [null, null, null,  5.4,  6.7,  6.8,  5.6, null,  5.3,  6.0],   // Nieto ★emerg.
+    [17.2, 21.4, 19.3, 17.2, 17.9, 13.3, 16.1, 10.9, 10.3, 10.6, 10.6],   // Aliaga
+    [14.2, 12.8, 13.5, 17.3, 17.3, 18.5, 17.7, 18.6, 18.1, 13.3, 16.7],   // Fujimori
+    [8.9,   6.8,  7.9,  7.4,  5.7,  8.9,  7.3, 12.1, 10.8,  9.7, 10.9],   // Álvarez
+    [8.1,   9.3,  8.7,  5.2,  4.9,  5.5,  5.2,  5.1, null,  3.7,  4.4],   // Acuña
+    [6.4,   9.1,  7.8,  7.9, 10.5,  5.9,  8.1,  4.4,  3.4,  6.8,  4.9],   // López Chau
+    [null, null, null,  5.4,  6.7,  6.8,  6.3,  5.6, null,  5.3,  5.5],   // Nieto ★emerg.
   ]
 };
 
@@ -3320,7 +3324,7 @@ function renderSimulacro(key) {
   const s = simulacros[key];
   if (!s) return;
 
-  const isCIT   = (key === 'cit-mar');
+  const isCIT       = (key === 'cit-mar');
   const isDATUM_SIM = (key === 'datum-mar');
   const isIPSOS_ABR = (key === 'ipsos-abr');
   const isDATUM_ABR = (key === 'datum-abr');
@@ -3334,43 +3338,77 @@ function renderSimulacro(key) {
   tb.innerHTML = '';
   barsDiv.innerHTML = '';
 
+  // Para simulacros con solo votos emitidos (sin válidos desglosados),
+  // el valor de referencia para barras y diff es emitidos.
+  const useEmitidos = (isDATUM_ABR || isCPI_ABR);
+
   s.candidates.forEach(c => {
-    const encStr  = c.enc !== null ? c.enc.toFixed(1).replace('.',',') + ' %' : '—';
-    const diff    = c.enc !== null ? c.validos - c.enc : null;
+    const encStr = c.enc !== null ? c.enc.toFixed(1).replace('.',',') + ' %' : '—';
+
+    // Valor principal de simulacro: válidos si existe, si no emitidos
+    const simVal   = c.validos !== null ? c.validos : (c.emitidos !== null ? c.emitidos : null);
+    const simLabel = c.validos !== null ? 'v.válidos' : 'v.emitidos';
+    const simStr   = simVal !== null ? simVal.toFixed(1).replace('.',',') + ' %' : '—';
+    const emitStr  = c.emitidos !== null ? c.emitidos.toFixed(1).replace('.',',') + ' %' : '—';
+
+    // Diff: enc → valor principal de simulacro
+    const diff    = (c.enc !== null && simVal !== null) ? simVal - c.enc : null;
     const diffClr = diff === null ? '#888' : diff > 0 ? '#4CAF50' : diff < 0 ? '#e74c3c' : '#888';
     const diffStr = diff === null ? '—' : (diff > 0 ? '+' : '') + diff.toFixed(1);
 
-    const encAlpha    = c.enc !== null ? Math.min(c.enc / 20, 1) : 0;
-    const encBg       = `rgba(160,196,232,${(encAlpha * 0.6).toFixed(2)})`;
-    const validosAlpha = Math.min(c.validos / 25, 1);
+    const encAlpha   = c.enc !== null ? Math.min(c.enc / 20, 1) : 0;
+    const encBg      = `rgba(160,196,232,${(encAlpha * 0.6).toFixed(2)})`;
+    const simAlpha   = simVal !== null ? Math.min(simVal / 25, 1) : 0;
+    const simBg      = simVal !== null ? `${c.color}` : 'transparent';
+
+    // Columna de votos emitidos — mostrar solo si hay dato y no es CIT
+    const emitCol = (!isCIT && c.emitidos !== null)
+      ? `<td style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#70C890">${emitStr}</td>`
+      : (!isCIT ? `<td style="text-align:center;color:#555">—</td>` : '');
+
+    // Columna de votos válidos
+    const validCol = c.validos !== null
+      ? `<td class="heat-cell" style="background:${simBg};opacity:0.85;color:#fff;font-weight:700;text-align:center">${simStr}</td>`
+      : `<td style="text-align:center;color:#555">—</td>`;
+
+    // Columna diff — ocultar en CIT
+    const diffCol = isCIT ? '' : `<td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:${diffClr};text-align:center;font-weight:600">${diffStr}</td>`;
 
     tb.innerHTML += `<tr>
       <td class="d-cand">${c.name}<small>${c.party}</small></td>
       <td class="heat-cell" style="background:${encBg};color:#ddd;text-align:center">${encStr}</td>
-      <td style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#70C890">${c.emitidos.toFixed(1).replace('.',',')} %</td>
-      <td class="heat-cell" style="background:${c.color};opacity:0.85;color:#fff;font-weight:700;text-align:center">${c.validos.toFixed(1).replace('.',',')} %</td>
-      ${isCIT ? '' : `<td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:${diffClr};text-align:center;font-weight:600">${diffStr}</td>`}
+      ${emitCol}
+      ${validCol}
+      ${diffCol}
       <td style="font-size:10px;color:var(--text-dim)">${c.nota}</td>
     </tr>`;
 
-    // Bar visual: emitidos vs válidos
-    const emitW  = ((c.emitidos / 25) * 100).toFixed(1);
-    const validW = ((c.validos  / 25) * 100).toFixed(1);
+    // Barras visuales — usar emitidos vs válidos si ambos existen, si no solo el que haya
+    const barVal1 = c.emitidos !== null ? c.emitidos : simVal;
+    const barVal2 = c.validos  !== null ? c.validos  : null;
+    const barLabel1 = c.emitidos !== null ? 'EMITIDOS' : 'SIM.';
+    const barLabel2 = barVal2 !== null ? 'VÁLIDOS' : null;
+    const bar1W = barVal1 !== null ? ((barVal1 / 25) * 100).toFixed(1) : '0';
+    const bar2W = barVal2 !== null ? ((barVal2 / 25) * 100).toFixed(1) : '0';
+
+    const bar2HTML = barVal2 !== null ? `
+        <div>
+          <div style="font-size:8px;color:${c.color};margin-bottom:2px;font-family:'IBM Plex Mono',monospace">${barLabel2} ${barVal2}%</div>
+          <div style="background:#2A2A2A;border-radius:2px;height:8px;overflow:hidden">
+            <div style="width:${bar2W}%;height:100%;background:${c.color};border-radius:2px"></div>
+          </div>
+        </div>` : `<div style="color:#555;font-size:9px;font-family:'IBM Plex Mono',monospace;padding-top:10px">v.válidos no desglosados</div>`;
+
     barsDiv.innerHTML += `
       <div style="display:grid;grid-template-columns:140px 1fr 1fr;gap:6px;align-items:center">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);text-align:right;text-transform:uppercase;letter-spacing:0.5px">${c.name}</div>
         <div>
-          <div style="font-size:8px;color:#70C890;margin-bottom:2px;font-family:'IBM Plex Mono',monospace">EMITIDOS ${c.emitidos}%</div>
+          <div style="font-size:8px;color:#70C890;margin-bottom:2px;font-family:'IBM Plex Mono',monospace">${barLabel1} ${barVal1 !== null ? barVal1 + '%' : '—'}</div>
           <div style="background:#2A2A2A;border-radius:2px;height:8px;overflow:hidden">
-            <div style="width:${emitW}%;height:100%;background:#70C890;border-radius:2px;opacity:0.7"></div>
+            <div style="width:${bar1W}%;height:100%;background:#70C890;border-radius:2px;opacity:0.7"></div>
           </div>
         </div>
-        <div>
-          <div style="font-size:8px;color:${c.color};margin-bottom:2px;font-family:'IBM Plex Mono',monospace">VÁLIDOS ${c.validos}%</div>
-          <div style="background:#2A2A2A;border-radius:2px;height:8px;overflow:hidden">
-            <div style="width:${validW}%;height:100%;background:${c.color};border-radius:2px"></div>
-          </div>
-        </div>
+        ${bar2HTML}
       </div>`;
   });
 }
