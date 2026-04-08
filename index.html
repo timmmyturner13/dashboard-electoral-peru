@@ -640,7 +640,7 @@
   <div class="hero-meta">
     <div class="hero-meta-item">Período<strong>1 ene – 5 abr 2026</strong></div>
     <div class="hero-meta-item">Encuestadoras<strong>6 empresas con reg. JNE</strong></div>
-    <div class="hero-meta-item">Total encuestas<strong>29 mediciones</strong></div>
+    <div class="hero-meta-item">Total encuestas<strong>30 mediciones</strong></div>
     <div class="hero-meta-item">Primera vuelta<strong>12 de abril de 2026</strong></div>
     <div class="hero-meta-item">Balotaje<strong>7 de junio de 2026</strong></div>
   </div>
@@ -1494,7 +1494,7 @@
   <p class="section-title">Media de intención de voto por candidato</p>
   <div class="chart-section">
     <div class="chart-title">Promedio entre encuestas (enero – abril 2026)</div>
-    <div class="chart-subtitle">Media simple — 29 encuestas · 6 encuestadoras con registro JNE · Última: CPI (3-4 abr, pub. 5 abr)</div>
+    <div class="chart-subtitle">Media simple — 30 encuestas · 6 encuestadoras con registro JNE · Última: IPSOS (3-4 abr, pub. 5 abr · Perú 21/Latina)</div>
     <div class="bar-chart" id="mainChart"></div>
   </div>
 
@@ -1575,8 +1575,13 @@
 // ── DATOS ────────────────────────────────────────────────────────────────────
 const encuestas = [
   {
+    enc: "IPSOS Perú", badge: "badge-ipsos", reg: "001-REE/JNE",
+    medio: "Perú 21 / Latina", campo: "3-4/04/2026 ★ÚLTIMA", muestra: "1.205",
+    lopez: 7.0, fujimori: 15.0, alvarez: 8.0, acuna: 3.0, vizcarra: null, lopezchau: 5.0, nsnc: "11% bl/vic/ninguno · 16% no precisa · Fujimori máximo histórico 15% · ★ Encuesta más reciente · pub. Infobae 5 abr (medio internacional)"
+  },
+  {
     enc: "CPI", badge: "badge-cpi", reg: "00428-REE/JNE",
-    medio: "RPP", campo: "3-4/04/2026 ★ÚLTIMA", muestra: "2.000",
+    medio: "RPP", campo: "3-4/04/2026", muestra: "2.000",
     lopez: 9.2, fujimori: 11.8, alvarez: 8.5, acuna: 3.2, vizcarra: null, lopezchau: 6.0, nsnc: "14,7% bl/vic · 13,9% indecisos · ★ Última CPI antes de veda"
   },
   {
@@ -1724,7 +1729,7 @@ const encuestas = [
 const candidatos = [
   {
     nombre: "Rafael López Aliaga", partido: "Renovación Popular",
-    avg: 11.7, leader: true,
+    avg: 11.5, leader: true,
     bars: [
       { label: "CIT (16 feb)", val: 15.3 },
       { label: "IEP (ene)", val: 14.7 },
@@ -1744,9 +1749,10 @@ const candidatos = [
   },
   {
     nombre: "Keiko Fujimori", partido: "Fuerza Popular",
-    avg: 9.7, leader: false,
+    avg: 9.9, leader: false,
     bars: [
-      { label: "DATUM (1-4 abr)★", val: 14.5 },
+      { label: "IPSOS (3-4 abr)★", val: 15.0 },
+      { label: "DATUM (1-4 abr)", val: 14.5 },
       { label: "CPI (3-4 abr)", val: 11.8 },
       { label: "IPSOS (1-2 abr)", val: 13.0 },
       { label: "IEP (mar II)", val: 10.0 },
@@ -1805,7 +1811,8 @@ const candidatos = [
       { label: "DATUM (27f-4mar)", val: 5.0 },
       { label: "CIT (16 feb)", val: 5.0 },
       { label: "IEP (23 feb)", val: 4.9 },
-      { label: "DATUM (1-4 abr)★", val: 10.9 },
+      { label: "IPSOS (3-4 abr)★", val: 8.0 },
+      { label: "DATUM (1-4 abr)", val: 10.9 },
       { label: "CPI (3-4 abr)", val: 8.5 },
       { label: "IPSOS (1-2 abr)", val: 9.0 },
       { label: "IEP (mar II)", val: 6.9 },
@@ -1888,11 +1895,11 @@ const candidatos = [
 
 // ── GRÁFICO PRINCIPAL ─────────────────────────────────────────────────────────
 const allCands = [
-  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 11.7, color: "#c0392b" },
-  { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 9.7,  color: "#6B2FAF" },
+  { name: "R. López Aliaga",  party: "Renovación Popular",     avg: 11.5, color: "#c0392b" },
+  { name: "Keiko Fujimori",   party: "Fuerza Popular",         avg: 9.9,  color: "#6B2FAF" },
   { name: "A. López Chau",    party: "Ahora Nación",           avg: 5.1,  color: "#1A5CAF" },
-  { name: "Carlos Álvarez",   party: "País para Todos",        avg: 5.5,  color: "#1A6B3A" },
-  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 4.8,  color: "#8C5A8C" },
+  { name: "Carlos Álvarez",   party: "País para Todos",        avg: 5.6,  color: "#1A6B3A" },
+  { name: "J. Nieto",         party: "Partido Buen Gobierno",  avg: 4.7,  color: "#8C5A8C" },
   { name: "W. Grozo",         party: "Integridad Democrática", avg: 4.2,  color: "#e67e22" },
   { name: "César Acuña",      party: "APP",                    avg: 4.0,  color: "#8C5A1A" },
   { name: "Yonhy Lescano",    party: "Cooperación Popular",    avg: 3.0,  color: "#5A8C1A" },
@@ -2002,31 +2009,31 @@ const mediaData = {
   labels: [
     "1ª quinc.\nEnero\n(n=4)", "2ª quinc.\nEnero\n(n=1)",
     "Fin ene /\nIni feb\n(n=3)", "1ª quinc.\nFebrero\n(n=4)",
-    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc. mar /\nini abr\n(n=9)"
+    "2ª quinc.\nFeb /\nIni mar\n(n=5)", "1ª quinc.\nMarzo\n(n=3)", "2ª quinc. mar /\nini abr\n(n=10)"
   ],
   series: [
-    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4,  9.9],   // Aliaga:   (10.1×7+9.9+9.2)/9
-    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 11.8],   // Fujimori: (11.4×7+14.5+11.8)/9
-    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  6.9],   // Álvarez:  (6.2×7+10.9+8.5)/9
-    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  6.5],   // LChau: (5.8×6+4.7+6.0)/8 n=8
-    [null, null, 4.2,  4.4,  4.2,   3.5,  3.2],   // Acuña ★emerg.
-    [null, null, null, null, null,  null, 5.1],   // Nieto ★emerg.: (5.0×7+6.0+4.8)/9
-    [null, null, null, 2.4,  2.4,   3.7,  4.8],   // Sánchez ↗: (4.9×7+4.9+3.8)/9... ≈4.8
+    [12.6, 14.7, 13.4, 13.7, 12.0, 11.4,  9.6],   // Aliaga:   (9.9×9+7)/10
+    [7.9,  8.1,  8.2,  8.2,  9.1,  10.1, 12.1],   // Fujimori: (11.8×9+15)/10
+    [null, 4.0,  5.6,  4.8,  5.0,   4.6,  7.0],   // Álvarez:  (6.9×9+8)/10
+    [null, 4.0,  3.9,  5.2,  4.9,   5.8,  6.3],   // LChau: (6.5×8+5)/9 n=9
+    [null, null, 4.2,  4.4,  4.2,   3.5,  3.1],   // Acuña ★emerg.
+    [null, null, null, null, null,  null, 5.0],   // Nieto ★emerg.: (5.1×9+4)/10
+    [null, null, null, 2.4,  2.4,   3.7,  4.8],   // Sánchez ↗
   ]
 };
 
 const encData = {
   // Series order = TOP5: Aliaga · Fujimori · Álvarez · LChau · Acuña · Nieto · Sánchez
   "IPSOS": {
-    labels: ["07-08 ene", "05-06 feb", "19-20 feb", "05-06 mar", "21-22 mar", "26-27 mar", "1-2 abr"],
+    labels: ["07-08 ene", "05-06 feb", "19-20 feb", "05-06 mar", "21-22 mar", "26-27 mar", "1-2 abr", "3-4 abr"],
     series: [
-      [10.0, 12.0, 10.0, 11.0, 10.0,  9.0,  8.0],   // Aliaga
-      [7.0,  8.0,  9.0, 10.0, 11.0, 11.0, 13.0],    // Fujimori
-      [null, 4.0,  3.0,  6.0,  5.0,  7.0,  9.0],    // Álvarez
-      [null, 4.0,  4.0,  4.0,  5.0,  4.0,  null],   // López Chau (no desglosado abr)
-      [null, 4.0,  4.0,  4.0,  null, null, null],   // Acuña (no desglosado mar-abr)
-      [null, null, null, null, 5.0,  5.0,  5.0],    // Nieto
-      [null, null, null, null, 5.0,  4.0,  6.0],    // Sánchez
+      [10.0, 12.0, 10.0, 11.0, 10.0,  9.0,  8.0,  7.0],   // Aliaga
+      [7.0,  8.0,  9.0, 10.0, 11.0, 11.0, 13.0, 15.0],    // Fujimori
+      [null, 4.0,  3.0,  6.0,  5.0,  7.0,  9.0,  8.0],    // Álvarez
+      [null, 4.0,  4.0,  4.0,  5.0,  4.0,  null, 5.0],    // López Chau
+      [null, 4.0,  4.0,  4.0,  null, null, null, 3.0],    // Acuña
+      [null, null, null, null, 5.0,  5.0,  5.0,  4.0],    // Nieto
+      [null, null, null, null, 5.0,  4.0,  6.0,  5.0],    // Sánchez
     ]
   },
   // Series order = TOP5: Aliaga · Fujimori · Álvarez · LChau · Acuña · Nieto · Sánchez
